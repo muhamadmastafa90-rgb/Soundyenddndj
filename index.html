@@ -3,67 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Robotics Musica | Future of Sound</title>
+    <title>Robotics Musica | The Future of Audio</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;800&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="glow-bg"></div>
 
     <nav class="navbar">
-        <div class="logo-container">
-            <img src="logo.png" alt="Robotics Musica Logo" class="bot-logo-img">
-            <div class="logo-text">ROBOTICS <span>MUSICA</span></div>
+        <div class="logo-area">
+            <img src="logo.png" alt="Robotics" class="nav-logo">
+            <span class="logo-text">ROBOTICS <span>MUSICA</span></span>
         </div>
         <div class="nav-links">
-            <a href="#features">Features</a>
-            <a href="#commands">Commands</a>
-            <a href="https://discord.com" target="_blank">Support</a>
+            <a href="index.html" class="active">Home</a>
+            <a href="commands.html">Commands</a>
+            <a href="https://discord.gg/RfeewVj3Fp" target="_blank">Support</a>
         </div>
-        <button class="btn-login">Dashboard</button>
+        <a href="https://discord.com/oauth2/authorize?client_id=1150754451938869371&permissions=8&integration_type=0&scope=bot" class="btn-top">Invite Bot</a>
     </nav>
 
-    <header class="hero">
-        <div class="hero-content">
-            <div class="status-tag">
-                <span class="dot"></span> Online & Stable
-            </div>
-            <h1>Automate Your <br><span class="gradient-text">Music Experience</span></h1>
-            <p>Robotics Musica brings high-definition audio and intelligent queue management to your Discord server with AI-driven stability.</p>
-            
-            <div class="hero-btns">
-                <a href="#" class="btn-invite">Add to Discord</a>
-                <a href="#commands" class="btn-outline">View Commands</a>
-            </div>
+    <header class="main-hero">
+        <div class="badge-container">
+            <span class="new-badge">STABLE</span>
+            <span class="badge-text">Robotics Musica v2.0 is Online</span>
+        </div>
+        
+        <h1 class="hero-title">Experience <span class="text-glow">Sound</span> <br> Through <span class="gradient-text">Automation.</span></h1>
+        <p class="hero-desc">The most sophisticated Discord music bot. High-fidelity audio, lag-free robotic servers, and advanced filters at your fingertips.</p>
+
+        <div class="hero-actions">
+            <a href="https://discord.com/oauth2/authorize?client_id=1150754451938869371&permissions=8&integration_type=0&scope=bot" class="btn-main">Add to Discord</a>
+            <a href="https://discord.gg/RfeewVj3Fp" class="btn-sub">Join Server</a>
         </div>
 
-        <div class="hero-visual">
-            <div class="robot-glow">
-                <img src="logo.png" alt="Robotics Musica" class="main-robot-img">
-                <div class="scan-line"></div>
+        <div class="hero-image-box">
+            <div class="glass-container">
+                <img src="logo.png" alt="Robotics Musica" class="floating-logo">
+                <div class="audio-waves">
+                    <span></span><span></span><span></span><span></span><span></span>
+                </div>
             </div>
         </div>
     </header>
 
-    <section class="stats-bar">
-        <div class="stat"><h3>1.2M</h3><p>Active Users</p></div>
-        <div class="stat"><h3>450K</h3><p>Servers Joined</p></div>
-        <div class="stat"><h3>0.2ms</h3><p>Latency</p></div>
-    </section>
-
-    <section id="commands" class="commands-section">
-        <h2 class="section-title">Robotic Commands</h2>
-        <div class="cmd-grid">
-            <div class="cmd-item"><code>/play</code><p>Stream any track instantly</p></div>
-            <div class="cmd-item"><code>/filter</code><p>Apply robotic & bass effects</p></div>
-            <div class="cmd-item"><code>/loop</code><p>Infinite playback mode</p></div>
-            <div class="cmd-item"><code>/lyrics</code><p>Get real-time song lyrics</p></div>
+    <section class="features-section">
+        <div class="f-grid">
+            <div class="f-item">
+                <div class="icon">🔊</div>
+                <h3>High Definition</h3>
+                <p>Lossless 320kbps audio streaming for every track.</p>
+            </div>
+            <div class="f-item">
+                <div class="icon">⚡</div>
+                <h3>No Lag</h3>
+                <p>Powered by high-speed robotic core technology.</p>
+            </div>
+            <div class="f-item">
+                <div class="icon">🤖</div>
+                <h3>Auto-Play</h3>
+                <p>Smart queue management that never stops the vibe.</p>
+            </div>
         </div>
     </section>
 
     <footer>
-        <p>© 2026 Robotics Musica. All Rights Reserved.</p>
+        <p>© 2026 Robotics Musica. Designed for the Next Generation.</p>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
