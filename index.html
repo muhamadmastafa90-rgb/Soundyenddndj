@@ -3,54 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Robotics Bot | Premium Discord Music</title>
+    <title>Robotics Musica | Future of Sound</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <nav class="navbar">
-        <div class="logo">MELODY<span>.</span></div>
+        <div class="logo-container">
+            <img src="logo.png" alt="Robotics Musica Logo" class="bot-logo-img">
+            <div class="logo-text">ROBOTICS <span>MUSICA</span></div>
+        </div>
         <div class="nav-links">
             <a href="#features">Features</a>
             <a href="#commands">Commands</a>
-            <a href="#support">Support</a>
+            <a href="https://discord.com" target="_blank">Support</a>
         </div>
-        <button class="btn-login">Login</button>
+        <button class="btn-login">Dashboard</button>
     </nav>
 
-    <section class="hero">
+    <header class="hero">
         <div class="hero-content">
-            <span class="badge">v2.0 is now live!</span>
-            <h1>Experience Music Like <span class="gradient-text">Never Before</span></h1>
-            <p>High-fidelity audio, lag-free streaming, and advanced queue management for your Discord server.</p>
+            <div class="status-tag">
+                <span class="dot"></span> Online & Stable
+            </div>
+            <h1>Automate Your <br><span class="gradient-text">Music Experience</span></h1>
+            <p>Robotics Musica brings high-definition audio and intelligent queue management to your Discord server with AI-driven stability.</p>
+            
             <div class="hero-btns">
-                <a href="#" class="btn-primary">Add to Discord</a>
-                <a href="#" class="btn-secondary">View Dashboard</a>
+                <a href="#" class="btn-invite">Add to Discord</a>
+                <a href="#commands" class="btn-outline">View Commands</a>
             </div>
         </div>
-        
+
         <div class="hero-visual">
-            <div class="glass-card">
-                <div class="playing-ui">
-                    <div class="track-info">
-                        <div class="track-img"></div>
-                        <div class="track-text">
-                            <div class="track-name">Now Playing: Moonlight</div>
-                            <div class="track-author">Lo-fi Hip Hop</div>
-                        </div>
-                    </div>
-                    <div class="progress-bar"><div class="fill"></div></div>
-                </div>
+            <div class="robot-glow">
+                <img src="logo.png" alt="Robotics Musica" class="main-robot-img">
+                <div class="scan-line"></div>
             </div>
+        </div>
+    </header>
+
+    <section class="stats-bar">
+        <div class="stat"><h3>1.2M</h3><p>Active Users</p></div>
+        <div class="stat"><h3>450K</h3><p>Servers Joined</p></div>
+        <div class="stat"><h3>0.2ms</h3><p>Latency</p></div>
+    </section>
+
+    <section id="commands" class="commands-section">
+        <h2 class="section-title">Robotic Commands</h2>
+        <div class="cmd-grid">
+            <div class="cmd-item"><code>/play</code><p>Stream any track instantly</p></div>
+            <div class="cmd-item"><code>/filter</code><p>Apply robotic & bass effects</p></div>
+            <div class="cmd-item"><code>/loop</code><p>Infinite playback mode</p></div>
+            <div class="cmd-item"><code>/lyrics</code><p>Get real-time song lyrics</p></div>
         </div>
     </section>
 
-    <section class="stats">
-        <div class="stat-item"><h2>500k+</h2><p>Servers</p></div>
-        <div class="stat-item"><h2>2M+</h2><p>Users</p></div>
-        <div class="stat-item"><h2>24/7</h2><p>Uptime</p></div>
-    </section>
+    <footer>
+        <p>© 2026 Robotics Musica. All Rights Reserved.</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
