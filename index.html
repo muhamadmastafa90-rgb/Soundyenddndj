@@ -3,119 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Robotics Musica | Premium Discord Bot</title>
+    <title>Robotics Musica | Future of Audio</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg: #030305;
-            --accent: #00f2ff;
-            --purple: #7000ff;
-            --glass: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.08);
-            --text: #ffffff;
-            --text-dim: #a1a1aa;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        :root { --bg: #030305; --accent: #00f2ff; --purple: #7000ff; --glass: rgba(255, 255, 255, 0.03); --border: rgba(255, 255, 255, 0.08); --text: #ffffff; --text-dim: #a1a1aa; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
         body { background: var(--bg); color: var(--text); overflow-x: hidden; }
-
         .glow-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% -10%, #1a1a3a 0%, transparent 40%); z-index: -1; }
-
-        /* Navbar */
-        .navbar {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 10%; background: rgba(0,0,0,0.7); backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000;
-        }
+        
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 10%; background: rgba(0,0,0,0.7); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; }
         .logo-area { display: flex; align-items: center; gap: 12px; }
         .nav-logo { width: 45px; height: 45px; border-radius: 50%; border: 2px solid var(--accent); }
-        .logo-text { font-weight: 800; font-size: 1.2rem; }
-        .logo-text span { color: var(--accent); }
         .nav-links a { text-decoration: none; color: var(--text-dim); margin-left: 20px; font-size: 0.9rem; transition: 0.3s; }
         .nav-links a:hover { color: var(--accent); }
 
-        /* Hero / About Bot */
-        .section { padding: 100px 10%; text-align: center; }
-        .hero-title { font-size: 4rem; font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+        .hero { padding: 80px 10%; text-align: center; }
         .gradient-text { background: linear-gradient(90deg, var(--accent), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero-desc { color: var(--text-dim); font-size: 1.2rem; max-width: 700px; margin: 0 auto 40px; }
+        .btn-main { background: var(--accent); color: #000; text-decoration: none; padding: 18px 45px; border-radius: 14px; font-weight: 800; display: inline-block; transition: 0.3s; margin-top: 20px; }
+        
+        /* Future Audio Section */
+        .future-audio { padding: 60px 10%; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .f-card { background: var(--glass); padding: 30px; border-radius: 20px; border: 1px solid var(--border); text-align: center; transition: 0.3s; }
+        .f-card:hover { border-color: var(--accent); transform: translateY(-10px); }
+        .f-card h3 { color: var(--accent); margin-bottom: 10px; }
 
-        /* Buttons */
-        .btn-invite { 
-            background: var(--accent); color: #000; text-decoration: none; 
-            padding: 18px 45px; border-radius: 14px; font-weight: 800; 
-            display: inline-block; transition: 0.3s; box-shadow: 0 10px 30px rgba(0, 242, 255, 0.2);
-        }
-        .btn-invite:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0, 242, 255, 0.4); }
-
-        /* Commands Section */
-        .cmd-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 40px; }
-        .cmd-card { background: var(--glass); padding: 25px; border-radius: 20px; border: 1px solid var(--border); text-align: left; }
-        .cmd-card code { color: var(--accent); font-weight: 800; font-size: 1.1rem; display: block; margin-bottom: 10px; }
-
-        /* Future / Features */
-        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
-        .f-box { background: linear-gradient(145deg, rgba(255,255,255,0.01), rgba(255,255,255,0.05)); padding: 40px; border-radius: 30px; border: 1px solid var(--border); }
-        .f-box h3 { color: var(--accent); margin-bottom: 15px; }
-
-        .main-img { width: 250px; height: 250px; border-radius: 50%; border: 4px solid var(--accent); margin: 40px auto; animation: float 6s infinite ease-in-out; }
+        .main-img { width: 250px; height: 250px; border-radius: 50%; border: 4px solid var(--accent); margin: 40px auto; animation: float 6s infinite ease-in-out; display: block; }
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
-
-        h2 { font-size: 2.5rem; margin-bottom: 30px; }
-        footer { padding: 40px; text-align: center; color: var(--text-dim); border-top: 1px solid var(--border); }
     </style>
 </head>
 <body>
     <div class="glow-bg"></div>
-
     <nav class="navbar">
         <div class="logo-area">
             <img src="لێرە_لینکی_لۆگۆ_دابنێ" class="nav-logo">
-            <div class="logo-text">ROBOTICS <span>MUSICA</span></div>
+            <div style="font-weight:800;">ROBOTICS <span style="color:var(--accent);">MUSICA</span></div>
         </div>
         <div class="nav-links">
-            <a href="#about">About Bot</a>
-            <a href="#commands">Commands</a>
-            <a href="#future">Future</a>
-            <a href="https://discord.gg/RfeewVj3Fp" target="_blank">Support</a>
+            <a href="index.html">Home</a>
+            <a href="commands.html">Commands</a>
+            <a href="https://discord.gg/RfeewVj3Fp">Support</a>
         </div>
     </nav>
 
-    <section id="about" class="section">
-        <h1 class="hero-title">Powerful Sound With <br> <span class="gradient-text">Robotics Musica</span></h1>
-        <p class="hero-desc">Robotics Musica is a next-generation Discord bot designed to provide the highest audio quality with intelligent robotic automation. No lag, just pure music.</p>
-        <a href="https://discord.com/oauth2/authorize?client_id=1150754451938869371&permissions=8&integration_type=0&scope=bot" class="btn-invite">Invite Bot</a>
-        <br>
+    <section class="hero">
+        <h1 style="font-size: 4rem;">Future <span class="gradient-text">Audio</span></h1>
+        <p style="color:var(--text-dim); margin: 20px 0;">Robotics Musica provides the next level of sound experience.</p>
         <img src="لێرە_لینکی_لۆگۆ_دابنێ" class="main-img">
+        <a href="https://discord.com/oauth2/authorize?client_id=1150754451938869371&permissions=8&integration_type=0&scope=bot" class="btn-main">Invite Now</a>
     </section>
 
-    <section id="commands" class="section" style="background: rgba(255,255,255,0.01);">
-        <h2>Bot <span class="gradient-text">Commands</span></h2>
-        <div class="cmd-grid">
-            <div class="cmd-card"><code>/play</code><p>Play music from any source instantly.</p></div>
-            <div class="cmd-card"><code>/filter</code><p>Apply robotic audio filters like 8D & Bass.</p></div>
-            <div class="cmd-card"><code>/queue</code><p>View and manage upcoming tracks.</p></div>
-            <div class="cmd-card"><code>/stop</code><p>Stop the music and clear the list.</p></div>
-        </div>
+    <section class="future-audio">
+        <div class="f-card"><h3>24/7</h3><p>Always online, never stops.</p></div>
+        <div class="f-card"><h3>Uptime</h3><p>99.9% robotic stability.</p></div>
+        <div class="f-card"><h3>Premium</h3><p>All commands are free.</p></div>
+        <div class="f-card"><h3>HQ Sound</h3><p>320kbps Crystal Clear.</p></div>
     </section>
-
-    <section id="future" class="section">
-        <h2>The <span class="gradient-text">Future</span> of Audio</h2>
-        <div class="feature-grid">
-            <div class="f-box">
-                <h3>AI Audio Scaling</h3>
-                <p>In the next update, we are adding AI-driven sound enhancement to fix low-quality streams automatically.</p>
-            </div>
-            <div class="f-box">
-                <h3>Multi-Platform Sync</h3>
-                <p>Sync your playlists between Discord, Spotify, and YouTube seamlessly with our robotic core.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>© 2026 Robotics Musica | All rights reserved.</p>
-    </footer>
-
 </body>
 </html>
