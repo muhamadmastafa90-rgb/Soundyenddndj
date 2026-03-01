@@ -1,136 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Robotics Musica — LEGENDARY V4</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robotics Musica | The Future of Discord Sound</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #030305;
+            --accent: #00f2ff;
+            --purple: #7000ff;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
+            --text: #ffffff;
+            --text-dim: #a1a1aa;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        body { background: var(--bg); color: var(--text); overflow-x: hidden; }
 
-<style>
-:root{
---bg:#07070a;
---card:rgba(255,255,255,0.04);
---border:rgba(255,255,255,0.08);
---text:#ffffff;
---dim:#9ca3af;
---accent:#8b5cf6;
---cyan:#22d3ee;
-}
+        /* پاشبنەمای جوڵاو (Animated Background) */
+        .glow-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% -10%, #1a1a3a 0%, transparent 40%);
+            z-index: -1;
+        }
+        .blob {
+            position: absolute; width: 300px; height: 300px; background: var(--purple);
+            filter: blur(150px); border-radius: 50%; opacity: 0.2; animation: move 20s infinite alternate;
+        }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
-body{background:var(--bg);color:var(--text);overflow-x:hidden;transition:0.4s;}
+        @keyframes move { from { transform: translate(0, 0); } to { transform: translate(100vw, 100vh); } }
 
-/* Aurora Background */
-.aurora{
-position:fixed;width:900px;height:900px;
-background:radial-gradient(circle at 30% 30%, #8b5cf6, transparent 60%),
-radial-gradient(circle at 70% 70%, #22d3ee, transparent 60%);
-filter:blur(140px);
-animation:move 18s infinite alternate ease-in-out;
-z-index:-1;
-}
-@keyframes move{
-0%{transform:translate(-100px,-100px) rotate(0deg);}
-100%{transform:translate(150px,100px) rotate(180deg);}
-}
+        /* Navbar Floating */
+        .navbar {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 5%; width: 90%; margin: 20px auto;
+            background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px);
+            border: 1px solid var(--border); border-radius: 20px;
+            position: sticky; top: 20px; z-index: 1000;
+        }
+        .logo-area { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1.1rem; }
+        .logo-orb { width: 35px; height: 35px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 15px var(--accent); display: flex; align-items: center; justify-content: center; color: #000; }
+        .nav-links a { text-decoration: none; color: var(--text-dim); margin-left: 20px; font-size: 0.9rem; transition: 0.3s; font-weight: 600; }
+        .nav-links a:hover { color: var(--accent); }
 
-/* Navbar */
-nav{display:flex;justify-content:space-between;align-items:center;padding:30px 8%;}
-.logo{font-weight:900;font-size:1.3rem;letter-spacing:2px;background:linear-gradient(90deg,var(--accent),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-nav a{color:var(--dim);text-decoration:none;margin-left:30px;transition:0.3s;}
-nav a:hover{color:#fff;}
+        /* Hero Section */
+        .hero { padding: 100px 5% 50px; text-align: center; }
+        .hero-badge { background: var(--glass); padding: 8px 16px; border-radius: 100px; border: 1px solid var(--border); font-size: 0.8rem; color: var(--accent); font-weight: 600; display: inline-block; margin-bottom: 20px; }
+        .hero-title { font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 800; line-height: 1; letter-spacing: -3px; }
+        .gradient-text { background: linear-gradient(90deg, var(--accent), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* Central Animated Orb */
+        .orb-container { position: relative; width: 280px; height: 280px; margin: 50px auto; }
+        .main-orb {
+            width: 100%; height: 100%; background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+            border-radius: 50%; opacity: 0.15; animation: pulse 4s infinite alternate;
+        }
+        .bot-visual {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 180px; height: 180px; background: #000; border: 4px solid var(--accent);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 4rem; font-weight: 800;
+            box-shadow: 0 0 50px rgba(0, 242, 255, 0.3);
+        }
 
-/* Hero */
-.hero{text-align:center;padding:120px 8% 80px;animation:fadeIn 1.2s ease;}
-@keyframes fadeIn{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
-.hero h1{font-size:4rem;font-weight:900;background:linear-gradient(90deg,#fff,#a78bfa,#22d3ee);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.hero p{color:var(--dim);max-width:650px;margin:25px auto 40px;line-height:1.7;font-size:1.05rem;}
-.btn{display:inline-block;padding:18px 50px;border-radius:60px;background:linear-gradient(90deg,var(--accent),var(--cyan));color:#fff;text-decoration:none;font-weight:700;position:relative;overflow:hidden;transition:0.3s;}
-.btn:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(139,92,246,0.5);}
-.btn::before{content:"";position:absolute;width:200%;height:200%;background:radial-gradient(circle,rgba(255,255,255,0.4),transparent 40%);top:-50%;left:-50%;opacity:0;transition:0.5s;}
-.btn:hover::before{opacity:1;}
+        @keyframes pulse { from { transform: scale(0.8); opacity: 0.1; } to { transform: scale(1.2); opacity: 0.3; } }
 
-/* Features */
-.features{padding:60px 8%;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:30px;}
-.card{background:var(--card);border:1px solid var(--border);padding:35px;border-radius:24px;backdrop-filter:blur(25px);transition:0.4s;position:relative;overflow:hidden;}
-.card:hover{transform:translateY(-12px);border-color:var(--accent);box-shadow:0 20px 50px rgba(139,92,246,0.2);}
-.card::after{content:"";position:absolute;width:120%;height:120%;background:radial-gradient(circle,var(--accent),transparent 70%);opacity:0;top:-20%;left:-20%;transition:0.6s;}
-.card:hover::after{opacity:0.05;}
-.card h3{margin-bottom:12px;font-size:1.2rem;}
-.card p{color:var(--dim);font-size:0.95rem;line-height:1.6;}
+        /* Bento Grid */
+        .bento-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, 200px);
+            gap: 20px; padding: 50px 10%; margin-top: 50px;
+        }
+        .bento-card { background: var(--glass); border: 1px solid var(--border); border-radius: 32px; padding: 30px; transition: 0.4s; position: relative; overflow: hidden; }
+        .bento-card:hover { border-color: var(--accent); transform: translateY(-5px); background: rgba(255,255,255,0.05); }
+        .bento-card h3 { color: var(--accent); margin-bottom: 10px; font-size: 1.5rem; }
+        .bento-card p { color: var(--text-dim); font-size: 0.95rem; line-height: 1.5; }
 
-/* Information Section */
-.info{padding:60px 8%;text-align:center;animation:fadeIn 1.5s ease;}
-.info h2{font-size:2.8rem;margin-bottom:20px;background:linear-gradient(90deg,var(--accent),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.info p{color:var(--dim);max-width:750px;margin:0 auto;font-size:1.05rem;line-height:1.7;}
-.info-buttons{margin-top:30px;display:flex;justify-content:center;gap:25px;flex-wrap:wrap;}
-.info-buttons a{padding:16px 45px;border-radius:50px;background:linear-gradient(90deg,var(--accent),var(--cyan));text-decoration:none;color:#fff;font-weight:600;transition:0.3s;}
-.info-buttons a:hover{transform:translateY(-4px);box-shadow:0 15px 40px rgba(139,92,246,0.4);}
+        .card-large { grid-column: span 2; grid-row: span 2; }
+        .card-medium { grid-column: span 2; }
 
-/* Footer */
-footer{text-align:center;padding:50px;color:var(--dim);font-size:0.9rem;border-top:1px solid var(--border);margin-top:60px;}
+        /* Source Icons */
+        .sources { display: flex; justify-content: center; gap: 40px; padding: 50px; opacity: 0.6; }
+        .sources img { height: 35px; filter: grayscale(1) brightness(2); transition: 0.4s; cursor: pointer; }
+        .sources img:hover { filter: grayscale(0) brightness(1); transform: scale(1.1); }
 
-/* Music Bars Animation */
-.music-bars{display:flex;justify-content:center;gap:6px;margin-top:40px;}
-.bar{width:5px;height:20px;background:var(--accent);animation:barAnim 1s infinite ease-in-out;transform-origin:bottom;}
-.bar:nth-child(2){animation-delay:0.1s;}
-.bar:nth-child(3){animation-delay:0.2s;}
-.bar:nth-child(4){animation-delay:0.3s;}
-.bar:nth-child(5){animation-delay:0.4s;}
-@keyframes barAnim{0%,100%{height:20px;}50%{height:50px;}}
+        .btn-invite { background: var(--accent); color: #000; text-decoration: none; padding: 20px 50px; border-radius: 18px; font-weight: 800; display: inline-block; font-size: 1.1rem; box-shadow: 0 10px 40px rgba(0, 242, 255, 0.3); transition: 0.3s; }
+        .btn-invite:hover { transform: scale(1.05); box-shadow: 0 15px 60px rgba(0, 242, 255, 0.5); }
 
-/* Responsive */
-@media(max-width:768px){.hero h1{font-size:2.5rem;}nav{padding:20px 6%;}}
-</style>
+        /* Responsive */
+        @media (max-width: 900px) {
+            .bento-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+            .card-large, .card-medium { grid-column: span 1; }
+            .hero-title { font-size: 3.5rem; }
+        }
+
+        footer { padding: 50px; text-align: center; color: var(--text-dim); border-top: 1px solid var(--border); margin-top: 100px; }
+    </style>
 </head>
 <body>
+    <div class="glow-bg"></div>
+    <div class="blob"></div>
 
-<div class="aurora"></div>
+    <nav class="navbar">
+        <div class="logo-area">
+            <div class="logo-orb">R</div>
+            <div>ROBOTICS <span style="color:var(--accent)">MUSICA</span></div>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="commands.html">Commands</a>
+            <a href="https://discord.gg/RfeewVj3Fp">Support</a>
+        </div>
+    </nav>
 
-<nav>
-<div class="logo">ROBOTICS MUSICA</div>
-<div>
-<a href="#">Home</a>
-<a href="#">Commands</a>
-<a href="#">Support</a>
-</div>
-</nav>
+    <header class="hero">
+        <div class="hero-badge">NEW: AI AUDIO ENGINE V2.0</div>
+        <h1 class="hero-title">Experience Sound<br><span class="gradient-text">Through Robotics</span></h1>
+        
+        <div class="orb-container">
+            <div class="main-orb"></div>
+            <div class="bot-visual">R</div>
+        </div>
 
-<section class="hero">
-<h1>LEGENDARY Discord Music</h1>
-<p>Next-level music performance with ultra-smooth, high-quality sound streaming 24/7.</p>
-<a href="#" class="btn">Invite Now</a>
+        <p style="color:var(--text-dim); max-width: 600px; margin: 0 auto 40px; font-size: 1.2rem;">
+            The most powerful music bot for Discord servers. High-fidelity audio, robotic precision, and 24/7 stability. Prefix: <b>R</b>
+        </p>
+        
+        <a href="https://discord.com/oauth2/authorize?client_id=1150754451938869371&permissions=8&integration_type=0&scope=bot" class="btn-invite">Invite to Your Server</a>
+    </header>
 
-<div class="music-bars">
-<div class="bar"></div>
-<div class="bar"></div>
-<div class="bar"></div>
-<div class="bar"></div>
-<div class="bar"></div>
-</div>
-</section>
+    <div class="sources">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" alt="YouTube">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_with_text.svg" alt="Spotify">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Deezer_logo.svg" alt="Deezer">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Apple_Music_logo.svg" alt="Apple Music">
+    </div>
 
-<!-- Information Section -->
-<section class="info">
-<h2>About Robotics Musica</h2>
-<p>Robotics Musica is the ultimate Discord music bot, delivering crystal-clear audio, stable 24/7 performance, and powerful commands for communities of any size. Experience a futuristic and modern music environment directly in your server.</p>
+    <section class="bento-grid">
+        <div class="bento-card card-large">
+            <h3>Premium Audio Quality</h3>
+            <p>Robotics Musica delivers crystal-clear 320kbps audio. Our advanced engine ensures zero distortion and a lag-free experience even in the busiest voice channels.</p>
+            <div style="margin-top: 30px; height: 60px; display: flex; align-items: flex-end; gap: 4px;">
+                <style>.w{width:6px; background:var(--accent); border-radius:10px; animation:wave 1s infinite alternate;} 
+                @keyframes wave{from{height:10px;} to{height:50px;}}</style>
+                <div class="w" style="animation-delay: 0.1s"></div><div class="w" style="animation-delay: 0.3s"></div><div class="w" style="animation-delay: 0.2s"></div><div class="w" style="animation-delay: 0.5s"></div><div class="w" style="animation-delay: 0.1s"></div>
+            </div>
+        </div>
+        <div class="bento-card">
+            <h3>24/7 Uptime</h3>
+            <p>Our bot never sleeps. Stay connected to your music all day, every day.</p>
+        </div>
+        <div class="bento-card">
+            <h3>Free Premium</h3>
+            <p>Access all advanced filters and commands without paying a cent.</p>
+        </div>
+        <div class="bento-card card-medium">
+            <h3>65k+ Users Trust Us</h3>
+            <p>Join a growing community of music lovers who choose Robotics Musica for their daily beats.</p>
+        </div>
+    </section>
 
-<div class="info-buttons">
-<a href="#">Invite Bot</a>
-<a href="#">Support Server</a>
-<a href="#">View Commands</a>
-</div>
-</section>
-
-<section class="features">
-<div class="card"><h3>⚡ 24/7 Uptime</h3><p>Maximum stability with enterprise-grade hosting.</p></div>
-<div class="card"><h3>🎧 Studio Quality</h3><p>Crystal-clear audio for your Discord server.</p></div>
-<div class="card"><h3>🚀 Lightning Commands</h3><p>Instant response with modern slash command support.</p></div>
-<div class="card"><h3>💎 Premium System</h3><p>Elegant interface with advanced features.</p></div>
-</section>
-
-<footer>© 2026 Robotics Musica — LEGENDARY EDITION</footer>
-
+    <footer>
+        <p>© 2026 Robotics Musica | Developed for Professionals</p>
+    </footer>
 </body>
 </html>
