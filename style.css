@@ -1,126 +1,289 @@
-/* ROBOTICS MUSICA - ULTRA RESPONSIVE & BALANCED */
 
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
-
+  
 :root {
-    --bg: #030305;
+    --bg: #020205;
     --accent: #00f2ff;
     --purple: #7000ff;
-    --glass: rgba(255, 255, 255, 0.04);
+    --glass: rgba(255, 255, 255, 0.03);
     --border: rgba(255, 255, 255, 0.08);
     --text: #ffffff;
     --text-dim: #a1a1aa;
 }
-
-* { 
-    margin: 0; padding: 0; box-sizing: border-box; 
-    font-family: 'Plus Jakarta Sans', sans-serif; 
-}
-
-/* ڕێگری لە گەورەبوونی وێبسایت لە شاشەی بچووک */
-html, body { 
-    width: 100%; 
-    overflow-x: hidden; 
-    background: var(--bg);
-    color: var(--text);
-}
-
+ 
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+body { background: var(--bg); color: var(--text); overflow-x: hidden; scroll-behavior: smooth; }
+ 
+/* Animated Glow Background */
 .glow-bg {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: radial-gradient(circle at 50% -10%, #1a1a3a 0%, transparent 50%);
+    background: radial-gradient(circle at 50% -10%, #1a1a3a 0%, transparent 40%),
+                radial-gradient(circle at 0% 100%, #0d001a 0%, transparent 30%);
     z-index: -1;
 }
-
-/* 1. Navbar - Responsive */
+ 
+/* Navbar */
 .navbar {
     display: flex; justify-content: space-between; align-items: center;
-    padding: 15px 5%; background: rgba(3, 3, 5, 0.9);
-    backdrop-filter: blur(15px); border-bottom: 1px solid var(--border);
-    position: sticky; top: 0; z-index: 1000;
+    padding: 20px 10%; background: rgba(0,0,0,0.6); backdrop-filter: blur(25px);
+    border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000;
+}
+.logo-area { display: flex; align-items: center; gap: 12px; }
+.nav-logo { width: 42px; height: 42px; border-radius: 12px; border: 1px solid var(--accent); }
+.logo-text { font-weight: 800; font-size: 1.2rem; }
+.logo-text span { color: var(--accent); }
+.nav-links a { text-decoration: none; color: var(--text-dim); margin: 0 15px; transition: 0.3s; font-size: 0.95rem; }
+.nav-links a:hover, .nav-links a.active { color: var(--accent); text-shadow: 0 0 10px var(--accent); }
+.btn-top { background: var(--text); color: #000; text-decoration: none; padding: 10px 22px; border-radius: 10px; font-weight: 800; }
+ 
+/* Hero */
+.main-hero { padding: 100px 10% 20px; text-align: center; }
+.badge-container { background: var(--glass); border: 1px solid var(--border); padding: 8px 16px; border-radius: 100px; display: inline-flex; align-items: center; gap: 10px; margin-bottom: 30px; }
+.new-badge { background: var(--accent); color: #000; font-weight: 900; font-size: 0.7rem; padding: 2px 8px; border-radius: 4px; }
+.hero-title { font-size: 5rem; font-weight: 800; line-height: 1.1; letter-spacing: -3px; margin-bottom: 25px; }
+.gradient-text { background: linear-gradient(90deg, var(--accent), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero-desc { color: var(--text-dim); font-size: 1.3rem; max-width: 650px; margin: 0 auto 45px; line-height: 1.6; }
+ 
+/* Buttons */
+.hero-actions { display: flex; justify-content: center; gap: 20px; }
+.btn-main { background: var(--accent); color: #000; text-decoration: none; padding: 20px 45px; border-radius: 16px; font-weight: 800; font-size: 1.1rem; box-shadow: 0 10px 40px rgba(0, 242, 255, 0.25); transition: 0.4s; }
+.btn-sub { background: var(--glass); color: #fff; border: 1px solid var(--border); text-decoration: none; padding: 20px 45px; border-radius: 16px; font-weight: 800; transition: 0.4s; }
+.btn-main:hover { transform: translateY(-5px); box-shadow: 0 15px 50px rgba(0, 242, 255, 0.4); }
+ 
+/* Floating Visual */
+.hero-image-box { margin-top: 80px; display: flex; justify-content: center; }
+.glass-container { width: 380px; height: 380px; background: var(--glass); border: 1px solid var(--border); border-radius: 70px; backdrop-filter: blur(30px); display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; }
+.floating-logo { width: 200px; height: 200px; border-radius: 45px; border: 3px solid var(--accent); animation: float 5s infinite ease-in-out; box-shadow: 0 0 50px rgba(0, 242, 255, 0.15); }
+@keyframes float { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-25px) rotate(3deg); } }
+ 
+/* Commands Styling */
+.cmd-header { text-align: center; padding-top: 60px; }
+.cmd-container { max-width: 900px; margin: 50px auto; padding: 0 5%; }
+.cmd-box { background: var(--glass); border: 1px solid var(--border); border-radius: 25px; padding: 35px; margin-bottom: 30px; }
+.category-tag { color: var(--accent); font-weight: 900; letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 25px; }
+.cmd-row { display: flex; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.cmd-row code { color: #fff; background: rgba(0,242,255,0.1); padding: 5px 12px; border-radius: 8px; font-weight: bold; }
+.cmd-row span { color: var(--text-dim); }
+ 
+/* Features */
+.f-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; padding: 80px 10%; }
+.f-item { background: var(--glass); padding: 40px; border-radius: 25px; border: 1px solid var(--border); text-align: center; }
+.f-item:hover { border-color: var(--accent); }
+ 
+footer { padding: 60px; text-align: center; color: var(--text-dim); font-size: 0.9rem; }
+ 
+/* ===== PROFESSIONAL MEDIA QUERIES ===== */
+/* Focus on mobile and tablet with smooth, spacious adjustments */
+ 
+/* Large Tablet & Small Desktop (1024px and below) */
+@media screen and (max-width: 1024px) {
+    .navbar { padding: 20px 5%; }
+    .hero-title { font-size: 4rem; letter-spacing: -2px; }
+    .main-hero { padding: 80px 5% 20px; }
+    .f-grid { padding: 60px 5%; gap: 25px; }
+    .glass-container { width: 340px; height: 340px; border-radius: 60px; }
+    .floating-logo { width: 180px; height: 180px; border-radius: 40px; }
+}
+ 
+/* Tablet Landscape & Portrait (768px - 1023px) */
+@media screen and (max-width: 768px) {
+    /* Navbar restructure */
+    .navbar {
+        padding: 16px 5%;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+    .nav-links {
+        order: 3;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        background: rgba(0,0,0,0.3);
+        padding: 12px 0;
+        border-radius: 60px;
+        margin-top: 8px;
+    }
+    .nav-links a { 
+        margin: 0 8px; 
+        font-size: 0.9rem;
+    }
+    .btn-top { 
+        padding: 8px 18px; 
+        font-size: 0.9rem; 
+    }
+ 
+    /* Hero typography */
+    .hero-title { 
+        font-size: 3.2rem; 
+        letter-spacing: -1.5px;
+    }
+    .hero-desc { 
+        font-size: 1.1rem; 
+        max-width: 500px;
+    }
+ 
+    /* Buttons stack */
+    .hero-actions { 
+        flex-direction: column; 
+        align-items: center; 
+        gap: 16px; 
+    }
+    .btn-main, .btn-sub { 
+        width: 100%; 
+        max-width: 320px; 
+        padding: 18px 30px; 
+        text-align: center;
+    }
+ 
+    /* Visual container */
+    .hero-image-box { margin-top: 60px; }
+    .glass-container { 
+        width: 300px; 
+        height: 300px; 
+        border-radius: 50px; 
+    }
+    .floating-logo { 
+        width: 150px; 
+        height: 150px; 
+        border-radius: 30px; 
+    }
+ 
+    /* Commands section */
+    .cmd-box { padding: 25px; }
+    .cmd-row { 
+        flex-direction: column; 
+        align-items: flex-start; 
+        gap: 8px; 
+        padding: 15px 0;
+    }
+    .cmd-row code { font-size: 0.9rem; }
+ 
+    /* Features grid */
+    .f-grid { 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 20px; 
+        padding: 50px 5%; 
+    }
+    .f-item { padding: 30px 20px; }
+ 
+    footer { padding: 40px 20px; }
+}
+ 
+/* Mobile Landscape & Portrait (480px - 767px) */
+@media screen and (max-width: 480px) {
+    /* Navbar compact */
+    .navbar {
+        padding: 12px 4%;
+    }
+    .nav-logo { width: 36px; height: 36px; }
+    .logo-text { font-size: 1rem; }
+    .nav-links { 
+        gap: 6px; 
+        padding: 8px 0;
+    }
+    .nav-links a { 
+        margin: 0 4px; 
+        font-size: 0.8rem; 
+    }
+    .btn-top { 
+        padding: 6px 14px; 
+        font-size: 0.8rem; 
+    }
+ 
+    /* Hero scaling */
+    .main-hero { padding: 60px 4% 20px; }
+    .hero-title { 
+        font-size: 2.5rem; 
+        letter-spacing: -1px;
+    }
+    .badge-container { 
+        padding: 6px 12px; 
+        font-size: 0.8rem; 
+    }
+    .hero-desc { 
+        font-size: 1rem; 
+        margin-bottom: 35px; 
+    }
+ 
+    /* Buttons full width */
+    .btn-main, .btn-sub { 
+        max-width: 100%; 
+        padding: 16px 25px; 
+        font-size: 1rem; 
+    }
+ 
+    /* Floating visual */
+    .hero-image-box { margin-top: 40px; }
+    .glass-container { 
+        width: 240px; 
+        height: 240px; 
+        border-radius: 40px; 
+    }
+    .floating-logo { 
+        width: 120px; 
+        height: 120px; 
+        border-radius: 24px; 
+    }
+    @keyframes float { 
+        0%, 100% { transform: translateY(0) rotate(0); } 
+        50% { transform: translateY(-15px) rotate(2deg); } 
+    }
+ 
+    /* Commands */
+    .cmd-header { padding-top: 40px; }
+    .cmd-container { margin: 30px auto; }
+    .cmd-box { padding: 20px; border-radius: 20px; }
+    .cmd-row code { 
+        padding: 4px 10px; 
+        font-size: 0.85rem; 
+        width: 100%;
+    }
+    .cmd-row span { 
+        font-size: 0.9rem; 
+        width: 100%;
+    }
+ 
+    /* Features grid becomes single column */
+    .f-grid { 
+        grid-template-columns: 1fr; 
+        gap: 18px; 
+        padding: 40px 4%; 
+    }
+    .f-item { padding: 25px; }
+ 
+    /* Footer */
+    footer { 
+        padding: 30px 15px; 
+        font-size: 0.8rem; 
+    }
+}
+ 
+/* Small Mobile (360px and below) - Extra refinement */
+@media screen and (max-width: 360px) {
+    .hero-title { font-size: 2.2rem; }
+    .nav-links a { margin: 0 3px; font-size: 0.75rem; }
+    .glass-container { width: 200px; height: 200px; border-radius: 30px; }
+    .floating-logo { width: 100px; height: 100px; border-radius: 20px; }
+    .cmd-box { padding: 15px; }
+    .f-item { padding: 20px; }
+}
+ 
+/* For devices that support hover (non-touch) */
+@media (hover: hover) {
+    .btn-main:hover { transform: translateY(-5px); box-shadow: 0 15px 50px rgba(0, 242, 255, 0.4); }
+    .btn-sub:hover { background: rgba(255,255,255,0.05); border-color: var(--accent); transform: translateY(-3px); }
+    .f-item:hover { border-color: var(--accent); transform: translateY(-5px); transition: 0.3s; }
+}
+ 
+/* Landscape mode for phones (height <= 500px) */
+@media screen and (max-width: 900px) and (max-height: 500px) and (orientation: landscape) {
+    .main-hero { padding: 30px 5% 10px; }
+    .hero-title { font-size: 2.2rem; margin-bottom: 15px; }
+    .hero-image-box { margin-top: 20px; }
+    .glass-container { width: 180px; height: 180px; border-radius: 30px; }
+    .floating-logo { width: 100px; height: 100px; }
+    .hero-actions { flex-direction: row; }
+    .btn-main, .btn-sub { padding: 12px 25px; max-width: 200px; }
 }
 
-.logo-area { display: flex; align-items: center; gap: 8px; }
-.logo-orb {
-    width: 32px; height: 32px; background: var(--accent);
-    border-radius: 50%; display: flex; align-items: center; 
-    justify-content: center; color: #000; font-weight: 800; font-size: 0.9rem;
-}
-
-.logo-text { font-size: 1rem; font-weight: 800; }
-.nav-links { display: flex; gap: 12px; }
-.nav-links a { text-decoration: none; color: var(--text-dim); font-size: 0.85rem; font-weight: 600; }
-
-/* 2. Hero Section - Balanced */
-.main-hero { 
-    padding: 60px 6% 40px; 
-    text-align: center; 
-}
-
-.hero-title { 
-    font-size: clamp(2.2rem, 10vw, 4.5rem); 
-    line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 20px;
-}
-
-.gradient-text { 
-    background: linear-gradient(90deg, var(--accent), var(--purple));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-}
-
-.hero-desc { 
-    font-size: clamp(0.95rem, 3vw, 1.2rem); 
-    color: var(--text-dim); max-width: 500px; 
-    margin: 0 auto 35px; line-height: 1.5;
-}
-
-/* 3. Hero Action Buttons - Fix for Mobile */
-.hero-actions {
-    display: flex; flex-direction: column; 
-    gap: 15px; width: 100%; max-width: 320px; margin: 0 auto;
-}
-
-.btn-main, .btn-sub {
-    padding: 16px 25px; border-radius: 14px; text-decoration: none;
-    font-weight: 800; font-size: 1rem; text-align: center; width: 100%;
-    transition: 0.3s;
-}
-
-.btn-main { background: var(--accent); color: #000; }
-.btn-sub { background: var(--glass); color: #fff; border: 1px solid var(--border); }
-
-/* 4. The Visual Orb - Dynamic Sizing */
-.orb-container {
-    width: min(250px, 70vw); height: min(250px, 70vw);
-    margin: 40px auto; position: relative;
-}
-
-.bot-visual {
-    width: 100%; height: 100%; border: 3px solid var(--accent);
-    border-radius: 50%; display: flex; align-items: center;
-    justify-content: center; font-size: 3rem; font-weight: 800;
-    box-shadow: 0 0 30px rgba(0, 242, 255, 0.2);
-}
-
-/* 5. Bento Grid - Clean Layout */
-.bento-grid {
-    display: grid; grid-template-columns: 1fr; 
-    gap: 15px; padding: 30px 6%; margin: 0 auto;
-}
-
-.bento-card {
-    background: var(--glass); border: 1px solid var(--border);
-    border-radius: 22px; padding: 25px;
-}
-
-.bento-card h3 { color: var(--accent); font-size: 1.2rem; margin-bottom: 10px; }
-.bento-card p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.4; }
-
-/* 6. Desktop Optimizations (Above 768px) */
-@media (min-width: 768px) {
-    .hero-actions { flex-direction: row; max-width: 500px; }
-    .bento-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-    .card-large { grid-column: span 2; }
-    .navbar { padding: 15px 10%; }
-    .main-hero { padding: 100px 10% 60px; }
-}
-
-footer { padding: 30px; text-align: center; font-size: 0.8rem; color: #555; }
