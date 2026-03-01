@@ -1,77 +1,696 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Robotics Musica | The Sound of Future</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Robotics Music - Discord Bot</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root {
+    --blue: #1a1aff;
+    --blue-dark: #0d0d8a;
+    --purple: #8b00ff;
+    --purple-dark: #5500aa;
+    --bg: #07071a;
+    --bg2: #0d0d2b;
+    --glass: rgba(255,255,255,0.05);
+    --glass-border: rgba(139,0,255,0.3);
+    --neon-blue: #00cfff;
+    --neon-purple: #bf5fff;
+    --text: #e0e0ff;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* CANVAS */
+  #particles-canvas {
+    position: fixed; top:0; left:0;
+    width:100%; height:100%;
+    z-index:0; pointer-events:none;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top:0; width:100%; z-index:1000;
+    padding: 18px 40px;
+    display:flex; justify-content:space-between; align-items:center;
+    background: rgba(7,7,26,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--glass-border);
+  }
+  .logo {
+    font-size: 1.5rem; font-weight:800;
+    background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    text-shadow: none;
+    letter-spacing:1px;
+  }
+  .logo span { font-size:1.6rem; }
+  .nav-links { display:flex; gap:28px; list-style:none; }
+  .nav-links a {
+    color: var(--text); text-decoration:none;
+    font-size:0.95rem; font-weight:500;
+    transition:0.3s; position:relative;
+  }
+  .nav-links a::after {
+    content:''; position:absolute; bottom:-4px; left:0;
+    width:0; height:2px;
+    background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+    transition:0.3s;
+  }
+  .nav-links a:hover::after { width:100%; }
+  .nav-links a:hover { color:#fff; }
+  .burger { display:none; font-size:1.5rem; cursor:pointer; color:#fff; }
+
+  /* SECTIONS */
+  section { position:relative; z-index:1; }
+
+  /* HERO */
+  #hero {
+    min-height:100vh;
+    display:flex; flex-direction:column;
+    justify-content:center; align-items:center;
+    text-align:center;
+    padding: 120px 20px 60px;
+    background: radial-gradient(ellipse at 50% 0%, rgba(26,26,255,0.18) 0%, transparent 70%),
+                radial-gradient(ellipse at 80% 80%, rgba(139,0,255,0.15) 0%, transparent 60%);
+  }
+  .robot-icon {
+    font-size: 5rem;
+    animation: float 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 24px var(--neon-purple)) drop-shadow(0 0 8px var(--neon-blue));
+    margin-bottom: 24px;
+  }
+  @keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-18px); }
+  }
+  .hero-title {
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight:900; line-height:1.1;
+    background: linear-gradient(135deg, var(--neon-blue) 0%, var(--neon-purple) 60%, #ff80ff 100%);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    text-shadow: none;
+    margin-bottom:16px;
+    animation: titleGlow 4s ease-in-out infinite alternate;
+  }
+  @keyframes titleGlow {
+    from { filter: drop-shadow(0 0 8px rgba(0,207,255,0.5)); }
+    to   { filter: drop-shadow(0 0 28px rgba(191,95,255,0.9)); }
+  }
+  .hero-sub {
+    font-size:1.2rem; color:#aaaacc;
+    max-width:560px; margin:0 auto 36px;
+    line-height:1.7;
+  }
+  .hero-sub span { color: var(--neon-blue); font-weight:700; }
+  .cta-group { display:flex; gap:20px; flex-wrap:wrap; justify-content:center; }
+  .btn {
+    padding:14px 34px; border-radius:50px;
+    font-size:1rem; font-weight:700;
+    text-decoration:none; border:none; cursor:pointer;
+    transition:0.3s; position:relative; overflow:hidden;
+    display:inline-flex; align-items:center; gap:10px;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--blue), var(--purple));
+    color:#fff;
+    box-shadow: 0 0 24px rgba(26,26,255,0.5), 0 0 48px rgba(139,0,255,0.3);
+  }
+  .btn-primary:hover {
+    transform:translateY(-3px) scale(1.04);
+    box-shadow: 0 0 40px rgba(26,26,255,0.8), 0 0 80px rgba(139,0,255,0.5);
+  }
+  .btn-secondary {
+    background: transparent;
+    color:#fff; border:2px solid var(--neon-purple);
+    box-shadow: 0 0 16px rgba(139,0,255,0.3);
+  }
+  .btn-secondary:hover {
+    background: rgba(139,0,255,0.2);
+    transform:translateY(-3px) scale(1.04);
+    box-shadow: 0 0 32px rgba(139,0,255,0.7);
+  }
+  .btn::before {
+    content:''; position:absolute; top:-50%; left:-60%;
+    width:50%; height:200%;
+    background:rgba(255,255,255,0.15);
+    transform:skewX(-20deg);
+    transition:0.5s;
+  }
+  .btn:hover::before { left:120%; }
+
+  /* WAVE */
+  .wave-bar {
+    display:flex; gap:5px; align-items:flex-end;
+    justify-content:center; margin-top:50px;
+  }
+  .wave-bar span {
+    display:block; width:6px; border-radius:4px;
+    background: linear-gradient(180deg, var(--neon-blue), var(--neon-purple));
+    animation: wave 1.2s ease-in-out infinite;
+    box-shadow: 0 0 8px var(--neon-blue);
+  }
+  .wave-bar span:nth-child(1){height:20px;animation-delay:0s}
+  .wave-bar span:nth-child(2){height:38px;animation-delay:.15s}
+  .wave-bar span:nth-child(3){height:54px;animation-delay:.3s}
+  .wave-bar span:nth-child(4){height:38px;animation-delay:.45s}
+  .wave-bar span:nth-child(5){height:20px;animation-delay:.6s}
+  .wave-bar span:nth-child(6){height:38px;animation-delay:.75s}
+  .wave-bar span:nth-child(7){height:54px;animation-delay:.9s}
+  .wave-bar span:nth-child(8){height:38px;animation-delay:1.05s}
+  .wave-bar span:nth-child(9){height:20px;animation-delay:1.2s}
+  @keyframes wave {
+    0%,100%{transform:scaleY(1);opacity:1}
+    50%{transform:scaleY(0.4);opacity:0.5}
+  }
+
+  /* SECTION STYLES */
+  .section-title {
+    text-align:center; margin-bottom:60px;
+  }
+  .section-title h2 {
+    font-size:clamp(2rem,5vw,3rem); font-weight:900;
+    background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    margin-bottom:12px;
+  }
+  .section-title p { color:#8888aa; font-size:1rem; }
+  .section-title .line {
+    width:80px; height:4px; margin:14px auto 0;
+    background: linear-gradient(90deg, var(--blue), var(--purple));
+    border-radius:4px;
+    box-shadow: 0 0 16px var(--neon-purple);
+  }
+
+  /* FEATURES */
+  #features {
+    padding:100px 40px;
+    background: linear-gradient(180deg, transparent, rgba(13,13,43,0.8), transparent);
+  }
+  .features-grid {
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+    gap:28px; max-width:1100px; margin:0 auto;
+  }
+  .feature-card {
+    background: var(--glass);
+    border:1px solid var(--glass-border);
+    border-radius:20px;
+    padding:36px 28px;
+    backdrop-filter:blur(12px);
+    transition:0.3s;
+    position:relative; overflow:hidden;
+  }
+  .feature-card::before {
+    content:''; position:absolute;
+    top:-50%; left:-50%; width:200%; height:200%;
+    background: radial-gradient(circle, rgba(139,0,255,0.08) 0%, transparent 60%);
+    opacity:0; transition:0.4s;
+  }
+  .feature-card:hover::before { opacity:1; }
+  .feature-card:hover {
+    transform:translateY(-8px);
+    border-color: rgba(0,207,255,0.5);
+    box-shadow: 0 8px 40px rgba(139,0,255,0.3), 0 0 0 1px rgba(0,207,255,0.2);
+  }
+  .feature-icon {
+    font-size:2.5rem; margin-bottom:18px;
+    display:inline-block;
+    background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  }
+  .feature-card h3 { font-size:1.2rem; font-weight:700; margin-bottom:10px; color:#fff; }
+  .feature-card p { color:#8888aa; font-size:0.95rem; line-height:1.6; }
+
+  /* COMMANDS */
+  #commands {
+    padding:100px 40px;
+  }
+  .commands-grid {
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+    gap:16px; max-width:1100px; margin:0 auto;
+  }
+  .cmd-card {
+    background: var(--glass);
+    border:1px solid rgba(26,26,255,0.25);
+    border-radius:14px; padding:20px 22px;
+    backdrop-filter:blur(10px);
+    display:flex; align-items:flex-start; gap:14px;
+    transition:0.3s;
+    cursor:default;
+  }
+  .cmd-card:hover {
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 20px rgba(0,207,255,0.2);
+    transform:translateX(4px);
+  }
+  .cmd-icon {
+    width:40px; height:40px; border-radius:10px;
+    background: linear-gradient(135deg, var(--blue-dark), var(--purple-dark));
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.1rem; flex-shrink:0;
+    box-shadow: 0 0 12px rgba(139,0,255,0.4);
+  }
+  .cmd-info .cmd-name {
+    font-weight:700; font-size:1rem; color:#fff;
+    font-family:monospace;
+  }
+  .cmd-info .cmd-name span { color: var(--neon-blue); }
+  .cmd-info .cmd-desc { color:#7777aa; font-size:0.87rem; margin-top:4px; }
+
+  /* STATS */
+  #stats {
+    padding:100px 40px;
+    background: linear-gradient(135deg, rgba(26,26,255,0.08) 0%, rgba(139,0,255,0.08) 100%);
+    border-top:1px solid var(--glass-border);
+    border-bottom:1px solid var(--glass-border);
+  }
+  .stats-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
+    gap:40px; max-width:900px; margin:0 auto; text-align:center;
+  }
+  .stat-item .stat-num {
+    font-size:clamp(2.4rem,5vw,3.6rem); font-weight:900;
+    background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    display:block;
+  }
+  .stat-item .stat-label {
+    color:#7777aa; font-size:0.95rem; margin-top:6px; text-transform:uppercase; letter-spacing:2px;
+  }
+  .stat-item .stat-icon { font-size:2rem; margin-bottom:12px; display:block; }
+
+  /* CTA SECTION */
+  #cta {
+    padding:100px 40px; text-align:center;
+    background: radial-gradient(ellipse at center, rgba(139,0,255,0.12) 0%, transparent 70%);
+  }
+  #cta h2 {
+    font-size:clamp(2rem,5vw,3.2rem); font-weight:900;
+    color:#fff; margin-bottom:16px;
+  }
+  #cta p { color:#8888aa; font-size:1.05rem; margin-bottom:36px; }
+
+  /* FOOTER */
+  footer {
+    background: rgba(7,7,18,0.95);
+    border-top:1px solid var(--glass-border);
+    padding:40px 40px 24px;
+    text-align:center;
+  }
+  .footer-logo {
+    font-size:1.8rem; font-weight:900;
+    background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    margin-bottom:16px; display:block;
+  }
+  .footer-links { display:flex; gap:24px; justify-content:center; flex-wrap:wrap; margin-bottom:24px; }
+  .footer-links a {
+    color:#7777aa; text-decoration:none; font-size:0.9rem; transition:0.3s;
+  }
+  .footer-links a:hover { color: var(--neon-blue); }
+  .footer-copy { color:#44446a; font-size:0.85rem; }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width:6px; }
+  ::-webkit-scrollbar-track { background:#07071a; }
+  ::-webkit-scrollbar-thumb { background:linear-gradient(var(--blue),var(--purple)); border-radius:4px; }
+
+  /* MOBILE NAV */
+  .mobile-menu {
+    display:none; flex-direction:column;
+    position:fixed; top:70px; left:0; right:0;
+    background:rgba(7,7,26,0.97);
+    border-bottom:1px solid var(--glass-border);
+    padding:20px; gap:16px;
+    z-index:999;
+  }
+  .mobile-menu.active { display:flex; }
+  .mobile-menu a { color:#fff; text-decoration:none; font-size:1.05rem; padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.05); }
+
+  /* FADE IN ANIMATION */
+  .fade-up { opacity:0; transform:translateY(40px); transition:0.7s ease; }
+  .fade-up.visible { opacity:1; transform:translateY(0); }
+
+  @media(max-width:768px) {
+    nav { padding:16px 20px; }
+    .nav-links { display:none; }
+    .burger { display:block; }
+    #hero { padding:100px 20px 60px; }
+    #features, #commands, #stats, #cta { padding:70px 20px; }
+    footer { padding:30px 20px 20px; }
+    .cta-group { flex-direction:column; align-items:center; }
+  }
+</style>
 </head>
 <body>
-    <div class="glow-bg"></div>
 
-    <nav class="navbar">
-        <div class="logo-area">
-            <div class="logo-orb">R</div>
-            <span class="logo-text">ROBOTICS <span>MUSICA</span></span>
-        </div>
-        <div class="nav-links">
-            <a href="index.html" class="active">Home</a>
-            <a href="commands.html">Commands</a>
-            <a href="https://discord.gg/RfeewVj3Fp" class="btn-support">Support</a>
-        </div>
-    </nav>
+<canvas id="particles-canvas"></canvas>
 
-    <header class="main-hero">
-        <div class="hero-badge">✨ NEW: AI-POWERED AUDIO v3</div>
-        <h1 class="hero-title">Beyond <span class="gradient-text">Human</span> Limits</h1>
-        
-        <div class="orb-container">
-            <div class="core-rings"></div>
-            <div class="bot-core">
-                <img src="https://cdn.discordapp.com/attachments/1477115346488922174/1477752986863407166/logo.png.jpg?ex=69a5e837&is=69a496b7&hm=d2a4b826a3b9516fed6f6694ddfee0566b61927b04ae57c9156a0b214a8c4194&" alt="Bot Logo" class="bot-img">
-            </div>
-        </div>
+<!-- NAV -->
+<nav>
+  <div class="logo"><span>🤖</span> Robotics Music</div>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#commands">Commands</a></li>
+    <li><a href="#stats">Stats</a></li>
+    <li><a href="https://discord.com/oauth2/authorize?client_id=1150754451938869371&permissions=8&integration_type=0&scope=bot" target="_blank" style="color:#00cfff">Add Bot</a></li>
+  </ul>
+  <div class="burger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#features" onclick="toggleMenu()">⚡ Features</a>
+  <a href="#commands" onclick="toggleMenu()">💻 Commands</a>
+  <a href="#stats" onclick="toggleMenu()">📊 Stats</a>
+  <a href="https://discord.com/oauth2/authorize?client_id=1150754451938869371&permissions=8&integration_type=0&scope=bot" target="_blank">🤖 Add Bot</a>
+  <a href="https://discord.gg/XuNVzhfXTE" target="_blank">💬 Support</a>
+</div>
 
-        <div class="music-sources">
-            <img src="https://cdn.discordapp.com/attachments/1477115346488922174/1477752754264080475/Spotify_logo_without_text.svg.png?ex=69a5e7ff&is=69a4967f&hm=c367d9cb0808a8bd0924da0be28c5df859ae56cd811e7a969162dea32f7de386&" alt="Spotify">
-            <img src="https://cdn.discordapp.com/attachments/1477115346488922174/1477752183477764399/YouTube_full-color_icon_2017.svg.png?ex=69a5e777&is=69a495f7&hm=3749ac9c50e203a9a06c027c3d4889e031a102286147ddc57cf37906926e945b&" alt="YouTube">
-            <img src="https://cdn.discordapp.com/attachments/1477115346488922174/1477752182433648852/soundcloud_logo_icon_186893.png?ex=69a5e777&is=69a495f7&hm=d023d00b344cf074ee6ef621b3fe157665b8f6e45dbd020e72e33e02c3c26060&" alt="Soundcloud">
-            <img src="https://cdn.discordapp.com/attachments/1477115346488922174/1477752181926007015/Apple_Music_icon.svg.png?ex=69a5e777&is=69a495f7&hm=dcd9a8988fbe3db692c1b71a6e9ec7f0323d322348429844aca41b0e970d380a&" alt="Apple Music">
-        </div>
+<!-- HERO -->
+<section id="hero">
+  <div class="robot-icon">🤖</div>
+  <h1 class="hero-title">Robotics Music</h1>
+  <p class="hero-sub">The most powerful Discord music bot.<br>
+    Prefix: <span>R</span> &nbsp;|&nbsp; High quality audio &nbsp;|&nbsp; 24/7 online</p>
+  <div class="cta-group">
+    <a href="https://discord.com/oauth2/authorize?client_id=1150754451938869371&permissions=8&integration_type=0&scope=bot"
+       target="_blank" class="btn btn-primary">
+      <i class="fab fa-discord"></i> Add to Discord
+    </a>
+    <a href="https://discord.gg/XuNVzhfXTE"
+       target="_blank" class="btn btn-secondary">
+      <i class="fas fa-headset"></i> Support Server
+    </a>
+  </div>
+  <div class="wave-bar">
+    <span></span><span></span><span></span>
+    <span></span><span></span><span></span>
+    <span></span><span></span><span></span>
+  </div>
+</section>
 
-        <p class="hero-desc">The ultimate Discord music bot. High-fidelity sound, robotic precision, and lag-free streaming for your community.</p>
-        
-        <div class="hero-actions">
-            <a href="https://discord.com/oauth2/authorize?client_id=1150754451938869371&permissions=8&scope=bot" class="btn-main">Invite Now</a>
-            <a href="#features" class="btn-sub">Explore More</a>
-        </div>
-    </header>
+<!-- FEATURES -->
+<section id="features">
+  <div class="section-title fade-up">
+    <h2>✨ Features</h2>
+    <p>Everything you need for the perfect music experience</p>
+    <div class="line"></div>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card fade-up">
+      <div class="feature-icon"><i class="fas fa-music"></i></div>
+      <h3>Play Music</h3>
+      <p>Play any song from YouTube, Spotify and more with crystal-clear audio quality.</p>
+    </div>
+    <div class="feature-card fade-up">
+      <div class="feature-icon"><i class="fas fa-list"></i></div>
+      <h3>Queue System</h3>
+      <p>Add unlimited songs to your queue and manage them easily with simple commands.</p>
+    </div>
+    <div class="feature-card fade-up">
+      <div class="feature-icon"><i class="fas fa-forward"></i></div>
+      <h3>Skip / Pause / Stop</h3>
+      <p>Full playback control at your fingertips. Skip, pause, resume, or stop anytime.</p>
+    </div>
+    <div class="feature-card fade-up">
+      <div class="feature-icon"><i class="fas fa-volume-up"></i></div>
+      <h3>High Quality Audio</h3>
+      <p>Experience music in the highest quality possible with zero lag or interruptions.</p>
+    </div>
+    <div class="feature-card fade-up">
+      <div class="feature-icon"><i class="fas fa-terminal"></i></div>
+      <h3>Easy Commands</h3>
+      <p>Simple and intuitive commands with prefix <strong style="color:#00cfff">R</strong>. No complex setup needed.</p>
+    </div>
+    <div class="feature-card fade-up">
+      <div class="feature-icon"><i class="fas fa-clock"></i></div>
+      <h3>24/7 Uptime</h3>
+      <p>Robotics Music is always online, ready to play your favorite tracks day and night.</p>
+    </div>
+  </div>
+</section>
 
-    <section class="stats-bar">
-        <div class="stat-item"><strong>50+</strong><span>Servers</span></div>
-        <div class="stat-item"><strong>20K+</strong><span>Users</span></div>
-        <div class="stat-item"><strong>99.9%</strong><span>Uptime</span></div>
-    </section>
+<!-- COMMANDS -->
+<section id="commands">
+  <div class="section-title fade-up">
+    <h2>💻 Commands</h2>
+    <p>All commands use prefix <strong style="color:#00cfff">R</strong></p>
+    <div class="line"></div>
+  </div>
+  <div class="commands-grid">
+    <div class="cmd-card fade-up">
+      <div class="cmd-icon">🎵</div>
+      <div class="cmd-info">
+        <div class="cmd-name"><span>R</span>play</div>
+        <div class="cmd-desc">Play a song by name or URL</div>
+      </div>
+    </div>
+    <div class="cmd-card fade-up">
+      <div class="cmd-icon">⏭️</div>
+      <div class="cmd-info">
+        <div class="cmd-name"><span>R</span>skip</div>
+        <div class="cmd-desc">Skip to the next song</div>
+      </div>
+    </div>
+    <div class="cmd-card fade-up">
+      <div class="cmd-icon">⏹️</div>
+      <div class="cmd-info">
+        <div class="cmd-name"><span>R</span>stop</div>
+        <div class="cmd-desc">Stop music and clear queue</div>
+      </div>
+    </div>
+    <div class="cmd-card fade-up">
+      <div class="cmd-icon">📋</div>
+      <div class="cmd-info">
+        <div class="cmd-name"><span>R</span>queue</div>
+        <div class="cmd-desc">Show the current song queue</div>
+      </div>
+    </div>
+    <div class="cmd-card fade-up">
+      <div class="cmd-icon">⏸️</div>
+      <div class="cmd-info">
+        <div class="cmd-name"><span>R</span>pause</div>
+        <div class="cmd-desc">Pause the current song</div>
+      </div>
+    </div>
+    <div class="cmd-card fade-up">
+      <div class="cmd-icon">▶️</div>
+      <div class="cmd-info">
+        <div class="cmd-name"><span>R</span>resume</div>
+        <div class="cmd-desc">Resume the paused song</div>
+      </div>
+    </div>
+    <div class="cmd-card fade-up">
+      <div class="cmd-icon">🎶</div>
+      <div class="cmd-info">
+        <div class="cmd-name"><span>R</span>nowplaying</div>
+        <div class="cmd-desc">Show the current playing song</div>
+      </div>
+    </div>
+    <div class="cmd-card fade-up">
+      <div class="cmd-icon">📝</div>
+      <div class="cmd-info">
+        <div class="cmd-name"><span>R</span>lyrics</div>
+        <div class="cmd-desc">Get lyrics of the current song</div>
+      </div>
+    </div>
+    <div class="cmd-card fade-up">
+      <div class="cmd-icon">🔊</div>
+      <div class="cmd-info">
+        <div class="cmd-name"><span>R</span>volume</div>
+        <div class="cmd-desc">Set volume (0-100)</div>
+      </div>
+    </div>
+    <div class="cmd-card fade-up">
+      <div class="cmd-icon">🔀</div>
+      <div class="cmd-info">
+        <div class="cmd-name"><span>R</span>shuffle</div>
+        <div class="cmd-desc">Shuffle the song queue</div>
+      </div>
+    </div>
+    <div class="cmd-card fade-up">
+      <div class="cmd-icon">🔁</div>
+      <div class="cmd-info">
+        <div class="cmd-name"><span>R</span>loop</div>
+        <div class="cmd-desc">Loop current song or queue</div>
+      </div>
+    </div>
+    <div class="cmd-card fade-up">
+      <div class="cmd-icon">❓</div>
+      <div class="cmd-info">
+        <div class="cmd-name"><span>R</span>help</div>
+        <div class="cmd-desc">Show all available commands</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section id="features" class="bento-grid">
-        <div class="bento-card card-large">
-            <h3>Crystal Clear Audio</h3>
-            <p>Experience 320kbps high-definition audio that makes every beat feel real. No distortion, just pure music.</p>
-            <div class="card-visual">🎶 320KBPS QUALITY</div>
-        </div>
-        <div class="bento-card">
-            <h3>No Lag</h3>
-            <p>Low latency servers worldwide for seamless playback.</p>
-        </div>
-        <div class="bento-card">
-            <h3>Free Premium</h3>
-            <p>All filters (Bass, 8D, Nightcore) are free for everyone.</p>
-        </div>
-    </section>
+<!-- STATS -->
+<section id="stats">
+  <div class="section-title fade-up">
+    <h2>📊 Stats</h2>
+    <p>Growing every day with amazing users</p>
+    <div class="line"></div>
+  </div>
+  <div class="stats-grid">
+    <div class="stat-item fade-up">
+      <span class="stat-icon">🖥️</span>
+      <span class="stat-num" data-target="1500">0</span>
+      <span class="stat-label">Servers</span>
+    </div>
+    <div class="stat-item fade-up">
+      <span class="stat-icon">👥</span>
+      <span class="stat-num" data-target="50000">0</span>
+      <span class="stat-label">Users</span>
+    </div>
+    <div class="stat-item fade-up">
+      <span class="stat-icon">🎵</span>
+      <span class="stat-num" data-target="999999">0</span>
+      <span class="stat-label">Songs Played</span>
+    </div>
+  </div>
+</section>
 
-    <footer>
-        <p>© 2026 Robotics Musica. Created for the elite.</p>
-    </footer>
+<!-- CTA -->
+<section id="cta">
+  <div class="fade-up">
+    <h2>🚀 Ready to Start?</h2>
+    <p>Add Robotics Music to your server and enjoy the best music experience!</p>
+    <div class="cta-group">
+      <a href="https://discord.com/oauth2/authorize?client_id=1150754451938869371&permissions=8&integration_type=0&scope=bot"
+         target="_blank" class="btn btn-primary">
+        <i class="fab fa-discord"></i> Add to Discord
+      </a>
+      <a href="https://discord.gg/XuNVzhfXTE"
+         target="_blank" class="btn btn-secondary">
+        <i class="fas fa-headset"></i> Join Support
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">🤖 Robotics Music</span>
+  <div class="footer-links">
+    <a href="https://discord.com/oauth2/authorize?client_id=1150754451938869371&permissions=8&integration_type=0&scope=bot" target="_blank"><i class="fab fa-discord"></i> Add Bot</a>
+    <a href="https://discord.gg/XuNVzhfXTE" target="_blank"><i class="fas fa-headset"></i> Support</a>
+    <a href="#features">Features</a>
+    <a href="#commands">Commands</a>
+  </div>
+  <p class="footer-copy">© 2025 Robotics Music Bot &nbsp;|&nbsp; Made with 💜 for Discord</p>
+</footer>
+
+<script>
+// === PARTICLES ===
+const canvas = document.getElementById('particles-canvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+function createParticle() {
+  return {
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    vx: (Math.random() - 0.5) * 0.6,
+    vy: (Math.random() - 0.5) * 0.6,
+    size: Math.random() * 2.5 + 0.5,
+    alpha: Math.random() * 0.5 + 0.1,
+    color: Math.random() > 0.5 ? '#1a1aff' : '#8b00ff'
+  };
+}
+
+for (let i = 0; i < 80; i++) particles.push(createParticle());
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => {
+    p.x += p.vx; p.y += p.vy;
+    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fillStyle = p.color;
+    ctx.globalAlpha = p.alpha;
+    ctx.fill();
+  });
+  // Draw connections
+  ctx.globalAlpha = 1;
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x;
+      const dy = particles[i].y - particles[j].y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if (dist < 110) {
+        ctx.beginPath();
+        ctx.strokeStyle = `rgba(139,0,255,${0.12 * (1 - dist/110)})`;
+        ctx.lineWidth = 0.8;
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.stroke();
+      }
+    }
+  }
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+// === SCROLL ANIMATION ===
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// === COUNTER ===
+function animateCounter(el) {
+  const target = parseInt(el.getAttribute('data-target'));
+  const duration = 2000;
+  const step = target / (duration / 16);
+  let current = 0;
+  const timer = setInterval(() => {
+    current += step;
+    if (current >= target) { current = target; clearInterval(timer); }
+    el.textContent = Math.floor(current).toLocaleString() + (target >= 100000 ? '+' : '+');
+  }, 16);
+}
+const statObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      animateCounter(e.target);
+      statObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.stat-num').forEach(el => statObserver.observe(el));
+
+// === MOBILE MENU ===
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('active');
+}
+
+// === SMOOTH SCROLL ===
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
 </body>
 </html>
