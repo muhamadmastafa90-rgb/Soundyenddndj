@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Robotics Musica — LEGENDARY EDITION</title>
+<title>Robotics Musica — LEGENDARY V4</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
 
@@ -16,8 +16,6 @@
 --dim:#9ca3af;
 --accent:#8b5cf6;
 --cyan:#22d3ee;
---light-bg:#f5f5f5;
---light-text:#111;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
@@ -38,14 +36,8 @@ z-index:-1;
 }
 
 /* Navbar */
-nav{
-display:flex;justify-content:space-between;align-items:center;padding:30px 8%;
-}
-.logo{
-font-weight:900;font-size:1.3rem;letter-spacing:2px;
-background:linear-gradient(90deg,var(--accent),var(--cyan));
--webkit-background-clip:text;-webkit-text-fill-color:transparent;
-}
+nav{display:flex;justify-content:space-between;align-items:center;padding:30px 8%;}
+.logo{font-weight:900;font-size:1.3rem;letter-spacing:2px;background:linear-gradient(90deg,var(--accent),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 nav a{color:var(--dim);text-decoration:none;margin-left:30px;transition:0.3s;}
 nav a:hover{color:#fff;}
 
@@ -67,6 +59,14 @@ nav a:hover{color:#fff;}
 .card:hover::after{opacity:0.05;}
 .card h3{margin-bottom:12px;font-size:1.2rem;}
 .card p{color:var(--dim);font-size:0.95rem;line-height:1.6;}
+
+/* Information Section */
+.info{padding:60px 8%;text-align:center;animation:fadeIn 1.5s ease;}
+.info h2{font-size:2.8rem;margin-bottom:20px;background:linear-gradient(90deg,var(--accent),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.info p{color:var(--dim);max-width:750px;margin:0 auto;font-size:1.05rem;line-height:1.7;}
+.info-buttons{margin-top:30px;display:flex;justify-content:center;gap:25px;flex-wrap:wrap;}
+.info-buttons a{padding:16px 45px;border-radius:50px;background:linear-gradient(90deg,var(--accent),var(--cyan));text-decoration:none;color:#fff;font-weight:600;transition:0.3s;}
+.info-buttons a:hover{transform:translateY(-4px);box-shadow:0 15px 40px rgba(139,92,246,0.4);}
 
 /* Footer */
 footer{text-align:center;padding:50px;color:var(--dim);font-size:0.9rem;border-top:1px solid var(--border);margin-top:60px;}
@@ -111,6 +111,18 @@ footer{text-align:center;padding:50px;color:var(--dim);font-size:0.9rem;border-t
 </div>
 </section>
 
+<!-- Information Section -->
+<section class="info">
+<h2>About Robotics Musica</h2>
+<p>Robotics Musica is the ultimate Discord music bot, delivering crystal-clear audio, stable 24/7 performance, and powerful commands for communities of any size. Experience a futuristic and modern music environment directly in your server.</p>
+
+<div class="info-buttons">
+<a href="#">Invite Bot</a>
+<a href="#">Support Server</a>
+<a href="#">View Commands</a>
+</div>
+</section>
+
 <section class="features">
 <div class="card"><h3>⚡ 24/7 Uptime</h3><p>Maximum stability with enterprise-grade hosting.</p></div>
 <div class="card"><h3>🎧 Studio Quality</h3><p>Crystal-clear audio for your Discord server.</p></div>
@@ -119,5 +131,6 @@ footer{text-align:center;padding:50px;color:var(--dim);font-size:0.9rem;border-t
 </section>
 
 <footer>© 2026 Robotics Musica — LEGENDARY EDITION</footer>
+
 </body>
 </html>
