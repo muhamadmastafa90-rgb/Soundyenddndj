@@ -11,7 +11,7 @@
             --panel-bg: #0d0d11;
             --panel-light: #16161f;
             --gold: #dfb743;
-            --gold-glow: rgba(223, 183, 67, 0.25);
+            --gold-glow: rgba(223, 183, 67, 0.35);
             --gold-gradient: linear-gradient(135deg, #f3d067, #b38f24);
             --text-main: #f5f5f7;
             --text-muted: #9fa0a6;
@@ -41,11 +41,11 @@
             box-shadow: 0 2px 20px var(--gold-glow);
         }
 
-        /* 🌐 پەنجەرەی هەڵبژاردنی زمان */
+        /* 🌐 زمانی وێبسایت - مۆدێل */
         .lang-modal {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(3, 3, 5, 0.95);
+            background: rgba(3, 3, 5, 0.96);
             z-index: 9999;
             display: flex;
             justify-content: center;
@@ -60,7 +60,7 @@
             padding: 40px;
             border-radius: 16px;
             text-align: center;
-            box-shadow: 0 0 50px rgba(223, 183, 67, 0.15);
+            box-shadow: 0 0 50px var(--gold-glow);
             max-width: 500px;
             width: 90%;
         }
@@ -69,12 +69,14 @@
             color: var(--gold);
             margin-bottom: 10px;
             font-size: 24px;
+            letter-spacing: 1px;
         }
 
         .lang-box p {
             color: var(--text-muted);
             font-size: 14px;
             margin-bottom: 25px;
+            line-height: 1.6;
         }
 
         .lang-options {
@@ -85,7 +87,7 @@
 
         .lang-btn {
             padding: 14px;
-            border: 1px solid rgba(223, 183, 67, 0.3);
+            border: 1px solid rgba(223, 183, 67, 0.2);
             background: var(--panel-light);
             color: var(--text-main);
             border-radius: 8px;
@@ -100,6 +102,7 @@
             background: var(--gold-gradient);
             color: #000;
             transform: scale(1.02);
+            box-shadow: 0 0 15px var(--gold-glow);
         }
 
         /* هێدەر و ناڤبار */
@@ -151,6 +154,7 @@
         nav button:hover, nav button.active-tab {
             color: var(--gold);
             border-bottom: 2px solid var(--gold);
+            text-shadow: 0 0 10px var(--gold-glow);
         }
 
         /* لاپەڕەکان */
@@ -173,8 +177,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 80px 8%;
-            min-height: 75vh;
+            padding: 60px 8%;
+            min-height: 70vh;
             gap: 40px;
         }
 
@@ -195,6 +199,7 @@
             font-size: 18px;
             margin-bottom: 35px;
             max-width: 580px;
+            line-height: 1.7;
         }
 
         .btn-wrapper {
@@ -223,7 +228,7 @@
 
         .btn-invite:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(223, 183, 67, 0.4);
+            box-shadow: 0 8px 25px rgba(223, 183, 67, 0.5);
         }
 
         .btn-support {
@@ -235,6 +240,7 @@
         .btn-support:hover {
             background: rgba(223, 183, 67, 0.07);
             transform: translateY(-3px);
+            box-shadow: 0 0 15px rgba(223, 183, 67, 0.1);
         }
 
         .hero-img-area img {
@@ -242,7 +248,7 @@
             height: 360px;
             border-radius: 50%;
             border: 4px double var(--gold);
-            box-shadow: 0 0 40px rgba(223, 183, 67, 0.15);
+            box-shadow: 0 0 40px rgba(223, 183, 67, 0.2);
             animation: float 4s ease-in-out infinite;
             object-fit: cover;
         }
@@ -250,51 +256,6 @@
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-12px); }
-        }
-
-        /* 🛠️ بەشی تایبەتمەندییەکان */
-        .features-section {
-            padding: 80px 8%;
-            background: var(--panel-bg);
-            border-top: 1px solid rgba(223, 183, 67, 0.05);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .feature-card {
-            background: var(--panel-light);
-            padding: 30px;
-            border-radius: 12px;
-            border: 1px solid rgba(223, 183, 67, 0.05);
-            transition: var(--transition);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--gold);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-
-        .feature-card i {
-            font-size: 32px;
-            color: var(--gold);
-            margin-bottom: 20px;
-        }
-
-        .feature-card h3 {
-            font-size: 20px;
-            margin-bottom: 12px;
-        }
-
-        .feature-card p {
-            color: var(--text-muted);
-            font-size: 14px;
-            line-height: 1.6;
         }
 
         /* 🟢 بەشی Uptime */
@@ -332,7 +293,51 @@
             color: var(--text-main);
         }
 
-        /* 📜 لاپەڕەی کۆماندەکان */
+        /* 🛠️ بەشی تایبەتمەندییەکان */
+        .features-section {
+            padding: 80px 8%;
+            background: var(--panel-bg);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: var(--panel-light);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(223, 183, 67, 0.03);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+            box-shadow: 0 10px 30px rgba(223, 183, 67, 0.1);
+        }
+
+        .feature-card i {
+            font-size: 32px;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* 📜 لاپەڕەی کۆماندەکان بە کاتیگۆری */
         .inner-page {
             padding: 60px 8%;
             max-width: 1000px;
@@ -353,6 +358,32 @@
             font-size: 16px;
         }
 
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .cat-btn {
+            background: var(--panel-light);
+            border: 1px solid rgba(223, 183, 67, 0.1);
+            color: var(--text-muted);
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .cat-btn.active-cat, .cat-btn:hover {
+            background: var(--gold-gradient);
+            color: #000;
+            border-color: var(--gold);
+            box-shadow: 0 4px 12px var(--gold-glow);
+        }
+
         .cmd-row {
             background: var(--panel-bg);
             padding: 20px;
@@ -362,6 +393,15 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .cmd-row:hover {
+            background: var(--panel-light);
+            transform: translateX(-3px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .cmd-trigger {
@@ -374,6 +414,29 @@
         .cmd-text-desc {
             color: var(--text-muted);
             font-size: 15px;
+            text-align: left;
+        }
+
+        /* نۆتیفیکەیشنی کۆپی کردن */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--gold-gradient);
+            color: #000;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            box-shadow: 0 5px 20px rgba(223, 183, 67, 0.4);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 1000;
+            opacity: 0;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
         }
 
         /* 📖 بەشی Docs */
@@ -381,7 +444,7 @@
             background: var(--panel-bg);
             padding: 35px;
             border-radius: 12px;
-            border: 1px solid rgba(223, 183, 67, 0.1);
+            border: 1px solid rgba(223, 183, 67, 0.05);
             line-height: 1.8;
             margin-bottom: 25px;
         }
@@ -403,6 +466,47 @@
             font-weight: bold;
         }
 
+        ol {
+            margin-right: 20px;
+            margin-top: 10px;
+        }
+
+        /* 👥 بەشی گەشەپێدەر */
+        .dev-section {
+            background: var(--panel-light);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(223, 183, 67, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .dev-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: var(--gold-gradient);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #000;
+            font-size: 32px;
+            box-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        .dev-info h4 {
+            font-size: 20px;
+            color: var(--gold);
+            margin-bottom: 5px;
+        }
+
+        .dev-info p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
         @media (max-width: 768px) {
             header { flex-direction: column; gap: 15px; padding: 15px; }
             nav button { margin: 0 10px; font-size: 14px; }
@@ -411,6 +515,8 @@
             .hero-img-area img { width: 250px; height: 250px; }
             .btn-wrapper { justify-content: center; }
             .cmd-row { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .cmd-text-desc { text-align: right; }
+            .dev-section { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
@@ -419,7 +525,7 @@
     <div class="lang-modal" id="langModal">
         <div class="lang-box">
             <h2>Welcome to Orpheus Bot</h2>
-            <p>تکایە زمانێک هەڵبژێرە بۆ گۆڕینی زمانی وێبسایتەکە<br>Please select a language / الرجاء اختيار لغة</p>
+            <p>تکایە زمانێک هەڵبژێرە بۆ بینینی ناوەڕۆکی وێبسایتەکە بە زمانی گونجاو.<br>Please select your language to continue.</p>
             <div class="lang-options">
                 <button class="lang-btn" onclick="setLanguage('ku')">کوردی (Kurdish)</button>
                 <button class="lang-btn" onclick="setLanguage('en')">English</button>
@@ -500,9 +606,9 @@
                     <p id="f-mod-d">کۆماندەکانی هۆشداریدان (Warn)، دەرکردن (Kick)، و باندکردن (Ban) بۆ ستافی سێرڤەرەکەت.</p>
                 </div>
                 <div class="feature-card">
-                    <i class="fas fa-sliders-h"></i>
-                    <h3 id="f-conf-t">ڕێکخستن (Config)</h3>
-                    <p id="f-conf-d">توانای گۆڕینی پریفێکس، زمان، و تایبەتکردنی تەواوی بەشەکانی بۆتەکە بە ئارەزووی خۆت.</p>
+                    <i class="fas fa-calculator"></i>
+                    <h3 id="f-seller-t">ئامرازی فرۆشیاران (Sellers)</h3>
+                    <p id="f-seller-d">سیستەمێکی پێشکەوتوو بۆ حیسابکردنی باج (Tax Calculator) بە شێوازی خێرا بۆ کڕین و فرۆشتنی سەر هێڵ.</p>
                 </div>
             </div>
         </section>
@@ -510,8 +616,13 @@
 
     <div id="tab-commands" class="tab-content inner-page">
         <h2 class="page-title" id="cmd-page-title">لیستی کۆماندەکان</h2>
-        <p class="page-subtitle" id="cmd-page-sub">بۆ بینی زیاتر کۆماندی +help بکە</p>
-        <div id="commands-list-container"></div>
+        <p class="page-subtitle" id="cmd-page-sub">بۆ بینی زیاتر کۆماندی +help بکە (کلیک لەسەر هەر کۆماندێک بکە بۆ کۆپی بوون)</p>
+        
+        <div class="category-tabs" id="cat-tabs-container">
+            </div>
+
+        <div id="commands-list-container">
+            </div>
     </div>
 
     <div id="tab-docs" class="tab-content inner-page">
@@ -527,13 +638,39 @@
             <h3 id="doc-sec2-t">پریفێکس و دەستپێکردن</h3>
             <p id="doc-sec2-d">پریفێکسی سەرەکی بۆتەکە بریتییە لە <span class="badge">+</span>. بۆ بینینی هەموو بەش و ڕێنماییە کورتەکان لە ناو خودی دیسکۆرددا، تەنها لە چاتەکەتدا بنوسە <code>+help</code> تا مێنیوی هاوکاریت بۆ بکرێتەوە.</p>
         </div>
+
+        <div class="docs-card">
+            <h3 id="doc-sec3-t">چۆنیەتی ڕێکخستنی سەرەکی بۆ سێرڤەرەکەت</h3>
+            <div id="doc-sec3-d">
+                <ol>
+                    <li>دلنیابەوە لەوەی ڕۆڵی بۆتەکە لە بەرزترین ئاستی سێرڤەرەکەتە تا بتوانێت سزاکان جێبەجێ بکات.</li>
+                    <li>کۆماندی <code>+help</code> بەکاربێنە بۆ نیشاندانی کاتیگۆرییە پێشکەوتووەکان ڕاستەوخۆ لە ناو چاتی سێرڤەرەکەت.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="dev-section">
+            <div class="dev-icon">
+                <i class="fas fa-code"></i>
+            </div>
+            <div class="dev-info">
+                <h4 id="dev-lbl-title">گەشەپێدەر و خاوەنی فەرمی</h4>
+                <p id="dev-lbl-desc">ئەم بۆتە و وێبسایتە بە شانازییەوە گەشەی پێدراوە لەلایەن گەشەپێدەر:</p>
+                <p style="color: var(--gold); font-weight: bold; margin-top: 5px; font-family: monospace;">ID: 1147899646602121216</p>
+            </div>
+        </div>
     </div>
+
+    <div class="toast" id="clipboardToast">کۆپی کرا! / Copied!</div>
 
     <footer style="text-align: center; padding: 30px; border-top: 1px solid rgba(223, 183, 67, 0.05); color: var(--text-muted); font-size: 14px;">
         <p>© 2026 ORPHEUS BOT. Created with Elegance.</p>
     </footer>
 
     <script>
+        let currentLang = 'ku';
+        let currentCategory = 'all';
+
         const translations = {
             ku: {
                 dir: "rtl",
@@ -546,20 +683,28 @@
                 gTitle: "دابەشکاری (Giveaway)", gDesc: "درووستکردنی تیروپشک و دیاری بە شێوازێکی دادپەروەرانە و پڕۆفیشناڵ لە ناو سێرڤەرەکەتدا.",
                 aTitle: "پاراستنی خۆکار (AutoMod)", aDesc: "بلۆککردنی لینک، ڕیکلام، و قسەی نەشیاو بە شێوازی زیرەک بۆ هێشتنەوەی ژینگەیەکی پاك.",
                 modTitle: "بەڕێوەبردن (Moderation)", modDesc: "کۆماندەکانی هۆشداریدان (Warn)، دەرکردن (Kick)، و باندکردن (Ban) بۆ ستافی سێرڤەرەکەت.",
-                cTitle: "ڕێکخستن (Config)", cDesc: "توانای گۆڕینی پریفێکس، زمان، و تایبەتکردنی تەواوی بەشەکانی بۆتەکە بە ئارەزووی خۆت.",
-                cmdTitle: "لیستی کۆماندەکان", cmdSub: "بۆ بینی زیاتر کۆماندی +help بکە",
+                cTitle: "ئامرازی فرۆشیاران (Sellers)", cDesc: "سیستەمێکی پێشکەوتوو بۆ حیسابکردنی باج (Tax Calculator) بە شێوازی خێرا بۆ کڕین و فرۆشتنی سەر هێڵ.",
+                cmdTitle: "لیستی کۆماندەکان", cmdSub: "بۆ بینی زیاتر کۆماندی +help بکە (کلیک لەسەر هەر کۆماندێک بکە بۆ کۆپی بوون)",
                 docsTitle: "دۆکیومێنت و ڕێنماییەکان", docsSub: "چۆنیەتی ڕێکخستن و بەکارهێنانی بۆتی ئۆرفیۆس",
-                d1t: "وەسفی گشتی بۆتەکە", d1d: "بۆتی Orpheus سیستەمێکی پێشکەوتووی دیسکۆردە کە چەندین خزمەتگوزاری جیاواز وەک لێدانی مۆسیقای بێخەوش، بەڕێوەبردنی خۆکاری چاتەکان، و بەهێزکردنی ئۆتۆمۆد پێشکەش بە خاوەن سێرڤەرەکان دەکات بۆ پاراستنی ژینگەی چات لە ڕیکلام و سپام.",
+                d1t: "وەسفی گشتی بۆتەکە", d1d: "بۆتی Orpheus سیستەمێکی پێشکەوتووی دیسکۆردە کە چەن خزمەتگوزاری جیاواز وەک لێدانی مۆسیقای بێخەوش، بەڕێوەبردنی خۆکاری چاتەکان، و بەهێزکردنی ئۆتۆمۆد پێشکەش بە خاوەن سێرڤەرەکان دەکات بۆ پاراستنی ژینگەی چات لە ڕیکلام و سپام.",
                 d2t: "پریفێکس و دەستپێکردن", d2d: "پریفێکسی سەرەکی بۆتەکە بریتییە لە +. بۆ بینینی هەموو بەش و ڕێنماییە کورتەکان لە ناو خودی دیسکۆرددا، تەنها لە چاتەکەتدا بنوسە +help تا مێنیوی هاوکاریت بۆ بکرێتەوە.",
+                d3t: "چۆنیەتی ڕێکخستنی سەرەکی بۆ سێرڤەرەکەت",
+                d3d: "<ol><li>دلنیابەوە لەوەی ڕۆڵی بۆتەکە لە بەرزترین ئاستی سێرڤەرەکەتە تا بتوانێت سزاکان جێبەجێ بکات.</li><li>کۆماندی +help بەکاربێنە بۆ نیشاندانی کاتیگۆرییە پێشکەوتووەکان ڕاستەوخۆ لە ناو چاتی سێرڤەرەکەت.</li></ol>",
+                devT: "گەشەپێدەر و خاوەنی فەرمی", devD: "ئەم بۆتە و وێبسایتە بە شانازییەوە گەشەی پێدراوە لەلایەن گەشەپێدەر:",
+                toastText: "کۆپی کرا بۆ ناو کلیپبۆرد!",
+                cats: { all: "هەمووی", music: "میوزیک", mod: "بەڕێوەبردن", sellers: "فرۆشیاران", utility: "گشتی" },
                 cmds: [
-                    { name: "+play [ناو/لینک]", desc: "لێدانی گۆرانی یان پلەیلیست بە بەرزترین کوالیتی." },
-                    { name: "+skip", desc: "پەڕاندنی گۆرانی ئێستا و چوونە سەر گۆرانی داهاتوو." },
-                    { name: "+stop", desc: "ڕاگرتنی مۆسیقاکە بە تەواوی و جێهێشتنی ڤۆیسەکە." },
-                    { name: "+gstart [کات] [براوە] [دیاری]", desc: "درووستکردنی تیروپشکێکی نوێ لە چاتدا." },
-                    { name: "+ban @user [reason]", desc: "باندکردنی ئەندامێکی سەرپێچیکار لە سێرڤەر." },
-                    { name: "+kick @user", desc: "دەرکردنی ئەندام لە سێرڤەر بە خێرایی." },
-                    { name: "+mute @user [کات]", desc: "بێدەنگکردنی کاتیی ئەندام لە چاتەکاندا." },
-                    { name: "+prefix set [نیشانە]", desc: "گۆڕینی پریفێکسی بۆتەکە بۆ سێرڤەرەکەت." }
+                    { name: "+play", desc: "لێدانی گۆرانی یان پلەیلیست بە بەرزترین کوالیتی.", cat: "music" },
+                    { name: "+skip", desc: "پەڕاندنی گۆرانی ئێستا و چوونە سەر گۆرانی داهاتوو.", cat: "music" },
+                    { name: "+stop", desc: "ڕاگرتنی مۆسیقاکە بە تەواوی و جێهێشتنی ڤۆیسەکە.", cat: "music" },
+                    { name: "+volume", desc: "بەرز و نزمکردنی دەنگی بۆتەکە لە چەناڵەکەدا.", cat: "music" },
+                    { name: "+ban", desc: "باندکردنی ئەندامێکی سەرپێچیکار لە سێرڤەر بە هەمیشەیی.", cat: "mod" },
+                    { name: "+kick", desc: "دەرکردنی ئەندام لە سێرڤەر بە خێرایی.", cat: "mod" },
+                    { name: "+mute", desc: "بێدەنگکردنی کاتیی ئەندام لە چاتەکاندا.", cat: "mod" },
+                    { name: "+clear", desc: "سڕینەوەی نامەکانی چات بە ژمارەی دیاریکراو.", cat: "mod" },
+                    { name: "+tax", desc: "حیسابکردنی باجی فەرمی پرۆبۆت بە خێرایی بۆ مامەڵەکان.", cat: "sellers" },
+                    { name: "+help", desc: "بینینی مێنیوی هاوکاری داینامیکی بۆتەکە لە دیسکۆرد.", cat: "utility" },
+                    { name: "+ping", desc: "پشکنینی خێرایی وەڵامدانەوەی بۆتەکە.", cat: "utility" }
                 ]
             },
             en: {
@@ -573,20 +718,28 @@
                 gTitle: "Giveaway", gDesc: "Create and manage fair, professional giveaways easily within your channels.",
                 aTitle: "AutoMod", aDesc: "Block links, invites, spam, and bad words instantly using smart detection.",
                 modTitle: "Moderation", modDesc: "Advanced moderation tools like Warn, Kick, and Ban to assist your staff.",
-                cTitle: "Config", cDesc: "Completely customize prefixes, languages, and core features to fit your server theme.",
-                cmdTitle: "Commands List", cmdSub: "For more commands, type +help in your server",
+                cTitle: "Sellers Tool", cDesc: "An advanced system to execute fast ProBot tax calculations for online sales and trades.",
+                cmdTitle: "Commands List", cmdSub: "For more commands, type +help (Click any command to copy it)",
                 docsTitle: "Documentation & Guides", docsSub: "How to setup and use Orpheus bot",
                 d1t: "General Bot Description", d1d: "Orpheus Bot is an advanced Discord system offering robust services like seamless music execution, automated chat moderation, and enhanced auto-mod filters to secure your server ecosystem from unwanted spam and ads.",
                 d2t: "Prefix & Getting Started", d2d: "The default bot prefix is +. To view the complete dynamic command tree and interactive helper module inside Discord, simply type +help in any text channel.",
+                d3t: "Core Server Configuration Guide",
+                d3d: "<ol><li>Ensure the bot's highest role is positioned above general members to execute moderation filters.</li><li>Use the +help prompt to call the interactive embedded selection interface directly inside your guild text rooms.</li></ol>",
+                devT: "Official Developer & Owner", devD: "This bot and web dashboard ecosystem is proudly conceptualized and developed by:",
+                toastText: "Copied to clipboard!",
+                cats: { all: "All", music: "Music", mod: "Moderation", sellers: "Sellers", utility: "Utility" },
                 cmds: [
-                    { name: "+play [query/link]", desc: "Plays a song or playlist with ultra-high quality audio." },
-                    { name: "+skip", desc: "Skips the current song playing in the voice channel." },
-                    { name: "+stop", desc: "Stops the music entirely and clears the active track queue." },
-                    { name: "+gstart [time] [winners] [prize]", desc: "Starts an interactive giveaway instance." },
-                    { name: "+ban @user [reason]", desc: "Bans a disruptive user from the guild permanently." },
-                    { name: "+kick @user", desc: "Kicks the specified user out of the server immediately." },
-                    { name: "+mute @user [time]", desc: "Mutes a user temporarily from talking in all channels." },
-                    { name: "+prefix set [symbol]", desc: "Changes the system wide server invocation prefix." }
+                    { name: "+play", desc: "Plays a song or playlist with ultra-high quality audio.", cat: "music" },
+                    { name: "+skip", desc: "Skips the current song playing in the voice channel.", cat: "music" },
+                    { name: "+stop", desc: "Stops the music entirely and clears the active track queue.", cat: "music" },
+                    { name: "+volume", desc: "Adjusts the audio volume levels within the active voice session.", cat: "music" },
+                    { name: "+ban", desc: "Bans a disruptive user from the guild permanently.", cat: "mod" },
+                    { name: "+kick", desc: "Kicks the specified user out of the server immediately.", cat: "mod" },
+                    { name: "+mute", desc: "Mutes a user temporarily from talking in all channels.", cat: "mod" },
+                    { name: "+clear", desc: "Purges a specified amount of historical messages from the channel.", cat: "mod" },
+                    { name: "+tax", desc: "Calculates precise ProBot transaction fees instantly.", cat: "sellers" },
+                    { name: "+help", desc: "Invokes the dynamic help helper directory inside Discord.", cat: "utility" },
+                    { name: "+ping", desc: "Checks the real-time operational response latency of the cluster.", cat: "utility" }
                 ]
             },
             ar: {
@@ -600,33 +753,44 @@
                 gTitle: "التوزيع والهدايا (Giveaway)", gDesc: "إنشاء سحوبات عادلة واحترافية على الجوائز داخل خادمك بكل سهولة.",
                 aTitle: "الحماية التلقائية (AutoMod)", aDesc: "حظر الروابط، الإعلانات، والكلمات النابية بشكل ذكي للحفاظ على أمان سيرفرك.",
                 modTitle: "الإشراف والرقابة (Moderation)", modDesc: "أوامر التحذير (Warn)، الطرد (Kick)، والحظر (Ban) لمساعدة طاقم الإدارة.",
-                cTitle: "الإعدادات (Config)", cDesc: "تخصيص البادئة، تغيير اللغة، وتعديل إعدادات البوت بالكامل حسب رغبتك.",
-                cmdTitle: "قائمة الأوامر", cmdSub: "لرؤية المزيد من الأوامر، اكتب الأمر +help",
+                cTitle: "أداة البائعين (Sellers)", cDesc: "نظام متطور لحساب ضرائب بروبوت بشكل فوري للمبيعات والمعاملات عبر الإنترنت.",
+                cmdTitle: "قائمة الأوامر", cmdSub: "لرؤية المزيد من الأوامر، اكتب الأمر +help (اضغط على الأمر لنسخه)",
                 docsTitle: "الوثائق والتعليمات", docsSub: "كيفية إعداد واستخدام بوت أورفيوس بالتفصيل",
                 d1t: "الوصف العام للبوت", d1d: "بوت Orpheus هو نظام ديسكورد متطور يقدم خدمات متعددة مثل تشغيل الموسيقى النقية، الإشراف التلقائي على الدردشات، وتعزيز نظام الأوتومود لحماية خادمك من الإعلانات المزعجة والسبام.",
                 d2t: "البادئة وبدء الاستخدام", d2d: "البادئة الافتراضية للبوت هي +. لعرض جميع الأقسام والتعليمات المباشرة داخل الديسكورد، ما عليك سوى كتابة +help في الدردشة لفتح قائمة المساعدة.",
+                d3t: "كيفية الإعداد الأساسي لخادمك",
+                d3d: "<ol><li>تأكد من وضع رتبة البوت في أعلى قائمة الرتب بالخادم لضمان تنفيذ العقوبات دون قيود.</li><li>استخدم الأمر +help لإظهار الفئات التفاعلية المتقدمة مباشرة داخل غرف الدردشة الخاصة بك.</li></ol>",
+                devT: "المطور والمالك الرسمي", devD: "تم تطوير هذا البوت ولوحة التحكم بالكامل بكل فخر بواسطة المطور المعتمد:",
+                toastText: "تم النسخ إلى الحافظة!",
+                cats: { all: "الكل", music: "الموسيقى", mod: "الإشراف", sellers: "البائعين", utility: "عام" },
                 cmds: [
-                    { name: "+play [اسم/رابط]", desc: "لتشغيل الأغاني أو قوائم التشغيل بأعلى جودة صوتية." },
-                    { name: "+skip", desc: "لتخطي الأغنية الحالية والانتقال للأغنية التالية." },
-                    { name: "+stop", desc: "إيقاف الموسيقى تماماً ومغادرة الروم الصوتي." },
-                    { name: "+gstart [الوقت] [الفائزين] [الجائزة]", desc: "لإنشاء مسابقة وسحب جديد في السيرفر." },
-                    { name: "+ban @user [السبب]", desc: "لحظر العضو المخالف من السيرفر بشكل نهائي." },
-                    { name: "+kick @user", desc: "لطرد العضو المحدد من السيرفر فوراً." },
-                    { name: "+mute @user [الوقت]", desc: "كتم صوت العضو مؤقتاً في جميع القنوات النصية." },
-                    { name: "+prefix set [الرمز]", desc: "لتغيير بادئة البوت الخاصة بسيرفرك." }
+                    { name: "+play", desc: "لتشغيل الأغاني أو قوائم التشغيل بأعلى جودة صوتية.", cat: "music" },
+                    { name: "+skip", desc: "لتخطي الأغنية الحالية والانتقال للأغنية التالية.", cat: "music" },
+                    { name: "+stop", desc: "إيقاف الموسيقى تماماً ومغادرة الروم الصوتي.", cat: "music" },
+                    { name: "+volume", desc: "تعديل مستوى الصوت للبوت داخل الروم الصوتي الحالي.", cat: "music" },
+                    { name: "+ban", desc: "لحظر العضو المخالف من السيرفر بشكل نهائي.", cat: "mod" },
+                    { name: "+kick", desc: "لطرد العضو المحدد من السيرفر فوراً.", cat: "mod" },
+                    { name: "+mute", desc: "كتم صوت العضو مؤقتاً في جميع القنوات النصية.", cat: "mod" },
+                    { name: "+clear", desc: "لتنظيف ومسح عدد معين من الرسائل من شاشة الدردشة.", cat: "mod" },
+                    { name: "+tax", desc: "لحساب ضريبة بروبوت بدقة وبشكل فوري.", cat: "sellers" },
+                    { name: "+help", desc: "لعرض دليل المساعدة التفاعلي الخاص بالبوت داخل ديسكورد.", cat: "utility" },
+                    { name: "+ping", desc: "لفحص سرعة استجابة البوت وزمن الاتصال الحالي.", cat: "utility" }
                 ]
             }
         };
 
         function setLanguage(lang) {
+            currentLang = lang;
             const data = translations[lang];
             document.getElementById('html-tag').setAttribute('dir', data.dir);
             document.getElementById('html-tag').setAttribute('lang', lang);
 
+            // ناڤبار
             document.getElementById('tab-btn-home').innerText = data.navHome;
             document.getElementById('tab-btn-commands').innerText = data.navCmds;
             document.getElementById('tab-btn-docs').innerText = data.navDocs;
 
+            // ماڵپەڕ
             document.getElementById('hero-title').innerHTML = data.heroTitle;
             document.getElementById('hero-desc').innerText = data.heroDesc;
             document.getElementById('status-uptime-lbl').innerText = data.uptimeLbl;
@@ -642,8 +806,8 @@
             document.getElementById('f-auto-d').innerText = data.aDesc;
             document.getElementById('f-mod-t').innerText = data.modTitle;
             document.getElementById('f-mod-d').innerText = data.modDesc;
-            document.getElementById('f-conf-t').innerText = data.cTitle;
-            document.getElementById('f-conf-d').innerText = data.cDesc;
+            document.getElementById('f-seller-t').innerText = data.cTitle;
+            document.getElementById('f-seller-d').innerText = data.cDesc;
 
             document.getElementById('cmd-page-title').innerText = data.cmdTitle;
             document.getElementById('cmd-page-sub').innerText = data.cmdSub;
@@ -654,15 +818,15 @@
             document.getElementById('doc-sec1-d').innerText = data.d1d;
             document.getElementById('doc-sec2-t').innerText = data.d2t;
             document.getElementById('doc-sec2-d').innerText = data.d2d;
+            document.getElementById('doc-sec3-t').innerText = data.d3t;
+            document.getElementById('doc-sec3-d').innerHTML = data.d3d;
 
-            const cmdContainer = document.getElementById('commands-list-container');
-            cmdContainer.innerHTML = '';
-            data.cmds.forEach(c => {
-                const row = document.createElement('div');
-                row.className = 'cmd-row';
-                row.innerHTML = `<span class="cmd-trigger">${c.name}</span><span class="cmd-text-desc">${c.desc}</span>`;
-                cmdContainer.appendChild(row);
-            });
+            document.getElementById('dev-lbl-title').innerText = data.devT;
+            document.getElementById('dev-lbl-desc').innerText = data.devD;
+
+            // ڕێکردنی کاتیگۆرییەکان
+            renderCategories();
+            renderCommands();
 
             document.getElementById('langModal').style.opacity = 0;
             setTimeout(() => {
@@ -670,13 +834,54 @@
             }, 500);
         }
 
+        function renderCategories() {
+            const container = document.getElementById('cat-tabs-container');
+            container.innerHTML = '';
+            const cats = translations[currentLang].cats;
+            
+            Object.keys(cats).forEach(key => {
+                const btn = document.createElement('button');
+                btn.className = `cat-btn ${currentCategory === key ? 'active-cat' : ''}`;
+                btn.innerText = cats[key];
+                btn.onclick = () => {
+                    currentCategory = key;
+                    renderCategories();
+                    renderCommands();
+                };
+                container.appendChild(btn);
+            });
+        }
+
+        function renderCommands() {
+            const container = document.getElementById('commands-list-container');
+            container.innerHTML = '';
+            const allCmds = translations[currentLang].cmds;
+
+            const filtered = currentCategory === 'all' ? allCmds : allCmds.filter(c => c.cat === currentCategory);
+
+            filtered.forEach(c => {
+                const row = document.createElement('div');
+                row.className = 'cmd-row';
+                row.onclick = () => copyToClipboard(c.name);
+                row.innerHTML = `<span class="cmd-trigger">${c.name}</span><span class="cmd-text-desc">${c.desc}</span>`;
+                container.appendChild(row);
+            });
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                const toast = document.getElementById('clipboardToast');
+                toast.innerText = translations[currentLang].toastText;
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 2000);
+            });
+        }
+
         function switchTab(tabName) {
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.remove('active-content');
-            });
-            document.querySelectorAll('nav button').forEach(btn => {
-                btn.classList.remove('active-tab');
-            });
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active-content'));
+            document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active-tab'));
 
             document.getElementById('tab-' + tabName).classList.add('active-content');
             document.getElementById('tab-btn-' + tabName).classList.add('active-tab');
