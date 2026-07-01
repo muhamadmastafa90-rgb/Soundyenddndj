@@ -3,39 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orpheus Bot | World-Class Discord Ecosystem</title>
+    <title>Orpheus Bot | Ultra-Premium World-Class Framework</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            /* دۆخی تاریک (Dark Mode) */
-            --bg-main: #050508;
-            --bg-grid: rgba(223, 183, 67, 0.02);
-            --panel-bg: #0d0d15;
-            --panel-hover: #141423;
-            --border-color: rgba(223, 183, 67, 0.1);
+            /* دۆخی تاریک - گونجاو لەگەڵ ڕەنگە نوێیەکەی لۆگۆ */
+            --bg-main: #06060c;
+            --bg-grid: rgba(121, 40, 202, 0.03);
+            --panel-bg: #0e0e1a;
+            --panel-hover: #161629;
+            --border-color: rgba(255, 42, 116, 0.15);
             --gold: #dfb743;
             --gold-gradient: linear-gradient(135deg, #ffe082, #b38f24);
             --cyber-purple: #7928ca;
             --cyber-pink: #ff007f;
             --premium-gradient: linear-gradient(135deg, #7928ca, #ff007f);
             --text-main: #f5f5f7;
-            --text-muted: #9effeb;
-            --text-paragraph: #a1a1aa;
+            --text-paragraph: #94a3b8;
             --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            --glow: 0 0 20px rgba(255, 0, 127, 0.2);
+            --glow: 0 0 25px rgba(255, 0, 127, 0.25);
         }
 
         .light-theme {
-            /* دۆخی ڕووناک (Light Mode) */
-            --bg-main: #f8f9fa;
+            /* دۆخی ڕووناک */
+            --bg-main: #f8fafc;
             --bg-grid: rgba(121, 40, 202, 0.02);
             --panel-bg: #ffffff;
-            --panel-hover: #f1f3f5;
+            --panel-hover: #f1f5f9;
             --border-color: rgba(0, 0, 0, 0.08);
             --gold: #b38f24;
             --gold-gradient: linear-gradient(135deg, #b38f24, #8c6d11);
-            --text-main: #1d1d1f;
-            --text-paragraph: #515154;
+            --text-main: #0f172a;
+            --text-paragraph: #475569;
             --glow: 0 10px 30px rgba(0, 0, 0, 0.05);
         }
 
@@ -43,7 +42,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             scroll-behavior: smooth;
         }
 
@@ -52,13 +51,11 @@
             color: var(--text-main);
             overflow-x: hidden;
             transition: background-color 0.5s ease, color 0.5s ease;
-            /* پاشبنەمای ئەندازیاری جیهانی */
             background-image: linear-gradient(var(--bg-grid) 1px, transparent 1px),
                               linear-gradient(90deg, var(--bg-grid) 1px, transparent 1px);
-            background-size: 40px 40px;
+            background-size: 50px 50px;
         }
 
-        /* هێڵی پریمیمیۆمی سەرەکی */
         .global-progress-bar {
             height: 5px;
             background: linear-gradient(90deg, var(--cyber-purple), var(--cyber-pink), var(--gold));
@@ -76,7 +73,7 @@
         .lang-modal {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(5, 5, 8, 0.95);
+            background: rgba(6, 6, 12, 0.97);
             z-index: 9999;
             display: flex;
             justify-content: center;
@@ -91,7 +88,7 @@
             padding: 45px;
             border-radius: 28px;
             text-align: center;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
             max-width: 500px;
             width: 90%;
         }
@@ -125,13 +122,13 @@
 
         .lang-btn:hover {
             background: var(--premium-gradient);
-            color: #white;
+            color: white;
             border-color: transparent;
             transform: scale(1.02);
             box-shadow: var(--glow);
         }
 
-        /* ناڤبار و سەرپەڕە */
+        /* ناڤبار */
         header {
             display: flex;
             justify-content: space-between;
@@ -151,11 +148,12 @@
         }
 
         .logo-wrapper {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px; /* شێوازی مۆدێرنی چوارگۆشەی خڕ */
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
             overflow: hidden;
-            border: 2px solid var(--gold);
+            border: 2px solid var(--cyber-pink);
+            box-shadow: var(--glow);
         }
 
         .logo-wrapper img {
@@ -165,10 +163,10 @@
         }
 
         .logo-text {
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 900;
-            letter-spacing: 1.5px;
-            background: var(--gold-gradient);
+            letter-spacing: 2px;
+            background: var(--premium-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -196,11 +194,10 @@
             background: var(--panel-hover);
         }
 
-        /* دوگمەی گۆڕینی دۆخی ڕووناکی */
         .theme-toggle {
             background: var(--panel-bg);
             border: 1px solid var(--border-color);
-            color: var(--gold);
+            color: var(--cyber-pink);
             width: 40px;
             height: 40px;
             border-radius: 10px;
@@ -211,71 +208,73 @@
             transition: var(--transition);
         }
 
-        .theme-toggle:hover {
-            transform: rotate(15deg);
-            background: var(--panel-hover);
-        }
-
-        /* ناوەڕۆکی بەشەکان */
-        .tab-content {
-            display: none;
-            opacity: 0;
-            transform: translateY(15px);
-            transition: var(--transition);
-        }
-
-        .tab-content.active-content {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* 🚀 بەشی هیرۆ (Hero Section) */
+        /* 🚀 بەشی هیرۆ */
         .hero-section {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 100px 8%;
-            min-height: 80vh;
+            padding: 80px 8%;
+            min-height: 75vh;
             gap: 50px;
         }
 
-        .hero-info {
-            max-width: 650px;
-        }
+        .hero-info { max-width: 650px; }
 
         .hero-info h1 {
-            font-size: 58px;
+            font-size: 56px;
             font-weight: 900;
-            line-height: 1.1;
+            line-height: 1.15;
             margin-bottom: 20px;
-            letter-spacing: -1px;
         }
 
         .hero-info h1 span {
-            background: linear-gradient(90deg, #ff007f, #7928ca);
+            background: var(--premium-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero-info p {
             color: var(--text-paragraph);
-            font-size: 20px;
+            font-size: 19px;
             line-height: 1.7;
             margin-bottom: 35px;
         }
 
-        .action-btns {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
+        /* 🟢 Live Status Indicator */
+        .live-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            padding: 6px 16px;
+            border-radius: 50px;
+            color: #22c55e;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 25px;
         }
 
+        .pulse-dot {
+            width: 8px; height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.9); opacity: 1; }
+            50% { transform: scale(1.3); opacity: 0.4; }
+            100% { transform: scale(0.9); opacity: 1; }
+        }
+
+        .action-btns { display: flex; gap: 15px; flex-wrap: wrap; }
+
         .global-btn {
-            padding: 18px 36px;
+            padding: 16px 34px;
             font-size: 16px;
             font-weight: 700;
-            border-radius: 14px;
+            border-radius: 12px;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
@@ -283,211 +282,133 @@
             transition: var(--transition);
         }
 
-        .btn-primary {
-            background: var(--text-main);
-            color: var(--bg-main);
-        }
+        .btn-primary { background: var(--text-main); color: var(--bg-main); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: var(--glow); }
+        .btn-secondary { background: var(--panel-bg); color: var(--text-main); border: 1px solid var(--border-color); }
+        .btn-secondary:hover { background: var(--panel-hover); transform: translateY(-3px); }
 
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-        }
-
-        .btn-secondary {
-            background: var(--panel-bg);
-            color: var(--text-main);
-            border: 1px solid var(--border-color);
-        }
-
-        .btn-secondary:hover {
-            background: var(--panel-hover);
-            transform: translateY(-3px);
-        }
-
-        .hero-visual {
-            position: relative;
-        }
+        .hero-visual { position: relative; }
 
         .hero-img-molding {
-            width: 360px;
-            height: 360px;
-            border-radius: 24% 76% 35% 65% / 49% 45% 55% 51%; /* شێوازی گرافیکی مۆدێرن */
+            width: 350px;
+            height: 350px;
+            border-radius: 30% 70% 47% 53% / 50% 36% 64% 50%;
             background: var(--premium-gradient);
             padding: 6px;
-            animation: morphing 8s ease-in-out infinite;
+            animation: morphing 7s ease-in-out infinite;
             box-shadow: var(--glow);
         }
 
         .hero-img-molding img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: inherit;
+            width: 100%; height: 100%;
+            object-fit: cover; border-radius: inherit;
         }
 
         @keyframes morphing {
-            0%, 100% { border-radius: 24% 76% 35% 65% / 49% 45% 55% 51%; }
-            50% { border-radius: 76% 24% 65% 35% / 55% 51% 49% 45%; }
+            0%, 100% { border-radius: 30% 70% 47% 53% / 50% 36% 64% 50%; }
+            50% { border-radius: 50% 36% 64% 50% / 30% 70% 47% 53%; }
         }
 
-        /* 📊 بەشی ئامارە گەشاوەکان */
-        .global-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 25px;
-            padding: 60px 8%;
-        }
-
-        .stat-box {
-            background: var(--panel-bg);
-            border: 1px solid var(--border-color);
-            padding: 30px;
-            border-radius: 20px;
+        /* 🌟 Premium Cards Section */
+        .premium-section {
+            padding: 80px 8%;
             text-align: center;
-            transition: var(--transition);
         }
 
-        .stat-box:hover {
-            border-color: var(--cyber-pink);
-            transform: translateY(-5px);
+        .premium-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
         }
 
-        .stat-box h3 {
-            font-size: 42px;
-            font-weight: 800;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .stat-box p {
-            color: var(--text-paragraph);
-            font-size: 14px;
-            margin-top: 5px;
-            text-transform: uppercase;
-        }
-
-        /* 🔍 کاتۆلۆگی کۆماندە پێشکەوتووەکان */
-        .search-area {
-            max-width: 700px;
-            margin: 40px auto;
-            position: relative;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 18px 25px 18px 60px;
+        .premium-card {
             background: var(--panel-bg);
             border: 1px solid var(--border-color);
-            border-radius: 16px;
-            color: var(--text-main);
-            font-size: 16px;
-            outline: none;
+            padding: 35px 25px;
+            border-radius: 20px;
             transition: var(--transition);
+            backdrop-filter: blur(10px);
         }
 
-        .search-area i {
-            position: absolute;
-            left: 25px; top: 50%;
-            transform: translateY(-50%);
-            color: var(--gold);
-            font-size: 18px;
-        }
-
-        .search-input:focus {
-            border-color: var(--cyber-purple);
+        .premium-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--cyber-pink);
             box-shadow: var(--glow);
         }
 
-        .cmd-display-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
+        .premium-card i {
+            font-size: 36px;
+            background: var(--premium-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
         }
 
-        .cmd-item-box {
-            background: var(--panel-bg);
-            border: 1px solid var(--border-color);
-            padding: 20px;
-            border-radius: 14px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        /* 🔍 کاتۆلۆگی کۆماندەکان */
+        .search-area { max-width: 700px; margin: 40px auto; position: relative; }
+        .search-input {
+            width: 100%; padding: 18px 25px 18px 60px;
+            background: var(--panel-bg); border: 1px solid var(--border-color);
+            border-radius: 16px; color: var(--text-main); font-size: 16px; outline: none;
             transition: var(--transition);
         }
+        .search-area i { position: absolute; left: 25px; top: 50%; transform: translateY(-50%); color: var(--cyber-pink); font-size: 18px; }
+        .search-input:focus { border-color: var(--cyber-purple); box-shadow: var(--glow); }
 
-        .cmd-item-box:hover, .cmd-item-box.selected-cmd {
-            background: var(--panel-hover);
-            border-color: var(--cyber-pink);
-            transform: translateY(-2px);
+        .cmd-display-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
+
+        .cmd-item-box {
+            background: var(--panel-bg); border: 1px solid var(--border-color);
+            padding: 20px; border-radius: 14px; cursor: pointer;
+            display: flex; justify-content: space-between; align-items: center; transition: var(--transition);
         }
+        .cmd-item-box:hover, .cmd-item-box.selected-cmd { background: var(--panel-hover); border-color: var(--cyber-pink); }
 
-        /* 💡 بەشی زانیاری کۆماندی دیاریکراو */
         .cmd-inspector {
-            background: var(--panel-bg);
-            border: 1px solid var(--border-color);
-            padding: 30px;
-            border-radius: 18px;
-            margin-top: 25px;
-            display: none;
+            background: var(--panel-bg); border: 1px solid var(--border-color);
+            padding: 30px; border-radius: 18px; margin-top: 25px; display: none;
         }
-
         .inspector-active { display: block; animation: fadeIn 0.4s ease; }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* ❓ FAQ Accordion */
+        .faq-section { padding: 60px 8%; max-width: 800px; margin: 0 auto; }
+        .faq-item {
+            background: var(--panel-bg); border: 1px solid var(--border-color);
+            border-radius: 12px; margin-bottom: 15px; overflow: hidden;
         }
+        .faq-trigger {
+            padding: 20px; width: 100%; text-align: right; background: transparent;
+            border: none; color: var(--text-main); font-size: 16px; font-weight: 700;
+            cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+        }
+        .faq-content { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; color: var(--text-paragraph); line-height: 1.7; }
 
         /* 📋 تۆست */
         .toast-notify {
-            position: fixed;
-            bottom: 30px; left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: var(--text-main);
-            color: var(--bg-main);
-            padding: 14px 28px;
-            border-radius: 50px;
-            font-weight: 700;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            transition: var(--transition);
-            opacity: 0; z-index: 1000;
+            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px);
+            background: var(--premium-gradient); color: white; padding: 14px 28px;
+            border-radius: 50px; font-weight: 700; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: var(--transition); opacity: 0; z-index: 1000;
         }
-
-        .toast-notify.show {
-            transform: translateX(-50%) translateY(0);
-            opacity: 1;
-        }
-
-        /* 👥 بەشی کۆمەڵگە و گەشەپێدەر */
-        .community-card {
-            background: linear-gradient(rgba(13,13,21,0.8), rgba(13,13,21,0.8)), url('logo.jpg') no-repeat center/cover;
-            border: 1px solid var(--border-color);
-            padding: 50px;
-            border-radius: 24px;
-            text-align: center;
-            margin-top: 60px;
-        }
+        .toast-notify.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
         .dev-profile {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            background: var(--panel-bg);
-            padding: 25px;
-            border-radius: 16px;
-            border-left: 5px solid var(--cyber-purple);
-            margin-top: 40px;
+            display: flex; align-items: center; gap: 20px; background: var(--panel-bg);
+            padding: 25px; border-radius: 16px; border-left: 5px solid var(--cyber-pink);
+            margin-top: 40px; cursor: pointer; transition: var(--transition);
         }
+        .dev-profile:hover { background: var(--panel-hover); }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         @media (max-width: 768px) {
             header { flex-direction: column; gap: 15px; }
             .hero-section { flex-direction: column-reverse; text-align: center; padding: 60px 20px; }
-            .hero-info h1 { font-size: 38px; }
-            .hero-img-molding { width: 280px; height: 280px; }
+            .hero-info h1 { font-size: 36px; }
+            .hero-img-molding { width: 260px; height: 260px; }
             .action-btns { justify-content: center; }
+            .faq-trigger { text-align: right; }
         }
     </style>
 </head>
@@ -495,8 +416,8 @@
 
     <div class="lang-modal" id="langModal">
         <div class="lang-box">
-            <h2>Select Ecosystem Language</h2>
-            <p>ڕووکاری سیستەمەکە بە کام زمان ڕێکبخرێت؟</p>
+            <h2>Select Core Language</h2>
+            <p>زمان و ڕووکاری وێبسایتەکە هەڵبژێرە:</p>
             <div class="lang-options">
                 <button class="lang-btn" onclick="setLanguage('ku')">کوردی (Kurdish)</button>
                 <button class="lang-btn" onclick="setLanguage('en')">English</button>
@@ -510,7 +431,7 @@
     <header>
         <div class="logo-container">
             <div class="logo-wrapper">
-                <img src="logo.jpg" alt="Orpheus Core Identity">
+                <img src="File_000000000af071f4ad3ac7be80e6763c.png" alt="Orpheus Visual Master Core">
             </div>
             <span class="logo-text">ORPHEUS</span>
         </div>
@@ -525,42 +446,53 @@
     <div id="tab-home" class="tab-content active-content">
         <section class="hero-section">
             <div class="hero-info">
-                <h1 id="h-title">داهاتووی دەنگ و بەڕێوەبردن <span>لێرەوە دەستپێدەکات</span></h1>
-                <p id="h-desc">سیستەمێکی پێشکەوتووی جیهانی بۆ بەڕێوەبردنی سێرڤەرەکەت، لێدانی مۆسیقا بە کوالیتی بێخەوش و پاراستنی فەرمی دیسکۆرد.</p>
+                <div class="live-status">
+                    <div class="pulse-dot"></div>
+                    <span id="live-lbl">سیستەمەکە بە تەواوی کاردەکات (All Systems Operational)</span>
+                </div>
+                <h1 id="h-title">مۆسیقا و پاراستن <span>لە بەرزترین ئاستی جیهانیدا</span></h1>
+                <p id="h-desc">پڕۆفیشناڵترین و جێگیرترین چوارچێوەی دیسکۆرد بۆ مۆسیقای Ultra-HQ، مۆدێرەیشنی پێشکەوتوو و بەڕێوەبردنی ستاف بە شێوازێکی بێخەوش.</p>
                 <div class="action-btns">
-                    <a href="https://discord.com/oauth2/authorize?client_id=1150754451938869371&permissions=8&integration_type=0&scope=bot" target="_blank" class="global-btn btn-primary"><i class="fab fa-discord"></i> Add to Discord</a>
-                    <a href="https://discord.gg/Pn4uqzYAsD" target="_blank" class="global-btn btn-secondary"><i class="fas fa-server"></i> Join Community</a>
+                    <a href="https://discord.com/oauth2/authorize?client_id=1150754451938869371&permissions=8&integration_type=0&scope=bot" target="_blank" class="global-btn btn-primary"><i class="fab fa-discord"></i> Add Bot</a>
+                    <a href="https://discord.gg/Pn4uqzYAsD" target="_blank" class="global-btn btn-secondary"><i class="fas fa-headset"></i> Support Server</a>
                 </div>
             </div>
             <div class="hero-visual">
                 <div class="hero-img-molding">
-                    <img src="logo.jpg" alt="Orpheus Visual Masterpiece">
+                    <img src="File_000000000af071f4ad3ac7be80e6763c.png" alt="Orpheus Cyber Render">
                 </div>
             </div>
         </section>
 
-        <div class="global-stats">
-            <div class="stat-box">
-                <h3>500+</h3>
-                <p id="s-servers">سێرڤەرە جێگیرەکان</p>
+        <section class="premium-section">
+            <h2 style="font-size:32px;" id="p-title">تایبەتمەندییە نایابەکان</h2>
+            <p style="color:var(--text-paragraph);" id="p-sub">هێزێکی بێ سنوور بۆ بەرزکردنەوەی ئاستی سێرڤەرەکەت</p>
+            <div class="premium-grid">
+                <div class="premium-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3 id="p-f1-t">سیستەمی 24/7 چالاك</h3>
+                    <p style="color:var(--text-paragraph); font-size:14px; margin-top:10px;" id="p-f1-d">بۆتەکە هەرگیز لۆکاڵ نابێت و هەمیشە لە ناو ڤۆیس چاتەکەتدا دەمێنێتەوە بێ پچڕان.</p>
+                </div>
+                <div class="premium-card">
+                    <i class="fas fa-sliders-h"></i>
+                    <h3 id="p-f2-t">فلتەری دەنگی تایبەت</h3>
+                    <p style="color:var(--text-paragraph); font-size:14px; margin-top:10px;" id="p-f2-d">چالاککردنی فلتەرەکانی 8D, Bassboost, Nightcore, و Vaporwave تەنها بە یەک کۆماند.</p>
+                </div>
+                <div class="premium-card">
+                    <i class="fas fa-shield-cat"></i>
+                    <h3 id="p-f3-t">ئۆتۆمۆدی هۆشمەند</h3>
+                    <p style="color:var(--text-paragraph); font-size:14px; margin-top:10px;" id="p-f3-d">پاراستنی سێرڤەرەکەت لە ڕیکلامی پلاتفۆرمەکانی تر و سپامی بەردەوام بە شێوازی AI.</p>
+                </div>
             </div>
-            <div class="stat-box">
-                <h3>250K+</h3>
-                <p id="s-users">بەکارهێنەرانی چالاك</p>
-            </div>
-            <div class="stat-box">
-                <h3>99.9%</h3>
-                <p id="s-uptime">کاتی کارکردن (Uptime)</p>
-            </div>
-        </div>
+        </section>
     </div>
 
     <div id="tab-commands" class="tab-content" style="padding: 60px 8%;">
-        <h2 style="text-align: center; font-size: 36px; color: var(--gold);" id="c-title">کاتۆلۆگی کۆماندە فەرمییەکان</h2>
-        <p style="text-align: center; color: var(--text-paragraph); margin-bottom: 30px;" id="c-sub">بۆ زانیاری زیاتر و کۆپی بوون کلیک لەسەر کۆماندەکان بکە</p>
+        <h2 style="text-align: center; font-size: 36px; color: var(--text-main);" id="c-title">لیستی کۆماندە گشتییەکان</h2>
+        <p style="text-align: center; color: var(--text-paragraph); margin-bottom: 30px;" id="c-sub">کلیک لەسەر هەر یەکێکیان بکە بۆ بینینی وردەکاری و کۆپی بوون</p>
 
         <div class="search-area">
-            <input type="text" id="globalSearch" class="search-input" placeholder="بگەڕێ بۆ کۆماندی مەبەست..." oninput="filterSystem()">
+            <input type="text" id="globalSearch" class="search-input" placeholder="بگەڕێ..." oninput="filterSystem()">
             <i class="fas fa-search"></i>
         </div>
 
@@ -571,30 +503,38 @@
         <div class="cmd-inspector" id="inspector">
             <h3 style="color:var(--cyber-pink); margin-bottom:10px;" id="inspect-name">+play</h3>
             <p style="color:var(--text-main); font-weight:bold; margin-bottom:5px;" id="inspect-desc-lbl">وەسف:</p>
-            <p style="color:var(--text-paragraph); margin-bottom:15px;" id="inspect-desc">بۆ لێدانی گۆرانی بەکاردێت.</p>
+            <p style="color:var(--text-paragraph); margin-bottom:15px;" id="inspect-desc"></p>
             <p style="color:var(--gold); font-weight:bold;" id="inspect-usage-lbl">شێوازی بەکارهێنان:</p>
-            <code style="background:var(--bg-main); padding:5px 10px; border-radius:6px; display:inline-block; margin-top:5px;" id="inspect-code">+play [song name/link]</code>
+            <code style="background:var(--bg-main); padding:8px 12px; border-radius:8px; display:inline-block; margin-top:5px; border:1px solid var(--border-color);" id="inspect-code"></code>
         </div>
     </div>
 
-    <div id="tab-docs" class="tab-content" style="padding: 60px 8%; max-width: 1000px; margin: 0 auto;">
-        <div class="docs-card" style="background: var(--panel-bg); padding: 40px; border-radius: 20px; border: 1px solid var(--border-color); margin-bottom: 25px;">
-            <h3 style="color: var(--gold); margin-bottom: 15px;" id="d-h1">بنەمای کارکردنی ئۆرفیۆس</h3>
-            <p style="color: var(--text-paragraph); line-height: 1.8;" id="d-p1">ئۆرفیۆس سیستەمێکی جیهانییە کە ژینگەیەکی جێگیر بۆ بەکارهێنەرانی دیسکۆرد فەراهەم دەکات. بە بەکارهێنانی خێراترین کەرەستەکانی کۆدکردن، توانراوە ڕێژەی پچڕانی مۆسیقا بگەیەنرێتە نزمترین ئاستی مێژوویی.</p>
-        </div>
+    <div id="tab-docs" class="tab-content">
+        <div style="padding: 60px 8%; max-width: 1000px; margin: 0 auto;">
+            <div style="background: var(--panel-bg); padding: 40px; border-radius: 20px; border: 1px solid var(--border-color); margin-bottom: 25px;">
+                <h3 style="color: var(--cyber-pink); margin-bottom: 15px;" id="d-h1">پریفێکسی فەرمی</h3>
+                <p style="color: var(--text-paragraph); line-height: 1.8;" id="d-p1">پریفێکسی سەرەکی بۆتەکە بریتییە لە (+). تۆ دەتوانیت بە نووسینی <code>+help</code> ڕێک مێنووی سەرەکی لە ناو سێرڤەرەکەتدا کۆنتڕۆڵ بکەیت.</p>
+            </div>
 
-        <div class="community-card">
-            <h2 style="color: #fff; margin-bottom: 15px;">Join the Global Evolution</h2>
-            <p style="color: #ddd; margin-bottom: 25px;">دەنگ بدە بە بۆتەکە یان وەرە ناو سێرڤەری فەرمی بۆ پشتگیری ڕاستەوخۆ.</p>
-            <a href="https://discord.gg/Pn4uqzYAsD" target="_blank" class="global-btn btn-primary">Open Discord App</a>
-        </div>
+            <section class="faq-section">
+                <h2 style="text-align:center; margin-bottom:30px; font-size:28px;" id="faq-main-t">پرسیارە باوەکان (FAQ)</h2>
+                <div class="faq-item">
+                    <button class="faq-trigger" onclick="toggleFaq(this)">چۆن بۆتەکە لە سێرڤەرەکەم جێگیر بکەم؟ <i class="fas fa-chevron-down"></i></button>
+                    <div class="faq-content"><p style="padding:20px 0;">تەنها کلیک لەسەر دوگمەی "Add Bot" بکە لە لاپەڕەی سەرەکی، سێرڤەرەکەت هەڵبژێره و مۆڵەتی پێویستی پێ ببەخشە.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-trigger" onclick="toggleFaq(this)">ئایا کوالیتی دەنگی بۆتەکە جێگیرە؟ <i class="fas fa-chevron-down"></i></button>
+                    <div class="faq-content"><p style="padding:20px 0;">بەڵێ، ئۆرفیۆس بزوێنەری Lavalink بەکاردەهێنێت کە بە فەرمی دەنگەکە بە ڕێژەی 320kbps بەبێ هیچ جۆرە دابەزینێک دەگوازێتەوە.</p>
+                </div>
+            </section>
 
-        <div class="dev-profile">
-            <div style="font-size: 30px; color: var(--gold);"><i class="fas fa-user-shield"></i></div>
-            <div>
-                <h4 style="font-size: 18px;" id="dev-t">خاوەنی پڕۆژە</h4>
-                <p style="color: var(--text-paragraph); font-size: 14px;" id="dev-d">گەشەپێدراوی فەرمی لایەن ئەندازیارانی کۆر کورتکراوەی ناسنامە:</p>
-                <span style="font-family: monospace; color: var(--cyber-pink); font-weight: bold; display: block; margin-top: 5px;">ID: 1147899646602121216</span>
+            <div class="dev-profile" onclick="copyDevID('1147899646602121216')">
+                <div style="font-size: 32px; color: var(--cyber-pink);"><i class="fas fa-user-gear"></i></div>
+                <div>
+                    <h4 style="font-size: 18px;" id="dev-t">پەرەپێدەری فەرمی</h4>
+                    <p style="color: var(--text-paragraph); font-size: 14px;" id="dev-d">کلیک لێرە بکە بۆ کۆپی بوونی ناسنامەی فەرمی پڕۆژەکە (Developer ID)</p>
+                    <span style="font-family: monospace; color: var(--gold); font-weight: bold;" id="dev-id-val">ID: 1147899646602121216</span>
+                </div>
             </div>
         </div>
     </div>
@@ -602,7 +542,7 @@
     <div class="toast-notify" id="globalToast">کۆپی کرا!</div>
 
     <footer style="text-align: center; padding: 40px; border-top: 1px solid var(--border-color); margin-top: 80px; color: var(--text-paragraph); font-size: 13px;">
-        <p>© 2026 ORPHEUS ECOSYSTEM | Global Framework Architecture.</p>
+        <p>© 2026 ORPHEUS TIMELINE framework. All rights reserved.</p>
     </footer>
 
     <script>
@@ -615,9 +555,9 @@
 
         function buildDatabase() {
             let db = [];
-            rawMusic.forEach(c => db.push({ name: "+" + c, cat: "music", descKu: "کۆنتڕۆڵ و لێدانی میوزیک بە کوالیتی بەرز.", descEn: "High quality music stream engine command.", usage: `+${c}` }));
-            rawMod.forEach(c => db.push({ name: "+" + c, cat: "mod", descKu: "بەڕێوەبردن و سزادانی سەرپێچیکارانی سێرڤەر.", descEn: "Server moderation and staff enforcement action.", usage: `+${c}` }));
-            rawAuto.forEach(c => db.push({ name: "+" + c, cat: "automod", descKu: "سیستەمی پاراستنی خۆکار دژی سپام و لینک.", descEn: "Automated anti-spam and link protection filter.", usage: `+${c}` }));
+            rawMusic.forEach(c => db.push({ name: "+" + c, cat: "music", descKu: "کۆنتڕۆڵ و لێدانی میوزیک بە کوالیتی Ultra-HQ.", descEn: "High-fidelity multimedia audio stream core controller.", usage: `+${c}` }));
+            rawMod.forEach(c => db.push({ name: "+" + c, cat: "mod", descKu: "بەڕێوەبردن و جێبەجێکردنی سزاکانی ستاف لە سێرڤەردا.", descEn: "Server administration enforcement parameters.", usage: `+${c}` }));
+            rawAuto.forEach(c => db.push({ name: "+" + c, cat: "automod", descKu: "ڕێکخستنی فلتەری دژە سپام و بلۆککردنی بەستەرە دەرەکییەکان.", descEn: "Automated real-time spam and link filtering architecture.", usage: `+${c}` }));
             return db;
         }
 
@@ -626,42 +566,54 @@
         const langPack = {
             ku: {
                 dir: "rtl", home: "سەرەکی", cmds: "کۆماندەکان", docs: "ڕێنماییەکان",
-                title: "داهاتووی دەنگ و بەڕێوەبردن <span>لێرەوە دەستپێدەکات</span>",
-                desc: "سیستەمێکی پێشکەوتووی جیهانی بۆ بەڕێوەبردنی سێرڤەرەکەت، لێدانی مۆسیقا بە کوالیتی بێخەوش و پاراستنی فەرمی دیسکۆرد.",
-                servers: "سێرڤەرە جێگیرەکان", users: "بەکارهێنەرانی چالاك",
-                cTitle: "کاتۆلۆگی کۆماندە فەرمییەکان", cSub: "بۆ زانیاری زیاتر و کۆپی بوون کلیک لەسەر کۆماندەکان بکە",
-                searchP: "بگەڕێ بۆ کۆماندی مەبەست...",
-                dh1: "بنەمای کارکردنی ئۆرفیۆس", dp1: "ئۆرفیۆس سیستەمێکی جیهانییە کە ژینگەیەکی جێگیر بۆ بەکارهێنەرانی دیسکۆرد فەراهەم دەکات. بە بەکارهێنانی خێراترین کەرەستەکانی کۆدکردن، توانراوە ڕێژەی پچڕانی مۆسیقا بگەیەنرێتە نزمترین ئاستی مێژوویی.",
-                devT: "خاوەنی پڕۆژە", devD: "گەشەپێدراوی فەرمی لایەن ئەندازیارانی کۆر کورتکراوەی ناسنامە:",
+                title: "مۆسیقا و پاراستن <span>لە بەرزترین ئاستی جیهانیدا</span>",
+                desc: "پڕۆفیشناڵترین و جێگیرترین چوارچێوەی دیسکۆرد بۆ مۆسیقای Ultra-HQ، مۆدێرەیشنی پێشکەوتوو و بەڕێوەبردنی ستاف بە شێوازێکی بێخەوش.",
+                live: "سیستەمەکە بە تەواوی کاردەکات (All Systems Operational)",
+                pTitle: "تایبەتمەندییە نایابەکان", pSub: "هێزێکی بێ سنوور بۆ بەرزکردنەوەی ئاستی سێرڤەرەکەت",
+                pf1t: "سیستەمی 24/7 چالاك", pf1d: "بۆتەکە هەرگیز لۆکاڵ نابێت و هەمیشە لە ناو ڤۆیس چاتەکەتدا دەمێنێتەوە بێ پچڕان.",
+                pf2t: "فلتەری دەنگی تایبەت", pf2d: "چالاککردنی فلتەرەکانی 8D, Bassboost, Nightcore, و Vaporwave تەنها بە یەک کۆماند.",
+                pf3t: "ئۆتۆمۆدی هۆشمەند", pf3d: "پاراستنی سێرڤەرەکەت لە ڕیکلامی پلاتفۆرمەکانی تر و سپامی بەردەوام بە شێوازی AI.",
+                cTitle: "لیستی کۆماندە گشتییەکان", cSub: "کلیک لەسەر هەر یەکێکیان بکە بۆ بینینی وردەکاری و کۆپی بوون",
+                searchP: "بگەڕێ...", faqT: "پرسیارە باوەکان (FAQ)",
+                dh1: "پریفێکسی فەرمی", dp1: "پریفێکسی سەرەکی بۆتەکە بریتییە لە (+). تۆ دەتوانیت بە نووسینی +help ڕێک مێنووی سەرەکی لە ناو سێرڤەرەکەتدا کۆنتڕۆڵ بکەیت.",
+                devT: "پەرەپێدەری فەرمی", devD: "کلیک لێرە بکە بۆ کۆپی بوونی ناسنامەی فەرمی پڕۆژەکە (Developer ID)",
                 toast: "کۆماندەکە کۆپی کرا بۆ کلیپبۆرد! 🚀",
                 lblDesc: "وەسف:", lblUse: "شێوازی بەکارهێنان:",
-                cats: { all: "هەمووی", music: "میوزیک", mod: "ئیداره‌", automod: "پاراستن" }
+                cats: { all: "هەمووی", music: "میوزیک", mod: "ئیدارە", automod: "ئۆتۆمۆد" }
             },
             en: {
                 dir: "ltr", home: "Home", cmds: "Commands", docs: "Docs",
-                title: "The Future of Sound <span>Starts Here</span>",
-                desc: "An advanced global ecosystem built to streamline your Discord experience with pristine audio and airtight security features.",
-                servers: "Established Servers", users: "Active Global Users",
-                cTitle: "Official Command Catalog", cSub: "Click any command frame to inspect system usage parameters and metadata",
-                searchP: "Search specific registry...",
-                dh1: "Orpheus Engine Framework", dp1: "Orpheus runs on high-throughput architecture, delivering lag-free multimedia processing and instantaneous automated security deployment.",
-                devT: "Project Maintainer", devD: "Proudly engineered and maintained by Core Framework developers.",
+                title: "Sound Evolution <span>On Global Scale</span>",
+                desc: "The most robust and professional Discord architecture handling Ultra-HQ music streams, advanced staff frameworks, and smart automation modules.",
+                live: "All Core Systems Operational",
+                pTitle: "Premium Architecture", pSub: "Limitless parameters engineered to empower your community dashboard",
+                pf1t: "24/7 Non-Stop Stay", pf1d: "The audio client maintains persistent active connections inside voice channels continuously without drops.",
+                pf2t: "DSP Audio Filters", pf2d: "Inject 8D, heavy Bassboost, Nightcore, or flawless crystal clear acoustic properties instantly.",
+                pf3t: "Airtight AutoMod", pf3d: "Defend against external invite links, automated scripts, and heavy user text spams.",
+                cTitle: "Global Command Registry", cSub: "Select any frame link to parse direct console parameters and execution flags",
+                searchP: "Query registry...", faqT: "Frequently Asked Questions",
+                dh1: "System Core Prefix", dp1: "The structural prefix for the engine is (+). Fire the help directory using +help directly inside text channels.",
+                devT: "Lead Framework Architect", devD: "Click here to pipe official system developer ID directly into clipboard cache.",
                 toast: "Command copied to clipboard! 🚀",
-                lblDesc: "Description:", lblUse: "Usage Structure:",
-                cats: { all: "All Registry", music: "Audio", mod: "Moderation", automod: "Security" }
+                lblDesc: "Description:", lblUse: "Syntax Framework:",
+                cats: { all: "Full Catalog", music: "Audio Core", mod: "Staff Enforcement", automod: "Security Filters" }
             },
             ar: {
                 dir: "rtl", home: "الرئيسية", cmds: "الأوامر", docs: "التعليمات",
-                title: "مستقبل الصوتيات <span>يبدأ من هنا</span>",
-                desc: "نظام عالمي متطور مخصص لإدارة خادمك، تشغيل الصوت النقي وحماية الديسكورد باحترافية كاملة.",
-                servers: "السيرفرات الموثقة", users: "المستخدمين النشطين",
-                cTitle: "كتالوج الأوامر الرسمي", cSub: "اضغط على أي أمر لمعاينة تفاصيل الاستخدام والنسخ المباشر",
-                searchP: "ابحث عن الأمر المطلوب...",
-                dh1: "بنية وهيكلية أورفيوس", dp1: "يعمل أورفيوس على خوادم فائقة السرعة تضمن لك معالجة البيانات وبث الصوتيات بدون أي انقطاع أو تأخير.",
-                devT: "مطور المشروع", devD: "تم تطوير النظام بالكامل بواسطة مهندسي الشبكة المعتمدين.",
-                toast: "تم نسخ الأمر إلى الحافظة! 🚀",
-                lblDesc: "الوصف:", lblUse: "طريقة الاستخدام:",
-                cats: { all: "الكل", music: "الموسيقى", mod: "الإشراف", automod: "الحماية" }
+                title: "هندسة صوتية <span>بمعايير عالمية</span>",
+                desc: "النظام الأكثر استقراراً لتشغيل الموسيقى فائقة الدقة، إدارة طاقم العمل بالكامل، وحماية الشات تلقائياً.",
+                live: "جميع الأنظمة والعمليات الحيوية تعمل بنجاح",
+                pTitle: "المميزات الفائقة", pSub: "خيارات برمجية متقدمة لتعزيز كفاءة خادمك",
+                pf1t: "تواجد مستمر 24/7", pf1d: "يبقى البوت متصلاً بالقنوات الصوتية على مدار الساعة دون أي انقطاع في البث.",
+                pf2t: "فلترة وهندسة الصوت", pf2d: "تفعيل مؤثرات الـ 8D و تضخيم الصوت (Bassboost) بلمسة زر واحدة.",
+                pf3t: "الحماية الذكية (AutoMod)", pf3d: "منع الروابط العشوائية والإعلانات المزعجة تلقائياً بواسطة فلاتر النظام الحيوية.",
+                cTitle: "لوحة الأوامر الشاملة", cSub: "اضغط على أي أمر لمعاينة تفاصيل البنية التحتية والاستخدام",
+                searchP: "ابحث هنا...", faqT: "الأسئلة الشائعة",
+                dh1: "البادئة الافتراضية للتشغيل", dp1: "البادئة الرئيسية للبوت هي (+). يمكنك كتابة الأمر +help لفتح الدليل الإرشادي الشامل.",
+                devT: "المطور والمهندس المسؤول", devD: "اضغط هنا لنسخ معرف المطور المعتمد الخاص بإدارة البوت مباشرة.",
+                toast: "تم نسخ الأمر إلى الحافظة بنجاح! 🚀",
+                lblDesc: "الوصف:", lblUse: "بنية الاستخدام:",
+                cats: { all: "الكل", music: "الصوتيات", mod: "الإشراف والرقابة", automod: "الحماية التلقائية" }
             }
         };
 
@@ -678,12 +630,21 @@
 
             document.getElementById('h-title').innerHTML = pack.title;
             document.getElementById('h-desc').innerText = pack.desc;
-            document.getElementById('s-servers').innerText = pack.servers;
-            document.getElementById('s-users').innerText = pack.users;
+            document.getElementById('live-lbl').innerText = pack.live;
+            
+            document.getElementById('p-title').innerText = pack.pTitle;
+            document.getElementById('p-sub').innerText = pack.pSub;
+            document.getElementById('p-f1-t').innerText = pack.pf1t;
+            document.getElementById('p-f1-d').innerText = pack.pf1d;
+            document.getElementById('p-f2-t').innerText = pack.pf2t;
+            document.getElementById('p-f2-d').innerText = pack.pf2d;
+            document.getElementById('p-f3-t').innerText = pack.pf3t;
+            document.getElementById('p-f3-d').innerText = pack.pf3d;
 
             document.getElementById('c-title').innerText = pack.cTitle;
             document.getElementById('c-sub').innerText = pack.cSub;
             document.getElementById('globalSearch').setAttribute('placeholder', pack.searchP);
+            document.getElementById('faq-main-t').innerText = pack.faqT;
 
             document.getElementById('d-h1').innerText = pack.dh1;
             document.getElementById('d-p1').innerText = pack.dp1;
@@ -744,7 +705,7 @@
             list.forEach(c => {
                 const el = document.createElement('div');
                 el.className = 'cmd-item-box';
-                el.innerHTML = `<strong>${c.name}</strong><i class="far fa-eye" style="font-size:12px; color:var(--text-paragraph);"></i>`;
+                el.innerHTML = `<strong>${c.name}</strong><i class="far fa-copy" style="font-size:12px; color:var(--text-paragraph);"></i>`;
                 el.onclick = () => inspectCommand(c, el);
                 view.appendChild(el);
             });
@@ -766,11 +727,33 @@
             document.getElementById('inspect-code').innerText = cmd.usage;
 
             navigator.clipboard.writeText(cmd.name).then(() => {
-                const toast = document.getElementById('globalToast');
-                toast.innerText = langPack[selectedLang].toast;
-                toast.classList.add('show');
-                setTimeout(() => toast.classList.remove('show'), 2000);
+                showToast(langPack[selectedLang].toast);
             });
+        }
+
+        function toggleFaq(btn) {
+            const panel = btn.nextElementSibling;
+            const icon = btn.querySelector('i');
+            if (panel.style.maxHeight && panel.style.maxHeight !== '0px') {
+                panel.style.maxHeight = '0px';
+                icon.className = 'fas fa-chevron-down';
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+                icon.className = 'fas fa-chevron-up';
+            }
+        }
+
+        function copyDevID(id) {
+            navigator.clipboard.writeText(id).then(() => {
+                showToast(selectedLang === 'ku' ? "ناسنامەی گەشەپێدەر کۆپی کرا! 🛡️" : "Developer ID pinned to cache!");
+            });
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('globalToast');
+            toast.innerText = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2000);
         }
 
         function switchTab(t) {
