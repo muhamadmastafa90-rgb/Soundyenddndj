@@ -12,7 +12,7 @@
             --panel-light: #12121a;
             --gold: #dfb743;
             --gold-glow: rgba(223, 183, 67, 0.4);
-            --neon-accent: #ff2a74; /* فیکرەی نوێ: تێکەڵکردنی نیۆن بۆ ڕاکێشانی سەرنج */
+            --neon-accent: #ff2a74;
             --gold-gradient: linear-gradient(135deg, #f3d067, #b38f24);
             --premium-gradient: linear-gradient(135deg, #dfb743, #ff2a74);
             --text-main: #f5f5f7;
@@ -37,7 +37,6 @@
                 radial-gradient(circle at 90% 85%, rgba(255, 42, 116, 0.05) 0%, transparent 50%);
         }
 
-        /* هێڵی جوانی سەرەوە */
         .premium-bar {
             height: 6px;
             background: var(--premium-gradient);
@@ -127,7 +126,6 @@
             gap: 15px;
         }
 
-        /* فیکرەی چارەسەری زیرەکی وێنە: ئەگەر فایلی سەرەکی تێکچوو، CSS ڕاستەوخۆ دیزاینێکی جوان جێگەی دەگرێتەوە */
         .logo-img-wrapper {
             width: 46px;
             height: 46px;
@@ -145,8 +143,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            /* ئەگەر وێنە نەتۆڕا، ئایکۆنێکی مۆسیقا پیشان بدە وەک جێگرەوە */
-            background: url('file_00000000af071f4ad3ac7be80e6763c.png') no-repeat center/cover, var(--panel-light);
         }
 
         .logo-title {
@@ -279,7 +275,6 @@
             box-shadow: 0 0 60px rgba(223, 183, 67, 0.2);
             object-fit: cover;
             animation: float 5s ease-in-out infinite;
-            background: url('file_00000000af071f4ad3ac7be80e6763c.png') no-repeat center/cover, var(--panel-light);
         }
 
         @keyframes float {
@@ -287,7 +282,7 @@
             50% { transform: translateY(-15px) rotate(2deg); }
         }
 
-        /* 📈 بەشی ژمارە و ئامارەکان (فیکرەی نوێ) */
+        /* 📈 ئامارەکان */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -374,7 +369,7 @@
             line-height: 1.7;
         }
 
-        /* 📜 لاپەڕەی کۆماندەکان و بەشی گەڕانی مۆدێرن */
+        /* 📜 کۆماندەکان */
         .inner-page {
             padding: 70px 8%;
             max-width: 1100px;
@@ -396,7 +391,6 @@
             font-size: 16px;
         }
 
-        /* سندوقی گەڕانی گەورە و شیک */
         .search-container {
             display: flex;
             justify-content: center;
@@ -506,7 +500,6 @@
             transform: scale(1.2);
         }
 
-        /* نۆتیفیکەیشنی تۆست */
         .toast {
             position: fixed;
             bottom: 40px;
@@ -528,7 +521,7 @@
             opacity: 1;
         }
 
-        /* 📖 بەشی ڕێنماییەکان و نوێکارییەکان */
+        /* 📖 ڕێنماییەکان */
         .docs-card {
             background: var(--panel-bg);
             padding: 40px;
@@ -555,7 +548,6 @@
             font-weight: bold;
         }
 
-        /* فیکرەی گرێدانی نوێکارییەکان (Timeline) */
         .timeline {
             margin-top: 20px;
             border-right: 2px solid rgba(223, 183, 67, 0.2);
@@ -576,7 +568,6 @@
             border-radius: 50%;
         }
 
-        /* 👥 بەشی گەشەپێدەر */
         .dev-section {
             background: var(--panel-bg);
             padding: 35px;
@@ -642,7 +633,7 @@
     <header>
         <div class="logo-section">
             <div class="logo-img-wrapper">
-                <img src="file_00000000af071f4ad3ac7be80e6763c.png" alt="Orpheus Visual Core" onerror="this.style.display='none'">
+                <img src="logo.jpg" alt="Orpheus Visual Core">
             </div>
             <span class="logo-title">ORPHEUS</span>
         </div>
@@ -664,7 +655,7 @@
                 </div>
             </div>
             <div class="hero-image-area">
-                <img src="file_00000000af071f4ad3ac7be80e6763c.png" alt="Orpheus Render Center" class="hero-main-img">
+                <img src="logo.jpg" alt="Orpheus Render Center" class="hero-main-img">
             </div>
         </section>
 
