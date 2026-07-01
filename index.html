@@ -1,98 +1,122 @@
 <!DOCTYPE html>
-<html lang="ku" dir="rtl" id="html-tag">
+<html lang="ku" dir="rtl" id="html-tag" class="dark-theme">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orpheus Bot | Next-Gen Discord Framework</title>
+    <title>Orpheus Bot | World-Class Discord Ecosystem</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-dark: #030305;
-            --panel-bg: #09090d;
-            --panel-light: #12121a;
+            /* دۆخی تاریک (Dark Mode) */
+            --bg-main: #050508;
+            --bg-grid: rgba(223, 183, 67, 0.02);
+            --panel-bg: #0d0d15;
+            --panel-hover: #141423;
+            --border-color: rgba(223, 183, 67, 0.1);
             --gold: #dfb743;
-            --gold-glow: rgba(223, 183, 67, 0.4);
-            --neon-accent: #ff2a74;
-            --gold-gradient: linear-gradient(135deg, #f3d067, #b38f24);
-            --premium-gradient: linear-gradient(135deg, #dfb743, #ff2a74);
+            --gold-gradient: linear-gradient(135deg, #ffe082, #b38f24);
+            --cyber-purple: #7928ca;
+            --cyber-pink: #ff007f;
+            --premium-gradient: linear-gradient(135deg, #7928ca, #ff007f);
             --text-main: #f5f5f7;
-            --text-muted: #8e8f96;
-            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --text-muted: #9effeb;
+            --text-paragraph: #a1a1aa;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --glow: 0 0 20px rgba(255, 0, 127, 0.2);
+        }
+
+        .light-theme {
+            /* دۆخی ڕووناک (Light Mode) */
+            --bg-main: #f8f9fa;
+            --bg-grid: rgba(121, 40, 202, 0.02);
+            --panel-bg: #ffffff;
+            --panel-hover: #f1f3f5;
+            --border-color: rgba(0, 0, 0, 0.08);
+            --gold: #b38f24;
+            --gold-gradient: linear-gradient(135deg, #b38f24, #8c6d11);
+            --text-main: #1d1d1f;
+            --text-paragraph: #515154;
+            --glow: 0 10px 30px rgba(0, 0, 0, 0.05);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-dark);
+            background-color: var(--bg-main);
             color: var(--text-main);
             overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 10% 15%, rgba(223, 183, 67, 0.07) 0%, transparent 50%),
-                radial-gradient(circle at 90% 85%, rgba(255, 42, 116, 0.05) 0%, transparent 50%);
+            transition: background-color 0.5s ease, color 0.5s ease;
+            /* پاشبنەمای ئەندازیاری جیهانی */
+            background-image: linear-gradient(var(--bg-grid) 1px, transparent 1px),
+                              linear-gradient(90deg, var(--bg-grid) 1px, transparent 1px);
+            background-size: 40px 40px;
         }
 
-        .premium-bar {
-            height: 6px;
-            background: var(--premium-gradient);
-            box-shadow: 0 2px 25px rgba(255, 42, 116, 0.4);
+        /* هێڵی پریمیمیۆمی سەرەکی */
+        .global-progress-bar {
+            height: 5px;
+            background: linear-gradient(90deg, var(--cyber-purple), var(--cyber-pink), var(--gold));
+            background-size: 300% 300%;
+            animation: gradientMove 6s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         /* 🌐 مۆدێلی زمان */
         .lang-modal {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(3, 3, 5, 0.98);
+            background: rgba(5, 5, 8, 0.95);
             z-index: 9999;
             display: flex;
             justify-content: center;
             align-items: center;
-            backdrop-filter: blur(20px);
-            transition: opacity 0.6s ease;
+            backdrop-filter: blur(25px);
+            transition: opacity 0.5s ease;
         }
 
         .lang-box {
             background: var(--panel-bg);
-            border: 1px solid rgba(223, 183, 67, 0.3);
-            padding: 50px 40px;
-            border-radius: 24px;
+            border: 1px solid var(--border-color);
+            padding: 45px;
+            border-radius: 28px;
             text-align: center;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 40px rgba(223, 183, 67, 0.1);
-            max-width: 480px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            max-width: 500px;
             width: 90%;
         }
 
         .lang-box h2 {
-            color: var(--gold);
-            margin-bottom: 12px;
-            font-size: 26px;
-            letter-spacing: 1px;
-        }
-
-        .lang-box p {
-            color: var(--text-muted);
-            font-size: 14px;
-            margin-bottom: 30px;
-            line-height: 1.6;
+            font-size: 28px;
+            margin-bottom: 15px;
+            background: var(--premium-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .lang-options {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
+            margin-top: 25px;
         }
 
         .lang-btn {
-            padding: 15px;
-            border: 1px solid rgba(223, 183, 67, 0.15);
-            background: var(--panel-light);
+            padding: 16px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-main);
             color: var(--text-main);
-            border-radius: 12px;
+            border-radius: 14px;
             cursor: pointer;
             font-size: 16px;
             font-weight: 600;
@@ -100,517 +124,370 @@
         }
 
         .lang-btn:hover {
-            border-color: var(--neon-accent);
             background: var(--premium-gradient);
-            color: #000;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(255, 42, 116, 0.2);
+            color: #white;
+            border-color: transparent;
+            transform: scale(1.02);
+            box-shadow: var(--glow);
         }
 
-        /* هێدەر و ناڤبار */
+        /* ناڤبار و سەرپەڕە */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 8%;
-            background-color: rgba(5, 5, 7, 0.75);
+            background: rgba(var(--bg-main), 0.7);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(223, 183, 67, 0.08);
+            border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0; z-index: 100;
         }
 
-        .logo-section {
+        .logo-container {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
 
-        .logo-img-wrapper {
-            width: 46px;
-            height: 46px;
-            border-radius: 50%;
-            border: 2px solid var(--gold);
+        .logo-wrapper {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px; /* شێوازی مۆدێرنی چوارگۆشەی خڕ */
             overflow: hidden;
-            box-shadow: 0 0 15px var(--gold-glow);
-            background: var(--panel-light);
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            border: 2px solid var(--gold);
         }
 
-        .logo-img-wrapper img {
+        .logo-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .logo-title {
-            font-size: 24px;
+        .logo-text {
+            font-size: 22px;
             font-weight: 900;
+            letter-spacing: 1.5px;
             background: var(--gold-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: 2px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         nav button {
             background: transparent;
             border: none;
-            color: var(--text-muted);
-            font-size: 16px;
+            color: var(--text-paragraph);
+            font-size: 15px;
             font-weight: 600;
-            margin-left: 25px;
+            padding: 10px 20px;
+            border-radius: 10px;
             cursor: pointer;
             transition: var(--transition);
-            padding: 8px 16px;
-            border-radius: 8px;
         }
 
         nav button:hover, nav button.active-tab {
-            color: var(--gold);
-            background: rgba(223, 183, 67, 0.05);
-            text-shadow: 0 0 10px var(--gold-glow);
+            color: var(--text-main);
+            background: var(--panel-hover);
         }
 
-        /* ئەنیمەیشنی گۆڕینی لاپەڕە */
+        /* دوگمەی گۆڕینی دۆخی ڕووناکی */
+        .theme-toggle {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            color: var(--gold);
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(15deg);
+            background: var(--panel-hover);
+        }
+
+        /* ناوەڕۆکی بەشەکان */
         .tab-content {
             display: none;
             opacity: 0;
-            transform: scale(0.98) translateY(10px);
+            transform: translateY(15px);
             transition: var(--transition);
         }
 
         .tab-content.active-content {
             display: block;
             opacity: 1;
-            transform: scale(1) translateY(0);
+            transform: translateY(0);
         }
 
-        /* ⚡ بەشی سەرەکی (Hero) */
-        .hero {
+        /* 🚀 بەشی هیرۆ (Hero Section) */
+        .hero-section {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 80px 8%;
-            min-height: 75vh;
-            gap: 60px;
+            padding: 100px 8%;
+            min-height: 80vh;
+            gap: 50px;
         }
 
-        .hero-text h1 {
-            font-size: 54px;
-            line-height: 1.15;
-            margin-bottom: 25px;
-            font-weight: 800;
+        .hero-info {
+            max-width: 650px;
         }
 
-        .hero-text h1 span {
-            background: var(--premium-gradient);
+        .hero-info h1 {
+            font-size: 58px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero-info h1 span {
+            background: linear-gradient(90deg, #ff007f, #7928ca);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .hero-text p {
-            color: var(--text-muted);
-            font-size: 19px;
-            margin-bottom: 40px;
-            max-width: 600px;
-            line-height: 1.8;
+        .hero-info p {
+            color: var(--text-paragraph);
+            font-size: 20px;
+            line-height: 1.7;
+            margin-bottom: 35px;
         }
 
-        .btn-wrapper {
+        .action-btns {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             flex-wrap: wrap;
         }
 
-        .btn {
-            padding: 16px 38px;
+        .global-btn {
+            padding: 18px 36px;
             font-size: 16px;
             font-weight: 700;
             border-radius: 14px;
             text-decoration: none;
-            transition: var(--transition);
             display: inline-flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
+            transition: var(--transition);
         }
 
-        .btn-invite {
-            background: var(--premium-gradient);
-            color: #000;
-            box-shadow: 0 10px 25px rgba(255, 42, 116, 0.25);
+        .btn-primary {
+            background: var(--text-main);
+            color: var(--bg-main);
         }
 
-        .btn-invite:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 35px rgba(255, 42, 116, 0.4);
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
 
-        .btn-support {
-            background: transparent;
-            color: var(--gold);
-            border: 2px solid var(--gold);
-        }
-
-        .btn-support:hover {
-            background: rgba(223, 183, 67, 0.08);
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(223, 183, 67, 0.15);
-        }
-
-        /* لۆگۆی ناوەڕاستی لاپەڕەی هیرۆ */
-        .hero-image-area {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero-main-img {
-            width: 340px;
-            height: 340px;
-            border-radius: 50%;
-            border: 3px solid var(--gold);
-            box-shadow: 0 0 60px rgba(223, 183, 67, 0.2);
-            object-fit: cover;
-            animation: float 5s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(2deg); }
-        }
-
-        /* 📈 ئامارەکان */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            padding: 40px 8%;
+        .btn-secondary {
             background: var(--panel-bg);
-            border-top: 1px solid rgba(223, 183, 67, 0.05);
-            border-bottom: 1px solid rgba(223, 183, 67, 0.05);
-            text-align: center;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
         }
 
-        .stat-card h3 {
-            font-size: 36px;
+        .btn-secondary:hover {
+            background: var(--panel-hover);
+            transform: translateY(-3px);
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .hero-img-molding {
+            width: 360px;
+            height: 360px;
+            border-radius: 24% 76% 35% 65% / 49% 45% 55% 51%; /* شێوازی گرافیکی مۆدێرن */
+            background: var(--premium-gradient);
+            padding: 6px;
+            animation: morphing 8s ease-in-out infinite;
+            box-shadow: var(--glow);
+        }
+
+        .hero-img-molding img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: inherit;
+        }
+
+        @keyframes morphing {
+            0%, 100% { border-radius: 24% 76% 35% 65% / 49% 45% 55% 51%; }
+            50% { border-radius: 76% 24% 65% 35% / 55% 51% 49% 45%; }
+        }
+
+        /* 📊 بەشی ئامارە گەشاوەکان */
+        .global-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            padding: 60px 8%;
+        }
+
+        .stat-box {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .stat-box:hover {
+            border-color: var(--cyber-pink);
+            transform: translateY(-5px);
+        }
+
+        .stat-box h3 {
+            font-size: 42px;
             font-weight: 800;
             background: var(--gold-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 5px;
         }
 
-        .stat-card p {
-            color: var(--text-muted);
+        .stat-box p {
+            color: var(--text-paragraph);
             font-size: 14px;
+            margin-top: 5px;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
-        /* 🛠️ تایبەتمەندییەکان */
-        .features-section {
-            padding: 90px 8%;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .feature-card {
-            background: var(--panel-bg);
-            padding: 40px 30px;
-            border-radius: 20px;
-            border: 1px solid rgba(223, 183, 67, 0.03);
+        /* 🔍 کاتۆلۆگی کۆماندە پێشکەوتووەکان */
+        .search-area {
+            max-width: 700px;
+            margin: 40px auto;
             position: relative;
-            overflow: hidden;
-            transition: var(--transition);
         }
 
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 4px; height: 100%;
-            background: var(--gold-gradient);
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            border-color: rgba(223, 183, 67, 0.2);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
-        }
-
-        .feature-card:hover::before {
-            opacity: 1;
-        }
-
-        .feature-card i {
-            font-size: 36px;
-            color: var(--gold);
-            margin-bottom: 25px;
-        }
-
-        .feature-card h3 {
-            font-size: 22px;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .feature-card p {
-            color: var(--text-muted);
-            font-size: 15px;
-            line-height: 1.7;
-        }
-
-        /* 📜 کۆماندەکان */
-        .inner-page {
-            padding: 70px 8%;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .page-title {
-            font-size: 38px;
-            font-weight: 800;
-            color: var(--gold);
-            margin-bottom: 12px;
-            text-align: center;
-        }
-
-        .page-subtitle {
-            text-align: center;
-            color: var(--text-muted);
-            margin-bottom: 40px;
-            font-size: 16px;
-        }
-
-        .search-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 40px;
-        }
-
-        .search-box-wrapper {
-            position: relative;
+        .search-input {
             width: 100%;
-            max-width: 600px;
+            padding: 18px 25px 18px 60px;
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            color: var(--text-main);
+            font-size: 16px;
+            outline: none;
+            transition: var(--transition);
         }
 
-        .search-box-wrapper i {
+        .search-area i {
             position: absolute;
-            top: 50%;
-            right: 20px;
+            left: 25px; top: 50%;
             transform: translateY(-50%);
             color: var(--gold);
             font-size: 18px;
         }
 
-        .search-box {
-            width: 100%;
-            padding: 16px 55px 16px 25px;
-            background: var(--panel-bg);
-            border: 1px solid rgba(223, 183, 67, 0.15);
-            border-radius: 50px;
-            color: var(--text-main);
-            font-size: 16px;
-            outline: none;
-            transition: var(--transition);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        .search-input:focus {
+            border-color: var(--cyber-purple);
+            box-shadow: var(--glow);
         }
 
-        .search-box:focus {
-            border-color: var(--neon-accent);
-            box-shadow: 0 0 25px rgba(255, 42, 116, 0.15);
-        }
-
-        .category-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-
-        .cat-btn {
-            background: var(--panel-bg);
-            border: 1px solid rgba(223, 183, 67, 0.1);
-            color: var(--text-muted);
-            padding: 12px 26px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        .cat-btn.active-cat, .cat-btn:hover {
-            background: var(--gold-gradient);
-            color: #000;
-            border-color: var(--gold);
-            box-shadow: 0 5px 15px var(--gold-glow);
-        }
-
-        .cmd-grid {
+        .cmd-display-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 18px;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
         }
 
-        .cmd-box {
+        .cmd-item-box {
             background: var(--panel-bg);
-            padding: 18px;
+            border: 1px solid var(--border-color);
+            padding: 20px;
             border-radius: 14px;
-            border: 1px solid rgba(223, 183, 67, 0.04);
-            border-right: 4px solid var(--gold);
+            cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            cursor: pointer;
             transition: var(--transition);
         }
 
-        .cmd-box:hover {
-            background: var(--panel-light);
-            transform: translateY(-3px);
-            border-color: var(--neon-accent);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        .cmd-item-box:hover, .cmd-item-box.selected-cmd {
+            background: var(--panel-hover);
+            border-color: var(--cyber-pink);
+            transform: translateY(-2px);
         }
 
-        .cmd-name {
-            font-family: 'Courier New', Courier, monospace;
-            color: var(--text-main);
-            font-size: 15px;
-            font-weight: 700;
+        /* 💡 بەشی زانیاری کۆماندی دیاریکراو */
+        .cmd-inspector {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            border-radius: 18px;
+            margin-top: 25px;
+            display: none;
         }
 
-        .cmd-icon {
-            color: var(--text-muted);
-            font-size: 13px;
-            transition: var(--transition);
+        .inspector-active { display: block; animation: fadeIn 0.4s ease; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .cmd-box:hover .cmd-icon {
-            color: var(--gold);
-            transform: scale(1.2);
-        }
-
-        .toast {
+        /* 📋 تۆست */
+        .toast-notify {
             position: fixed;
-            bottom: 40px;
-            left: 50%;
+            bottom: 30px; left: 50%;
             transform: translateX(-50%) translateY(100px);
-            background: var(--premium-gradient);
-            color: #000;
-            padding: 14px 30px;
+            background: var(--text-main);
+            color: var(--bg-main);
+            padding: 14px 28px;
             border-radius: 50px;
-            font-weight: bold;
-            box-shadow: 0 10px 30px rgba(255, 42, 116, 0.3);
-            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            z-index: 1000;
-            opacity: 0;
+            font-weight: 700;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: var(--transition);
+            opacity: 0; z-index: 1000;
         }
 
-        .toast.show {
+        .toast-notify.show {
             transform: translateX(-50%) translateY(0);
             opacity: 1;
         }
 
-        /* 📖 ڕێنماییەکان */
-        .docs-card {
-            background: var(--panel-bg);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid rgba(223, 183, 67, 0.04);
-            line-height: 1.9;
-            margin-bottom: 30px;
+        /* 👥 بەشی کۆمەڵگە و گەشەپێدەر */
+        .community-card {
+            background: linear-gradient(rgba(13,13,21,0.8), rgba(13,13,21,0.8)), url('logo.jpg') no-repeat center/cover;
+            border: 1px solid var(--border-color);
+            padding: 50px;
+            border-radius: 24px;
+            text-align: center;
+            margin-top: 60px;
         }
 
-        .docs-card h3 {
-            color: var(--gold);
-            margin-bottom: 20px;
-            font-size: 24px;
-            border-bottom: 1px solid rgba(223, 183, 67, 0.08);
-            padding-bottom: 10px;
-        }
-
-        .badge {
-            background: rgba(223, 183, 67, 0.12);
-            color: var(--gold);
-            padding: 4px 12px;
-            border-radius: 6px;
-            font-family: monospace;
-            font-weight: bold;
-        }
-
-        .timeline {
-            margin-top: 20px;
-            border-right: 2px solid rgba(223, 183, 67, 0.2);
-            padding-right: 20px;
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 25px;
-        }
-
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            top: 8px; right: -27px;
-            width: 12px; height: 12px;
-            background: var(--neon-accent);
-            border-radius: 50%;
-        }
-
-        .dev-section {
-            background: var(--panel-bg);
-            padding: 35px;
-            border-radius: 20px;
-            border: 1px solid rgba(223, 183, 67, 0.08);
+        .dev-profile {
             display: flex;
             align-items: center;
-            gap: 25px;
-            margin-top: 50px;
-        }
-
-        .dev-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: var(--premium-gradient);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #000;
-            font-size: 36px;
-            box-shadow: 0 0 20px rgba(255, 42, 116, 0.3);
-        }
-
-        .dev-info h4 {
-            font-size: 22px;
-            color: var(--gold);
-            margin-bottom: 6px;
-        }
-
-        .dev-info p {
-            color: var(--text-muted);
-            font-size: 15px;
+            gap: 20px;
+            background: var(--panel-bg);
+            padding: 25px;
+            border-radius: 16px;
+            border-left: 5px solid var(--cyber-purple);
+            margin-top: 40px;
         }
 
         @media (max-width: 768px) {
-            header { flex-direction: column; gap: 20px; padding: 20px; }
-            nav button { margin: 0 8px; font-size: 14px; padding: 6px 12px; }
-            .hero { flex-direction: column-reverse; text-align: center; padding: 50px 20px; gap: 40px; }
-            .hero-text h1 { font-size: 36px; }
-            .hero-main-img { width: 260px; height: 260px; }
-            .btn-wrapper { justify-content: center; }
-            .dev-section { flex-direction: column; text-align: center; }
+            header { flex-direction: column; gap: 15px; }
+            .hero-section { flex-direction: column-reverse; text-align: center; padding: 60px 20px; }
+            .hero-info h1 { font-size: 38px; }
+            .hero-img-molding { width: 280px; height: 280px; }
+            .action-btns { justify-content: center; }
         }
     </style>
 </head>
@@ -618,8 +495,8 @@
 
     <div class="lang-modal" id="langModal">
         <div class="lang-box">
-            <h2>Welcome to Orpheus Engine</h2>
-            <p>تکایە زمانێک هەڵبژێرە بۆ بەردەوامبوون و ڕێکخستنی شاشەکە.<br>Please choose a language to calibrate the framework.</p>
+            <h2>Select Ecosystem Language</h2>
+            <p>ڕووکاری سیستەمەکە بە کام زمان ڕێکبخرێت؟</p>
             <div class="lang-options">
                 <button class="lang-btn" onclick="setLanguage('ku')">کوردی (Kurdish)</button>
                 <button class="lang-btn" onclick="setLanguage('en')">English</button>
@@ -628,317 +505,279 @@
         </div>
     </div>
 
-    <div class="premium-bar"></div>
+    <div class="global-progress-bar"></div>
 
     <header>
-        <div class="logo-section">
-            <div class="logo-img-wrapper">
-                <img src="logo.jpg" alt="Orpheus Visual Core">
+        <div class="logo-container">
+            <div class="logo-wrapper">
+                <img src="logo.jpg" alt="Orpheus Core Identity">
             </div>
-            <span class="logo-title">ORPHEUS</span>
+            <span class="logo-text">ORPHEUS</span>
         </div>
         <nav>
-            <button id="tab-btn-home" class="active-tab" onclick="switchTab('home')">سەرەکی</button>
-            <button id="tab-btn-commands" onclick="switchTab('commands')">کۆماندەکان</button>
-            <button id="tab-btn-docs" onclick="switchTab('docs')">ڕێنماییەکان</button>
+            <button id="nav-home" class="active-tab" onclick="switchTab('home')">سەرەکی</button>
+            <button id="nav-commands" onclick="switchTab('commands')">کۆماندەکان</button>
+            <button id="nav-docs" onclick="switchTab('docs')">ڕێنماییەکان</button>
+            <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
         </nav>
     </header>
 
     <div id="tab-home" class="tab-content active-content">
-        <section class="hero">
-            <div class="hero-text">
-                <h1 id="hero-title">مێلۆدییەکی بێوێنە لە <span>سێرڤەرەکەتدا!</span></h1>
-                <p id="hero-desc">پڕۆفیشناڵترین بۆتی دیسکۆرد بۆ بەڕێوەبردن، لێدانی میوزیک بە کوالیتی ناوازە، دابەشکاری خۆڕایی و پاراستنی سێرڤەرەکەت.</p>
-                <div class="btn-wrapper">
-                    <a href="https://discord.com/oauth2/authorize?client_id=1150754451938869371&permissions=8&integration_type=0&scope=bot" target="_blank" class="btn btn-invite"><i class="fab fa-discord"></i> Invite Bot</a>
-                    <a href="https://discord.gg/Pn4uqzYAsD" target="_blank" class="btn btn-support"><i class="fas fa-headset"></i> Support Server</a>
+        <section class="hero-section">
+            <div class="hero-info">
+                <h1 id="h-title">داهاتووی دەنگ و بەڕێوەبردن <span>لێرەوە دەستپێدەکات</span></h1>
+                <p id="h-desc">سیستەمێکی پێشکەوتووی جیهانی بۆ بەڕێوەبردنی سێرڤەرەکەت، لێدانی مۆسیقا بە کوالیتی بێخەوش و پاراستنی فەرمی دیسکۆرد.</p>
+                <div class="action-btns">
+                    <a href="https://discord.com/oauth2/authorize?client_id=1150754451938869371&permissions=8&integration_type=0&scope=bot" target="_blank" class="global-btn btn-primary"><i class="fab fa-discord"></i> Add to Discord</a>
+                    <a href="https://discord.gg/Pn4uqzYAsD" target="_blank" class="global-btn btn-secondary"><i class="fas fa-server"></i> Join Community</a>
                 </div>
             </div>
-            <div class="hero-image-area">
-                <img src="logo.jpg" alt="Orpheus Render Center" class="hero-main-img">
+            <div class="hero-visual">
+                <div class="hero-img-molding">
+                    <img src="logo.jpg" alt="Orpheus Visual Masterpiece">
+                </div>
             </div>
         </section>
 
-        <div class="stats-grid">
-            <div class="stat-card">
+        <div class="global-stats">
+            <div class="stat-box">
                 <h3>500+</h3>
-                <p id="stat-servers">سێرڤەرەکان (Servers)</p>
+                <p id="s-servers">سێرڤەرە جێگیرەکان</p>
             </div>
-            <div class="stat-card">
+            <div class="stat-box">
                 <h3>250K+</h3>
-                <p id="stat-users">بەکارهێنەران (Users)</p>
+                <p id="s-users">بەکارهێنەرانی چالاك</p>
             </div>
-            <div class="stat-card">
-                <h3>24ms</h3>
-                <p id="stat-ping">خێرایی (Latency)</p>
-            </div>
-        </div>
-
-        <section class="features-section">
-            <h2 style="text-align: center; color: var(--gold); margin-bottom: 10px; font-size: 32px;" id="feat-title">تایبەتمەندییەکانی بۆتەکە</h2>
-            <p style="text-align: center; color: var(--text-muted); margin-bottom: 40px;" id="feat-sub">هەموو ئەو شتانەی بۆ سێرڤەرەکەت پێویستن لە یەک بۆتدا</p>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <i class="fas fa-music"></i>
-                    <h3 id="f-music-t">میوزیک (Music)</h3>
-                    <p id="f-music-d">لێدانی دەنگ و گۆرانی بە کوالیتی Ultra-HQ لە یوتیوب و سپۆتیفایەوە بەبێ هیچ پچڕان و کێشەیەک.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-shield-alt"></i>
-                    <h3 id="f-auto-t">پاراستنی خۆکار (AutoMod)</h3>
-                    <p id="f-auto-d">بلۆککردنی لینک، ڕیکلام، و قسەی نەشیاو بە شێوازی زیرەک بۆ هێشتنەوەی ژینگەیەکی پاك.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-gavel"></i>
-                    <h3 id="f-mod-t">بەڕێوەبردن (Moderation)</h3>
-                    <p id="f-mod-d">کۆماندەکانی هۆشداریدان (Warn)، دەرکردن (Kick)، و باندکردن (Ban) بۆ ستافی سێرڤەرەکەت.</p>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <div id="tab-commands" class="tab-content inner-page">
-        <h2 class="page-title" id="cmd-page-title">لیستی کۆماندەکان</h2>
-        <p class="page-subtitle" id="cmd-page-sub">کلیک لەسەر هەر کۆماندێک بکە بۆ کۆپی بوونی پریفێکسەکە</p>
-        
-        <div class="search-container">
-            <div class="search-box-wrapper">
-                <input type="text" id="cmdSearchInput" class="search-box" placeholder="بگەڕێ بۆ کۆماندێک..." oninput="filterBySearch()">
-                <i class="fas fa-search"></i>
-            </div>
-        </div>
-
-        <div class="category-tabs" id="cat-tabs-container"></div>
-
-        <div class="cmd-grid" id="commands-list-container"></div>
-    </div>
-
-    <div id="tab-docs" class="tab-content inner-page">
-        <h2 class="page-title" id="docs-page-title">دۆکیومێنت و ڕێنماییەکان</h2>
-        <p class="page-subtitle" id="docs-page-sub">چۆنیەتی ڕێکخستن و بەکارهێنانی بۆتی ئۆرفیۆس</p>
-        
-        <div class="docs-card">
-            <h3 id="doc-sec1-t">وەسفی گشتی بۆتەکە</h3>
-            <p id="doc-sec1-d">بۆتی Orpheus سیستەمێکی پێشکەوتووی دیسکۆردە کە چەندین خزمەتگوزاری جیاواز وەک لێدانی مۆسیقای بێخەوش، بەڕێوەبردنی خۆکاری چاتەکان، و بەهێزکردنی ئۆتۆمۆد پێشکەش بە خاوەن سێرڤەرەکان دەکات بۆ پاراستنی ژینگەی چات لە ڕیکلام و سپام.</p>
-        </div>
-
-        <div class="docs-card">
-            <h3 id="doc-sec2-t">پریفێکس و دەستپێکردن</h3>
-            <p id="doc-sec2-d">پریفێکسی سەرەکی بۆتەکە بریتییە لە <span class="badge">+</span>. بۆ بینینی هەموو بەش و ڕێنماییە کورتەکان لە ناو خودی دیسکۆرددا، تەنها لە چاتەکەتدا بنوسە <code>+help</code> تا مێنیوی هاوکاریت بۆ بکرێتەوە.</p>
-        </div>
-
-        <div class="docs-card">
-            <h3 id="changelog-title">مێژووی دوایین گۆڕانکارییەکان (Changelog)</h3>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <strong>v2.4.0 (2026)</strong> - زیادکردنی بزوێنەری Lavalink نوێ و جێگیرکردنی فلتەرەکانی سیستەمی AutoMod بە شێوازی فرێش.
-                </div>
-                <div class="timeline-item">
-                    <strong>v2.0.0</strong> - بەتەواوی کۆدەکانی میوزیک چاکسازییان تێدا کرا و سیستەمی کۆپی خۆکار جێگیرکرا.
-                </div>
-            </div>
-        </div>
-
-        <div class="dev-section">
-            <div class="dev-icon">
-                <i class="fas fa-terminal"></i>
-            </div>
-            <div class="dev-info">
-                <h4 id="dev-lbl-title">گەشەپێدەر و خاوەنی فەرمی</h4>
-                <p id="dev-lbl-desc">ئەم بۆتە و وێبسایتە بە شانازییەوە گەشەی پێدراوە لەلایەن گەشەپێدەر:</p>
-                <p style="color: var(--gold); font-weight: bold; margin-top: 5px; font-family: monospace; letter-spacing: 1px;">DEVELOPER ID: 1147899646602121216</p>
+            <div class="stat-box">
+                <h3>99.9%</h3>
+                <p id="s-uptime">کاتی کارکردن (Uptime)</p>
             </div>
         </div>
     </div>
 
-    <div class="toast" id="clipboardToast">کۆپی کرا!</div>
+    <div id="tab-commands" class="tab-content" style="padding: 60px 8%;">
+        <h2 style="text-align: center; font-size: 36px; color: var(--gold);" id="c-title">کاتۆلۆگی کۆماندە فەرمییەکان</h2>
+        <p style="text-align: center; color: var(--text-paragraph); margin-bottom: 30px;" id="c-sub">بۆ زانیاری زیاتر و کۆپی بوون کلیک لەسەر کۆماندەکان بکە</p>
 
-    <footer style="text-align: center; padding: 40px 20px; border-top: 1px solid rgba(223, 183, 67, 0.05); color: var(--text-muted); font-size: 14px; background: #010102;">
-        <p>© 2026 ORPHEUS CORE framework. Built with premium standards.</p>
+        <div class="search-area">
+            <input type="text" id="globalSearch" class="search-input" placeholder="بگەڕێ بۆ کۆماندی مەبەست..." oninput="filterSystem()">
+            <i class="fas fa-search"></i>
+        </div>
+
+        <div class="category-tabs" style="display:flex; justify-content:center; gap:10px; margin-bottom:30px;" id="cat-area"></div>
+
+        <div class="cmd-display-grid" id="cmd-viewport"></div>
+
+        <div class="cmd-inspector" id="inspector">
+            <h3 style="color:var(--cyber-pink); margin-bottom:10px;" id="inspect-name">+play</h3>
+            <p style="color:var(--text-main); font-weight:bold; margin-bottom:5px;" id="inspect-desc-lbl">وەسف:</p>
+            <p style="color:var(--text-paragraph); margin-bottom:15px;" id="inspect-desc">بۆ لێدانی گۆرانی بەکاردێت.</p>
+            <p style="color:var(--gold); font-weight:bold;" id="inspect-usage-lbl">شێوازی بەکارهێنان:</p>
+            <code style="background:var(--bg-main); padding:5px 10px; border-radius:6px; display:inline-block; margin-top:5px;" id="inspect-code">+play [song name/link]</code>
+        </div>
+    </div>
+
+    <div id="tab-docs" class="tab-content" style="padding: 60px 8%; max-width: 1000px; margin: 0 auto;">
+        <div class="docs-card" style="background: var(--panel-bg); padding: 40px; border-radius: 20px; border: 1px solid var(--border-color); margin-bottom: 25px;">
+            <h3 style="color: var(--gold); margin-bottom: 15px;" id="d-h1">بنەمای کارکردنی ئۆرفیۆس</h3>
+            <p style="color: var(--text-paragraph); line-height: 1.8;" id="d-p1">ئۆرفیۆس سیستەمێکی جیهانییە کە ژینگەیەکی جێگیر بۆ بەکارهێنەرانی دیسکۆرد فەراهەم دەکات. بە بەکارهێنانی خێراترین کەرەستەکانی کۆدکردن، توانراوە ڕێژەی پچڕانی مۆسیقا بگەیەنرێتە نزمترین ئاستی مێژوویی.</p>
+        </div>
+
+        <div class="community-card">
+            <h2 style="color: #fff; margin-bottom: 15px;">Join the Global Evolution</h2>
+            <p style="color: #ddd; margin-bottom: 25px;">دەنگ بدە بە بۆتەکە یان وەرە ناو سێرڤەری فەرمی بۆ پشتگیری ڕاستەوخۆ.</p>
+            <a href="https://discord.gg/Pn4uqzYAsD" target="_blank" class="global-btn btn-primary">Open Discord App</a>
+        </div>
+
+        <div class="dev-profile">
+            <div style="font-size: 30px; color: var(--gold);"><i class="fas fa-user-shield"></i></div>
+            <div>
+                <h4 style="font-size: 18px;" id="dev-t">خاوەنی پڕۆژە</h4>
+                <p style="color: var(--text-paragraph); font-size: 14px;" id="dev-d">گەشەپێدراوی فەرمی لایەن ئەندازیارانی کۆر کورتکراوەی ناسنامە:</p>
+                <span style="font-family: monospace; color: var(--cyber-pink); font-weight: bold; display: block; margin-top: 5px;">ID: 1147899646602121216</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-notify" id="globalToast">کۆپی کرا!</div>
+
+    <footer style="text-align: center; padding: 40px; border-top: 1px solid var(--border-color); margin-top: 80px; color: var(--text-paragraph); font-size: 13px;">
+        <p>© 2026 ORPHEUS ECOSYSTEM | Global Framework Architecture.</p>
     </footer>
 
     <script>
-        let currentLang = 'ku';
-        let currentCategory = 'all';
+        let selectedLang = 'ku';
+        let activeCat = 'all';
 
-        const musicCmds = ["artistradio", "autoplay", "clearqueue", "forcefix", "forceskip", "forward", "grab", "history", "join", "leave", "leavecleanup", "loop", "lyrics", "mood", "move", "nowplaying", "pause", "play", "previous", "queue", "remove", "replay", "resume", "rewind", "search", "seek", "shuffle", "similar", "skip", "skipto", "sleep", "speed", "stop", "volume"];
-        const modCmds = ["ban", "hide", "hideall", "kick", "lock", "lockall", "mute", "nuke", "purge", "rename", "role", "role add", "role remove", "role all", "role bots", "role humans", "role create", "role delete", "role rename", "role colour", "role icon", "role temp", "role taskcancel", "role edit", "snipe", "unban", "unhide", "unhideall", "unlock", "unlockall", "unmute"];
-        const automodCmds = ["automod", "automod enable", "automod disable", "automod whitelist", "automod config", "automod punishment", "automod logging", "automod heat", "automod limits", "automod reset"];
+        const rawMusic = ["artistradio", "autoplay", "clearqueue", "forcefix", "forceskip", "forward", "grab", "history", "join", "leave", "leavecleanup", "loop", "lyrics", "mood", "move", "nowplaying", "pause", "play", "previous", "queue", "remove", "replay", "resume", "rewind", "search", "seek", "shuffle", "similar", "skip", "skipto", "sleep", "speed", "stop", "volume"];
+        const rawMod = ["ban", "hide", "hideall", "kick", "lock", "lockall", "mute", "nuke", "purge", "rename", "role", "role add", "role remove", "snipe", "unban", "unmute"];
+        const rawAuto = ["automod", "automod enable", "automod disable", "automod config", "automod reset"];
 
-        function generateCmdList() {
-            let list = [];
-            musicCmds.forEach(c => list.push({ name: "+" + c, cat: "music" }));
-            modCmds.forEach(c => list.push({ name: "+" + c, cat: "mod" }));
-            automodCmds.forEach(c => list.push({ name: "+" + c, cat: "automod" }));
-            return list;
+        function buildDatabase() {
+            let db = [];
+            rawMusic.forEach(c => db.push({ name: "+" + c, cat: "music", descKu: "کۆنتڕۆڵ و لێدانی میوزیک بە کوالیتی بەرز.", descEn: "High quality music stream engine command.", usage: `+${c}` }));
+            rawMod.forEach(c => db.push({ name: "+" + c, cat: "mod", descKu: "بەڕێوەبردن و سزادانی سەرپێچیکارانی سێرڤەر.", descEn: "Server moderation and staff enforcement action.", usage: `+${c}` }));
+            rawAuto.forEach(c => db.push({ name: "+" + c, cat: "automod", descKu: "سیستەمی پاراستنی خۆکار دژی سپام و لینک.", descEn: "Automated anti-spam and link protection filter.", usage: `+${c}` }));
+            return db;
         }
 
-        const listAllGenerated = generateCmdList();
+        const coreDatabase = buildDatabase();
 
-        const translations = {
+        const langPack = {
             ku: {
-                dir: "rtl",
-                navHome: "سەرەکی", navCmds: "کۆماندەکان", navDocs: "ڕێنماییەکان",
-                heroTitle: "مێلۆدییەکی بێوێنە لە <span>سێرڤەرەکەتدا!</span>",
-                heroDesc: "پڕۆفیشناڵترین بۆتی دیسکۆرد بۆ بەڕێوەبردن، لێدانی میوزیک بە کوالیتی ناوازە، دابەشکاری خۆڕایی و پاراستنی سێرڤەرەکەت.",
-                featTitle: "تایبەتمەندییەکانی بۆتەکە", featSub: "هەموو ئەو شتانەی بۆ سێرڤەرەکەت پێویستن لە یەک بۆتدا",
-                mTitle: "میوزیک (Music)", mDesc: "لێدانی دەنگ و گۆرانی بە کوالیتی Ultra-HQ لە یوتیوب و سپۆتیفایەوە بەبێ هیچ پچڕان و کێشەیەک.",
-                aTitle: "پاراستنی خۆکار (AutoMod)", aDesc: "بلۆککردنی لینک، ڕیکلام، و قسەی نەشیاو بە شێوازی زیرەک بۆ هێشتنەوەی ژینگەیەکی پاك.",
-                modTitle: "بەڕێوەبردن (Moderation)", modDesc: "کۆماندەکانی هۆشداریدان (Warn)، دەرکردن (Kick)، و باندکردن (Ban) بۆ ستافی سێرڤەرەکەت.",
-                cmdTitle: "لیستی کۆماندەکان", cmdSub: "کلیک لەسەر هەر کۆماندێک بکە بۆ کۆپی بوونی پریفێکسەکە",
-                searchPlace: "بگەڕێ بۆ کۆماندێک...",
-                docsTitle: "دۆکیومێنت و ڕێنماییەکان", docsSub: "چۆنیەتی ڕێکخستن و بەکارهێنانی بۆتی ئۆرفیۆس",
-                d1t: "وەسفی گشتی بۆتەکە", d1d: "بۆتی Orpheus سیستەمێکی پێشکەوتووی دیسکۆردە کە چەندین خزمەتگوزاری جیاواز وەک لێدانی مۆسیقای بێخەوش، بەڕێوەبردنی خۆکاری چاتەکان، و بەهێزکردنی ئۆتۆمۆد پێشکەش بە خاوەن سێرڤەرەکان دەکات بۆ پاراستنی ژینگەی چات لە ڕیکلام و سپام.",
-                d2t: "پریفێکس و دەستپێکردن", d2d: "پریفێکسی سەرەکی بۆتەکە بریتییە لە +. بۆ بینینی هەموو بەش و ڕێنماییە کورتەکان لە ناو خودی دیسکۆرددا، تەنها لە چاتەکەتدا بنوسە +help تا مێنیوی هاوکاریت بۆ بکرێتەوە.",
-                devT: "گەشەپێدەر و خاوەنی فەرمی", devD: "ئەم بۆتە و وێبسایتە بە شانازییەوە گەشەی پێدراوە لەلایەن گەشەپێدەر:",
-                toastText: "کۆپی کرا بۆ ناو کلیپبۆرد! 🚀",
-                cats: { all: "هەمووی", music: "میوزیک", mod: "بەڕێوەبردن", automod: "ئۆتۆمۆد" }
+                dir: "rtl", home: "سەرەکی", cmds: "کۆماندەکان", docs: "ڕێنماییەکان",
+                title: "داهاتووی دەنگ و بەڕێوەبردن <span>لێرەوە دەستپێدەکات</span>",
+                desc: "سیستەمێکی پێشکەوتووی جیهانی بۆ بەڕێوەبردنی سێرڤەرەکەت، لێدانی مۆسیقا بە کوالیتی بێخەوش و پاراستنی فەرمی دیسکۆرد.",
+                servers: "سێرڤەرە جێگیرەکان", users: "بەکارهێنەرانی چالاك",
+                cTitle: "کاتۆلۆگی کۆماندە فەرمییەکان", cSub: "بۆ زانیاری زیاتر و کۆپی بوون کلیک لەسەر کۆماندەکان بکە",
+                searchP: "بگەڕێ بۆ کۆماندی مەبەست...",
+                dh1: "بنەمای کارکردنی ئۆرفیۆس", dp1: "ئۆرفیۆس سیستەمێکی جیهانییە کە ژینگەیەکی جێگیر بۆ بەکارهێنەرانی دیسکۆرد فەراهەم دەکات. بە بەکارهێنانی خێراترین کەرەستەکانی کۆدکردن، توانراوە ڕێژەی پچڕانی مۆسیقا بگەیەنرێتە نزمترین ئاستی مێژوویی.",
+                devT: "خاوەنی پڕۆژە", devD: "گەشەپێدراوی فەرمی لایەن ئەندازیارانی کۆر کورتکراوەی ناسنامە:",
+                toast: "کۆماندەکە کۆپی کرا بۆ کلیپبۆرد! 🚀",
+                lblDesc: "وەسف:", lblUse: "شێوازی بەکارهێنان:",
+                cats: { all: "هەمووی", music: "میوزیک", mod: "ئیداره‌", automod: "پاراستن" }
             },
             en: {
-                dir: "ltr",
-                navHome: "Home", navCmds: "Commands", navDocs: "Docs",
-                heroTitle: "An Unmatched Melody in <span>Your Server!</span>",
-                heroDesc: "The most professional Discord bot for moderation, high-quality music playback, seamless giveaways, and absolute protection.",
-                featTitle: "Bot Features", featSub: "Everything your server needs packed into one powerful bot",
-                mTitle: "Music", mDesc: "Play Ultra-HQ tracks from YouTube and Spotify without any lag or interruption.",
-                aTitle: "AutoMod", aDesc: "Block links, invites, spam, and bad words instantly using smart detection.",
-                modTitle: "Moderation", modDesc: "Advanced moderation tools like Warn, Kick, and Ban to assist your staff.",
-                cmdTitle: "Commands List", cmdSub: "Click any command box to copy its exact execution prefix",
-                searchPlace: "Search for a command...",
-                docsTitle: "Documentation & Guides", docsSub: "How to setup and use Orpheus bot",
-                d1t: "General Bot Description", d1d: "Orpheus Bot is an advanced Discord system offering robust services like seamless music execution, automated chat moderation, and enhanced auto-mod filters.",
-                d2t: "Prefix & Getting Started", d2d: "The default bot prefix is +. To view the complete dynamic command tree inside Discord, simply type +help in any text channel.",
-                devT: "Official Developer & Owner", devD: "This bot and web dashboard ecosystem is proudly developed by:",
-                toastText: "Copied to clipboard! 🚀",
-                cats: { all: "All", music: "Music", mod: "Moderation", automod: "AutoMod" }
+                dir: "ltr", home: "Home", cmds: "Commands", docs: "Docs",
+                title: "The Future of Sound <span>Starts Here</span>",
+                desc: "An advanced global ecosystem built to streamline your Discord experience with pristine audio and airtight security features.",
+                servers: "Established Servers", users: "Active Global Users",
+                cTitle: "Official Command Catalog", cSub: "Click any command frame to inspect system usage parameters and metadata",
+                searchP: "Search specific registry...",
+                dh1: "Orpheus Engine Framework", dp1: "Orpheus runs on high-throughput architecture, delivering lag-free multimedia processing and instantaneous automated security deployment.",
+                devT: "Project Maintainer", devD: "Proudly engineered and maintained by Core Framework developers.",
+                toast: "Command copied to clipboard! 🚀",
+                lblDesc: "Description:", lblUse: "Usage Structure:",
+                cats: { all: "All Registry", music: "Audio", mod: "Moderation", automod: "Security" }
             },
             ar: {
-                dir: "rtl",
-                navHome: "الرئيسية", navCmds: "الأوامر", navDocs: "التعليمات",
-                heroTitle: "ألحان فريدة في <span>خادمك الخاص!</span>",
-                heroDesc: "البوت الاحترافي المتكامل لإدارة السيرفر، تشغيل الموسيقى بجودة خارقة، عمل المسابقات وحماية سيرفرك بالكامل.",
-                featTitle: "ميزات البوت الجبارة", featSub: "كل ما يحتاجه سيرفرك متوفر في بوت واحد فقط",
-                mTitle: "الموسيقى (Music)", mDesc: "تشغيل الأغاني بأعلى دقة ممكنة من يوتيوب وسبوتيفاي دون أي تقطيع.",
-                aTitle: "الحماية التلقائية (AutoMod)", aDesc: "حظر الروابط، الإعلانات، والكلمات النابية بشكل ذكي للحفاظ على أمان سيرفرك.",
-                modTitle: "الإشراف والرقابة (Moderation)", modDesc: "أوامر التحذير (Warn)، الطرد (Kick)، والحظر (Ban) لمساعدة طاقم الإدارة.",
-                cmdTitle: "قائمة الأوامر", cmdSub: "اضغط على أي أمر لنسخه مباشرة للحافظة",
-                searchPlace: "ابحث عن أمر معين...",
-                docsTitle: "الوثائق والتعليمات", docsSub: "كيفية إعداد واستخدام بوت أورفيوس بالتفصيل",
-                d1t: "الوصف العام للبوت", d1d: "بوت Orpheus هو نظام ديسكورد متطور يقدم خدمات متعددة مثل تشغيل الموسيقى النقية، الإشراف التلقائي على الدردشات.",
-                d2t: "البادئة وبدء الاستخدام", d2d: "البادئة الافتراضية للبوت هي +. لعرض جميع الأقسام والتعليمات المباشرة، ما عليك سوى كتابة +help.",
-                devT: "المطور والمالك الرسمي", devD: "تم تطوير هذا البوت ولوحة التحكم بالكامل بكل فخر بواسطة المطور المعتمد:",
-                toastText: "تم النسخ إلى الحافظة! 🚀",
-                cats: { all: "الكل", music: "الموسيقى", mod: "الإشراف", automod: "أوتومود" }
+                dir: "rtl", home: "الرئيسية", cmds: "الأوامر", docs: "التعليمات",
+                title: "مستقبل الصوتيات <span>يبدأ من هنا</span>",
+                desc: "نظام عالمي متطور مخصص لإدارة خادمك، تشغيل الصوت النقي وحماية الديسكورد باحترافية كاملة.",
+                servers: "السيرفرات الموثقة", users: "المستخدمين النشطين",
+                cTitle: "كتالوج الأوامر الرسمي", cSub: "اضغط على أي أمر لمعاينة تفاصيل الاستخدام والنسخ المباشر",
+                searchP: "ابحث عن الأمر المطلوب...",
+                dh1: "بنية وهيكلية أورفيوس", dp1: "يعمل أورفيوس على خوادم فائقة السرعة تضمن لك معالجة البيانات وبث الصوتيات بدون أي انقطاع أو تأخير.",
+                devT: "مطور المشروع", devD: "تم تطوير النظام بالكامل بواسطة مهندسي الشبكة المعتمدين.",
+                toast: "تم نسخ الأمر إلى الحافظة! 🚀",
+                lblDesc: "الوصف:", lblUse: "طريقة الاستخدام:",
+                cats: { all: "الكل", music: "الموسيقى", mod: "الإشراف", automod: "الحماية" }
             }
         };
 
         function setLanguage(lang) {
-            currentLang = lang;
-            const data = translations[lang];
-            document.getElementById('html-tag').setAttribute('dir', data.dir);
-            document.getElementById('html-tag').setAttribute('lang', lang);
+            selectedLang = lang;
+            const pack = langPack[lang];
+            const html = document.getElementById('html-tag');
+            html.setAttribute('dir', pack.dir);
+            html.setAttribute('lang', lang);
 
-            document.getElementById('tab-btn-home').innerText = data.navHome;
-            document.getElementById('tab-btn-commands').innerText = data.navCmds;
-            document.getElementById('tab-btn-docs').innerText = data.navDocs;
+            document.getElementById('nav-home').innerText = pack.home;
+            document.getElementById('nav-commands').innerText = pack.cmds;
+            document.getElementById('nav-docs').innerText = pack.docs;
 
-            document.getElementById('hero-title').innerHTML = data.heroTitle;
-            document.getElementById('hero-desc').innerText = data.heroDesc;
-            document.getElementById('feat-title').innerText = data.featTitle;
-            document.getElementById('feat-sub').innerText = data.featSub;
-            
-            document.getElementById('f-music-t').innerText = data.mTitle;
-            document.getElementById('f-music-d').innerText = data.mDesc;
-            document.getElementById('f-auto-t').innerText = data.aTitle;
-            document.getElementById('f-auto-d').innerText = data.aDesc;
-            document.getElementById('f-mod-t').innerText = data.modTitle;
-            document.getElementById('f-mod-d').innerText = data.modDesc;
+            document.getElementById('h-title').innerHTML = pack.title;
+            document.getElementById('h-desc').innerText = pack.desc;
+            document.getElementById('s-servers').innerText = pack.servers;
+            document.getElementById('s-users').innerText = pack.users;
 
-            document.getElementById('cmd-page-title').innerText = data.cmdTitle;
-            document.getElementById('cmd-page-sub').innerText = data.cmdSub;
-            document.getElementById('cmdSearchInput').setAttribute('placeholder', data.searchPlace);
-            
-            document.getElementById('docs-page-title').innerText = data.docsTitle;
-            document.getElementById('docs-page-sub').innerText = data.docsSub;
+            document.getElementById('c-title').innerText = pack.cTitle;
+            document.getElementById('c-sub').innerText = pack.cSub;
+            document.getElementById('globalSearch').setAttribute('placeholder', pack.searchP);
 
-            document.getElementById('doc-sec1-t').innerText = data.d1t;
-            document.getElementById('doc-sec1-d').innerText = data.d1d;
-            document.getElementById('doc-sec2-t').innerText = data.d2t;
-            document.getElementById('doc-sec2-d').innerText = data.d2d;
+            document.getElementById('d-h1').innerText = pack.dh1;
+            document.getElementById('d-p1').innerText = pack.dp1;
+            document.getElementById('dev-t').innerText = pack.devT;
+            document.getElementById('dev-d').innerText = pack.devD;
 
-            document.getElementById('dev-lbl-title').innerText = data.devT;
-            document.getElementById('dev-lbl-desc').innerText = data.devD;
+            document.getElementById('inspect-desc-lbl').innerText = pack.lblDesc;
+            document.getElementById('inspect-usage-lbl').innerText = pack.lblUse;
 
             renderCategories();
             renderCommands();
 
             document.getElementById('langModal').style.opacity = 0;
-            setTimeout(() => {
-                document.getElementById('langModal').style.display = 'none';
-            }, 500);
+            setTimeout(() => document.getElementById('langModal').style.display = 'none', 500);
+        }
+
+        function toggleTheme() {
+            const html = document.getElementById('html-tag');
+            const icon = document.querySelector('.theme-toggle i');
+            if(html.classList.contains('dark-theme')) {
+                html.classList.remove('dark-theme');
+                html.classList.add('light-theme');
+                icon.className = 'fas fa-sun';
+            } else {
+                html.classList.remove('light-theme');
+                html.classList.add('dark-theme');
+                icon.className = 'fas fa-moon';
+            }
         }
 
         function renderCategories() {
-            const container = document.getElementById('cat-tabs-container');
-            container.innerHTML = '';
-            const cats = translations[currentLang].cats;
-            
-            Object.keys(cats).forEach(key => {
+            const area = document.getElementById('cat-area');
+            area.innerHTML = '';
+            const cats = langPack[selectedLang].cats;
+            Object.keys(cats).forEach(k => {
                 const btn = document.createElement('button');
-                btn.className = `cat-btn ${currentCategory === key ? 'active-cat' : ''}`;
-                btn.innerText = cats[key];
+                btn.className = `lang-btn ${activeCat === k ? 'active-tab' : ''}`;
+                btn.style.padding = '8px 20px';
+                btn.innerText = cats[k];
                 btn.onclick = () => {
-                    currentCategory = key;
-                    document.getElementById('cmdSearchInput').value = '';
+                    activeCat = k;
                     renderCategories();
                     renderCommands();
                 };
-                container.appendChild(btn);
+                area.appendChild(btn);
             });
         }
 
-        function renderCommands(filterKeyword = '') {
-            const container = document.getElementById('commands-list-container');
-            container.innerHTML = '';
+        function renderCommands(searchQuery = '') {
+            const view = document.getElementById('cmd-viewport');
+            view.innerHTML = '';
+            let list = activeCat === 'all' ? coreDatabase : coreDatabase.filter(c => c.cat === activeCat);
 
-            let filtered = currentCategory === 'all' ? listAllGenerated : listAllGenerated.filter(c => c.cat === currentCategory);
-
-            if(filterKeyword.trim() !== '') {
-                filtered = filtered.filter(c => c.name.toLowerCase().includes(filterKeyword.toLowerCase()));
+            if(searchQuery.trim() !== '') {
+                list = list.filter(c => c.name.toLowerCase().includes(searchQuery.toLowerCase()));
             }
 
-            filtered.forEach(c => {
-                const box = document.createElement('div');
-                box.className = 'cmd-box';
-                box.onclick = () => copyToClipboard(c.name);
-                box.innerHTML = `<span class="cmd-name">${c.name}</span><span class="cmd-icon"><i class="far fa-copy"></i></span>`;
-                container.appendChild(box);
+            list.forEach(c => {
+                const el = document.createElement('div');
+                el.className = 'cmd-item-box';
+                el.innerHTML = `<strong>${c.name}</strong><i class="far fa-eye" style="font-size:12px; color:var(--text-paragraph);"></i>`;
+                el.onclick = () => inspectCommand(c, el);
+                view.appendChild(el);
             });
         }
 
-        function filterBySearch() {
-            const keyword = document.getElementById('cmdSearchInput').value;
-            renderCommands(keyword);
+        function filterSystem() {
+            renderCommands(document.getElementById('globalSearch').value);
         }
 
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                const toast = document.getElementById('clipboardToast');
-                toast.innerText = translations[currentLang].toastText;
+        function inspectCommand(cmd, element) {
+            document.querySelectorAll('.cmd-item-box').forEach(b => b.classList.remove('selected-cmd'));
+            element.classList.add('selected-cmd');
+
+            const inspector = document.getElementById('inspector');
+            inspector.classList.add('inspector-active');
+
+            document.getElementById('inspect-name').innerText = cmd.name;
+            document.getElementById('inspect-desc').innerText = selectedLang === 'ku' ? cmd.descKu : cmd.descEn;
+            document.getElementById('inspect-code').innerText = cmd.usage;
+
+            navigator.clipboard.writeText(cmd.name).then(() => {
+                const toast = document.getElementById('globalToast');
+                toast.innerText = langPack[selectedLang].toast;
                 toast.classList.add('show');
-                setTimeout(() => {
-                    toast.classList.remove('show');
-                }, 2000);
+                setTimeout(() => toast.classList.remove('show'), 2000);
             });
         }
 
-        function switchTab(tabName) {
-            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active-content'));
-            document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active-tab'));
-
-            document.getElementById('tab-' + tabName).classList.add('active-content');
-            document.getElementById('tab-btn-' + tabName).classList.add('active-tab');
+        function switchTab(t) {
+            document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active-content'));
+            document.querySelectorAll('nav button').forEach(nb => nb.classList.remove('active-tab'));
+            document.getElementById('tab-' + t).classList.add('active-content');
+            document.getElementById('nav-' + t).classList.add('active-tab');
         }
     </script>
 </body>
