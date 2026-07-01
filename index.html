@@ -35,14 +35,13 @@
                 radial-gradient(circle at 95% 80%, rgba(223, 183, 67, 0.06) 0%, transparent 40%);
         }
 
-        /* 🏛️ نەخشی چێوەی یۆنانی لۆگۆکە */
         .greek-bar {
             height: 10px;
             background: var(--gold-gradient);
             box-shadow: 0 2px 20px var(--gold-glow);
         }
 
-        /* 🌐 پەنجەرەی هەڵبژاردنی زمان (Language Picker Modal) */
+        /* 🌐 پەنجەرەی هەڵبژاردنی زمان */
         .lang-modal {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -127,6 +126,7 @@
             height: 48px;
             border-radius: 50%;
             border: 2px solid var(--gold);
+            object-fit: cover;
         }
 
         .logo-title {
@@ -153,7 +153,7 @@
             border-bottom: 2px solid var(--gold);
         }
 
-        /* لاپەڕە جیاوازەکان (Pages / Tabs) */
+        /* لاپەڕەکان */
         .tab-content {
             display: none;
             animation: fadeIn 0.5s ease-in-out forwards;
@@ -168,7 +168,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ⚡ بەشی سەرەکی (Hero) */
+        /* ⚡ بەشی سەرەکی */
         .hero {
             display: flex;
             align-items: center;
@@ -244,6 +244,7 @@
             border: 4px double var(--gold);
             box-shadow: 0 0 40px rgba(223, 183, 67, 0.15);
             animation: float 4s ease-in-out infinite;
+            object-fit: cover;
         }
 
         @keyframes float {
@@ -251,7 +252,7 @@
             50% { transform: translateY(-12px); }
         }
 
-        /* 📊 بەشی زانیاری و بەشەکانی بۆت (Features) */
+        /* 🛠️ بەشی تایبەتمەندییەکان */
         .features-section {
             padding: 80px 8%;
             background: var(--panel-bg);
@@ -296,7 +297,7 @@
             line-height: 1.6;
         }
 
-        /* 🟢 بەشی Uptime و ڕیتینگ */
+        /* 🟢 بەشی Uptime */
         .status-bar {
             background: var(--panel-light);
             padding: 20px 8%;
@@ -317,7 +318,7 @@
 
         .status-item i {
             font-size: 28px;
-            color: #2ecc71; /* ڕەنگی سەوز بۆ ئەکتیڤ بوون */
+            color: #2ecc71;
         }
 
         .status-text h4 {
@@ -331,7 +332,7 @@
             color: var(--text-main);
         }
 
-        /* 📜 بەشی ناوخۆیی کۆماندەکان (Commands Page) */
+        /* 📜 لاپەڕەی کۆماندەکان */
         .inner-page {
             padding: 60px 8%;
             max-width: 1000px;
@@ -341,8 +342,15 @@
         .page-title {
             font-size: 32px;
             color: var(--gold);
-            margin-bottom: 30px;
+            margin-bottom: 10px;
             text-align: center;
+        }
+
+        .page-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-size: 16px;
         }
 
         .cmd-row {
@@ -356,7 +364,45 @@
             align-items: center;
         }
 
-        /* 📱 گونجاندن بۆ مۆبایل */
+        .cmd-trigger {
+            font-family: monospace;
+            color: var(--gold);
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .cmd-text-desc {
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        /* 📖 بەشی Docs */
+        .docs-card {
+            background: var(--panel-bg);
+            padding: 35px;
+            border-radius: 12px;
+            border: 1px solid rgba(223, 183, 67, 0.1);
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .docs-card h3 {
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-size: 22px;
+            border-bottom: 1px solid rgba(223, 183, 67, 0.1);
+            padding-bottom: 8px;
+        }
+
+        .badge {
+            background: rgba(223, 183, 67, 0.15);
+            color: var(--gold);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-weight: bold;
+        }
+
         @media (max-width: 768px) {
             header { flex-direction: column; gap: 15px; padding: 15px; }
             nav button { margin: 0 10px; font-size: 14px; }
@@ -386,20 +432,20 @@
 
     <header>
         <div class="logo-section">
-            <img src="https://raw.githubusercontent.com/YourUsername/YourRepo/main/1000054479.png" alt="Orpheus Logo" class="logo-img" onerror="this.src='https://images.unsplash.com/photo-1614680376593-902f74fa0d41?w=100'">
+            <img src="https://raw.githubusercontent.com/muhamadmastafa90-rgb/Soundyenddnclj/main/file_00000000af071f4ad3ac7be80e6763c.png" alt="Orpheus Logo" class="logo-img">
             <span class="logo-title">ORPHEUS</span>
         </div>
         <nav>
             <button id="tab-btn-home" class="active-tab" onclick="switchTab('home')">سەرەکی</button>
-            <button id="tab-btn-commands" onclick="switchTab('commands')">Commands</button>
-            <button id="tab-btn-docs" onclick="switchTab('docs')">Docs</button>
+            <button id="tab-btn-commands" onclick="switchTab('commands')">کۆماندەکان</button>
+            <button id="tab-btn-docs" onclick="switchTab('docs')">ڕێنماییەکان</button>
         </nav>
     </header>
 
     <div id="tab-home" class="tab-content active-content">
         <section class="hero">
             <div class="hero-text">
-                <h1 id="hero-title">مێلۆدی خوداوەندەکان لە <span>سێرڤەرەکەتدا!</span></h1>
+                <h1 id="hero-title">مێلۆدییەکی بێوێنە لە <span>سێرڤەرەکەتدا!</span></h1>
                 <p id="hero-desc">پڕۆفیشناڵترین بۆتی دیسکۆرد بۆ بەڕێوەبردن، لێدانی میوزیک بە کوالیتی ناوازە، دابەشکاری خۆڕایی و پاراستنی سێرڤەرەکەت.</p>
                 <div class="btn-wrapper">
                     <a href="https://discord.com/oauth2/authorize?client_id=1150754451938869371&permissions=8&integration_type=0&scope=bot" target="_blank" class="btn btn-invite"><i class="fab fa-discord"></i> Invite Bot</a>
@@ -407,7 +453,7 @@
                 </div>
             </div>
             <div class="hero-img-area">
-                <img src="https://raw.githubusercontent.com/YourUsername/YourRepo/main/1000054479.png" alt="Orpheus" onerror="this.src='https://images.unsplash.com/photo-1614680376593-902f74fa0d41?w=400'">
+                <img src="https://raw.githubusercontent.com/muhamadmastafa90-rgb/Soundyenddnclj/main/file_00000000af071f4ad3ac7be80e6763c.png" alt="Orpheus">
             </div>
         </section>
 
@@ -464,28 +510,22 @@
 
     <div id="tab-commands" class="tab-content inner-page">
         <h2 class="page-title" id="cmd-page-title">لیستی کۆماندەکان</h2>
-        <div class="cmd-row">
-            <strong>/play [گۆرانی]</strong>
-            <span id="cmd-p-1">لێدانی گۆرانی بەرزترین کوالیتی</span>
-        </div>
-        <div class="cmd-row">
-            <strong>/giveaway start</strong>
-            <span id="cmd-p-2">دەستپێکردنی تیروپشکی نوێ</span>
-        </div>
-        <div class="cmd-row">
-            <strong>/automod enable</strong>
-            <span id="cmd-p-3">چالاککردنی سیستەمی پاراستن</span>
-        </div>
-        <div class="cmd-row">
-            <strong>/ban @user</strong>
-            <span id="cmd-p-4">باندکردنی ئەندامی سەرپێچیکار</span>
-        </div>
+        <p class="page-subtitle" id="cmd-page-sub">بۆ بینی زیاتر کۆماندی +help بکە</p>
+        <div id="commands-list-container"></div>
     </div>
 
     <div id="tab-docs" class="tab-content inner-page">
         <h2 class="page-title" id="docs-page-title">دۆکیومێنت و ڕێنماییەکان</h2>
-        <div style="background: var(--panel-bg); padding: 30px; border-radius: 8px; line-height: 1.8;">
-            <p id="docs-p-text">بۆ ڕێکخستنی سەرەتایی بۆتەکە لە سێرڤەرەکەتدا، تەنها پێویستە کۆماندی <code>/setup</code> بەکاربهێنیت. دڵنیابەرەوە کە بۆتەکە خاوەنی دەسەڵاتی (Administrator) بێت بۆ ئەوەی سیستەمی ئۆتۆمۆد و میوزیک بە بێ کێشە کاربکەن.</p>
+        <p class="page-subtitle" id="docs-page-sub">چۆنیەتی ڕێکخستن و بەکارهێنانی بۆتی ئۆرفیۆس</p>
+        
+        <div class="docs-card">
+            <h3 id="doc-sec1-t">وەسفی گشتی بۆتەکە</h3>
+            <p id="doc-sec1-d">بۆتی Orpheus سیستەمێکی پێشکەوتووی دیسکۆردە کە چەندین خزمەتگوزاری جیاواز وەک لێدانی مۆسیقای بێخەوش، بەڕێوەبردنی خۆکاری چاتەکان، و بەهێزکردنی ئۆتۆمۆد پێشکەش بە خاوەن سێرڤەرەکان دەکات بۆ پاراستنی ژینگەی چات لە ڕیکلام و سپام.</p>
+        </div>
+
+        <div class="docs-card">
+            <h3 id="doc-sec2-t">پریفێکس و دەستپێکردن</h3>
+            <p id="doc-sec2-d">پریفێکسی سەرەکی بۆتەکە بریتییە لە <span class="badge">+</span>. بۆ بینینی هەموو بەش و ڕێنماییە کورتەکان لە ناو خودی دیسکۆرددا، تەنها لە چاتەکەتدا بنوسە <code>+help</code> تا مێنیوی هاوکاریت بۆ بکرێتەوە.</p>
         </div>
     </div>
 
@@ -494,12 +534,11 @@
     </footer>
 
     <script>
-        // داتای زمانەکان بۆ گۆڕینی دەقەکان بە شێوازی دینامیکی
         const translations = {
             ku: {
                 dir: "rtl",
-                navHome: "سەرەکی",
-                heroTitle: "مێلۆدی خوداوەندەکان لە <span>سێرڤەرەکەتدا!</span>",
+                navHome: "سەرەکی", navCmds: "کۆماندەکان", navDocs: "ڕێنماییەکان",
+                heroTitle: "مێلۆدییەکی بێوێنە لە <span>سێرڤەرەکەتدا!</span>",
                 heroDesc: "پڕۆفیشناڵترین بۆتی دیسکۆرد بۆ بەڕێوەبردن، لێدانی میوزیک بە کوالیتی ناوازە، دابەشکاری خۆڕایی و پاراستنی سێرڤەرەکەت.",
                 uptimeLbl: "بۆت ئۆنلاینە", pingLbl: "خێرایی وەڵامدانەوە",
                 featTitle: "تایبەتمەندییەکانی بۆتەکە", featSub: "هەموو ئەو شتانەی بۆ سێرڤەرەکەت پێویستن لە یەک بۆتدا",
@@ -508,12 +547,25 @@
                 aTitle: "پاراستنی خۆکار (AutoMod)", aDesc: "بلۆککردنی لینک، ڕیکلام، و قسەی نەشیاو بە شێوازی زیرەک بۆ هێشتنەوەی ژینگەیەکی پاك.",
                 modTitle: "بەڕێوەبردن (Moderation)", modDesc: "کۆماندەکانی هۆشداریدان (Warn)، دەرکردن (Kick)، و باندکردن (Ban) بۆ ستافی سێرڤەرەکەت.",
                 cTitle: "ڕێکخستن (Config)", cDesc: "توانای گۆڕینی پریفێکس، زمان، و تایبەتکردنی تەواوی بەشەکانی بۆتەکە بە ئارەزووی خۆت.",
-                cmdTitle: "لیستی کۆماندەکان", docsTitle: "دۆکیومێنت و ڕێنماییەکان"
+                cmdTitle: "لیستی کۆماندەکان", cmdSub: "بۆ بینی زیاتر کۆماندی +help بکە",
+                docsTitle: "دۆکیومێنت و ڕێنماییەکان", docsSub: "چۆنیەتی ڕێکخستن و بەکارهێنانی بۆتی ئۆرفیۆس",
+                d1t: "وەسفی گشتی بۆتەکە", d1d: "بۆتی Orpheus سیستەمێکی پێشکەوتووی دیسکۆردە کە چەندین خزمەتگوزاری جیاواز وەک لێدانی مۆسیقای بێخەوش، بەڕێوەبردنی خۆکاری چاتەکان، و بەهێزکردنی ئۆتۆمۆد پێشکەش بە خاوەن سێرڤەرەکان دەکات بۆ پاراستنی ژینگەی چات لە ڕیکلام و سپام.",
+                d2t: "پریفێکس و دەستپێکردن", d2d: "پریفێکسی سەرەکی بۆتەکە بریتییە لە +. بۆ بینینی هەموو بەش و ڕێنماییە کورتەکان لە ناو خودی دیسکۆرددا، تەنها لە چاتەکەتدا بنوسە +help تا مێنیوی هاوکاریت بۆ بکرێتەوە.",
+                cmds: [
+                    { name: "+play [ناو/لینک]", desc: "لێدانی گۆرانی یان پلەیلیست بە بەرزترین کوالیتی." },
+                    { name: "+skip", desc: "پەڕاندنی گۆرانی ئێستا و چوونە سەر گۆرانی داهاتوو." },
+                    { name: "+stop", desc: "ڕاگرتنی مۆسیقاکە بە تەواوی و جێهێشتنی ڤۆیسەکە." },
+                    { name: "+gstart [کات] [براوە] [دیاری]", desc: "درووستکردنی تیروپشکێکی نوێ لە چاتدا." },
+                    { name: "+ban @user [reason]", desc: "باندکردنی ئەندامێکی سەرپێچیکار لە سێرڤەر." },
+                    { name: "+kick @user", desc: "دەرکردنی ئەندام لە سێرڤەر بە خێرایی." },
+                    { name: "+mute @user [کات]", desc: "بێدەنگکردنی کاتیی ئەندام لە چاتەکاندا." },
+                    { name: "+prefix set [نیشانە]", desc: "گۆڕینی پریفێکسی بۆتەکە بۆ سێرڤەرەکەت." }
+                ]
             },
             en: {
                 dir: "ltr",
-                navHome: "Home",
-                heroTitle: "Melody of the Gods in <span>Your Server!</span>",
+                navHome: "Home", navCmds: "Commands", navDocs: "Docs",
+                heroTitle: "An Unmatched Melody in <span>Your Server!</span>",
                 heroDesc: "The most professional Discord bot for moderation, high-quality music playback, seamless giveaways, and absolute protection.",
                 uptimeLbl: "Bot Status", pingLbl: "Response Time",
                 featTitle: "Bot Features", featSub: "Everything your server needs packed into one powerful bot",
@@ -522,12 +574,25 @@
                 aTitle: "AutoMod", aDesc: "Block links, invites, spam, and bad words instantly using smart detection.",
                 modTitle: "Moderation", modDesc: "Advanced moderation tools like Warn, Kick, and Ban to assist your staff.",
                 cTitle: "Config", cDesc: "Completely customize prefixes, languages, and core features to fit your server theme.",
-                cmdTitle: "Commands List", docsTitle: "Documentation & Guides"
+                cmdTitle: "Commands List", cmdSub: "For more commands, type +help in your server",
+                docsTitle: "Documentation & Guides", docsSub: "How to setup and use Orpheus bot",
+                d1t: "General Bot Description", d1d: "Orpheus Bot is an advanced Discord system offering robust services like seamless music execution, automated chat moderation, and enhanced auto-mod filters to secure your server ecosystem from unwanted spam and ads.",
+                d2t: "Prefix & Getting Started", d2d: "The default bot prefix is +. To view the complete dynamic command tree and interactive helper module inside Discord, simply type +help in any text channel.",
+                cmds: [
+                    { name: "+play [query/link]", desc: "Plays a song or playlist with ultra-high quality audio." },
+                    { name: "+skip", desc: "Skips the current song playing in the voice channel." },
+                    { name: "+stop", desc: "Stops the music entirely and clears the active track queue." },
+                    { name: "+gstart [time] [winners] [prize]", desc: "Starts an interactive giveaway instance." },
+                    { name: "+ban @user [reason]", desc: "Bans a disruptive user from the guild permanently." },
+                    { name: "+kick @user", desc: "Kicks the specified user out of the server immediately." },
+                    { name: "+mute @user [time]", desc: "Mutes a user temporarily from talking in all channels." },
+                    { name: "+prefix set [symbol]", desc: "Changes the system wide server invocation prefix." }
+                ]
             },
             ar: {
                 dir: "rtl",
-                navHome: "الرئيسية",
-                heroTitle: "ألحان الآلهة في <span>خادمك الخاص!</span>",
+                navHome: "الرئيسية", navCmds: "الأوامر", navDocs: "التعليمات",
+                heroTitle: "ألحان فريدة في <span>خادمك الخاص!</span>",
                 heroDesc: "البوت الاحترافي المتكامل لإدارة السيرفر، تشغيل الموسيقى بجودة خارقة، عمل المسابقات وحماية سيرفرك بالكامل.",
                 uptimeLbl: "حالة البوت", pingLbl: "سرعة الاستجابة",
                 featTitle: "ميزات البوت الجبارة", featSub: "كل ما يحتاجه سيرفرك متوفر في بوت واحد فقط",
@@ -536,18 +601,32 @@
                 aTitle: "الحماية التلقائية (AutoMod)", aDesc: "حظر الروابط، الإعلانات، والكلمات النابية بشكل ذكي للحفاظ على أمان سيرفرك.",
                 modTitle: "الإشراف والرقابة (Moderation)", modDesc: "أوامر التحذير (Warn)، الطرد (Kick)، والحظر (Ban) لمساعدة طاقم الإدارة.",
                 cTitle: "الإعدادات (Config)", cDesc: "تخصيص البادئة، تغيير اللغة، وتعديل إعدادات البوت بالكامل حسب رغبتك.",
-                cmdTitle: "قائمة الأوامر", docsTitle: "الوثائق والتعليمات"
+                cmdTitle: "قائمة الأوامر", cmdSub: "لرؤية المزيد من الأوامر، اكتب الأمر +help",
+                docsTitle: "الوثائق والتعليمات", docsSub: "كيفية إعداد واستخدام بوت أورفيوس بالتفصيل",
+                d1t: "الوصف العام للبوت", d1d: "بوت Orpheus هو نظام ديسكورد متطور يقدم خدمات متعددة مثل تشغيل الموسيقى النقية، الإشراف التلقائي على الدردشات، وتعزيز نظام الأوتومود لحماية خادمك من الإعلانات المزعجة والسبام.",
+                d2t: "البادئة وبدء الاستخدام", d2d: "البادئة الافتراضية للبوت هي +. لعرض جميع الأقسام والتعليمات المباشرة داخل الديسكورد، ما عليك سوى كتابة +help في الدردشة لفتح قائمة المساعدة.",
+                cmds: [
+                    { name: "+play [اسم/رابط]", desc: "لتشغيل الأغاني أو قوائم التشغيل بأعلى جودة صوتية." },
+                    { name: "+skip", desc: "لتخطي الأغنية الحالية والانتقال للأغنية التالية." },
+                    { name: "+stop", desc: "إيقاف الموسيقى تماماً ومغادرة الروم الصوتي." },
+                    { name: "+gstart [الوقت] [الفائزين] [الجائزة]", desc: "لإنشاء مسابقة وسحب جديد في السيرفر." },
+                    { name: "+ban @user [السبب]", desc: "لحظر العضو المخالف من السيرفر بشكل نهائي." },
+                    { name: "+kick @user", desc: "لطرد العضو المحدد من السيرفر فوراً." },
+                    { name: "+mute @user [الوقت]", desc: "كتم صوت العضو مؤقتاً في جميع القنوات النصية." },
+                    { name: "+prefix set [الرمز]", desc: "لتغيير بادئة البوت الخاصة بسيرفرك." }
+                ]
             }
         };
 
-        // فەنکشن بۆ دەستنیشانکردنی زمان
         function setLanguage(lang) {
             const data = translations[lang];
             document.getElementById('html-tag').setAttribute('dir', data.dir);
             document.getElementById('html-tag').setAttribute('lang', lang);
 
-            // گۆڕینی دەقەکان
             document.getElementById('tab-btn-home').innerText = data.navHome;
+            document.getElementById('tab-btn-commands').innerText = data.navCmds;
+            document.getElementById('tab-btn-docs').innerText = data.navDocs;
+
             document.getElementById('hero-title').innerHTML = data.heroTitle;
             document.getElementById('hero-desc').innerText = data.heroDesc;
             document.getElementById('status-uptime-lbl').innerText = data.uptimeLbl;
@@ -567,27 +646,38 @@
             document.getElementById('f-conf-d').innerText = data.cDesc;
 
             document.getElementById('cmd-page-title').innerText = data.cmdTitle;
+            document.getElementById('cmd-page-sub').innerText = data.cmdSub;
             document.getElementById('docs-page-title').innerText = data.docsTitle;
+            document.getElementById('docs-page-sub').innerText = data.docsSub;
 
-            // شاردنەوەی پۆپ-ئەپەکە بە نەرمی
+            document.getElementById('doc-sec1-t').innerText = data.d1t;
+            document.getElementById('doc-sec1-d').innerText = data.d1d;
+            document.getElementById('doc-sec2-t').innerText = data.d2t;
+            document.getElementById('doc-sec2-d').innerText = data.d2d;
+
+            const cmdContainer = document.getElementById('commands-list-container');
+            cmdContainer.innerHTML = '';
+            data.cmds.forEach(c => {
+                const row = document.createElement('div');
+                row.className = 'cmd-row';
+                row.innerHTML = `<span class="cmd-trigger">${c.name}</span><span class="cmd-text-desc">${c.desc}</span>`;
+                cmdContainer.appendChild(row);
+            });
+
             document.getElementById('langModal').style.opacity = 0;
             setTimeout(() => {
                 document.getElementById('langModal').style.display = 'none';
             }, 500);
         }
 
-        // فەنکشن بۆ گۆڕینی لاپەڕەکان (Tabs System)
         function switchTab(tabName) {
-            // شاردنەوەی هەموو بەشەکان
             document.querySelectorAll('.tab-content').forEach(tab => {
                 tab.classList.remove('active-content');
             });
-            // ناچالاککردنی دوگمەکان
             document.querySelectorAll('nav button').forEach(btn => {
                 btn.classList.remove('active-tab');
             });
 
-            // چالاککردنی بەش و دوگمەی دیاریکراو
             document.getElementById('tab-' + tabName).classList.add('active-content');
             document.getElementById('tab-btn-' + tabName).classList.add('active-tab');
         }
