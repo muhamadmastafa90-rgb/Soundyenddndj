@@ -124,11 +124,19 @@
             gap: 12px;
         }
 
-        .logo-img {
+        /* لۆگۆی نوێ بە وێنە فەرمییەکەت */
+        .logo-img-wrapper {
             width: 48px;
             height: 48px;
             border-radius: 50%;
             border: 2px solid var(--gold);
+            overflow: hidden;
+            box-shadow: 0 0 10px var(--gold-glow);
+        }
+
+        .logo-img-wrapper img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
         }
 
@@ -243,14 +251,21 @@
             box-shadow: 0 0 15px rgba(223, 183, 67, 0.1);
         }
 
-        .hero-img-area img {
-            width: 360px;
-            height: 360px;
+        /* لۆگۆی ناوەڕاستی لاپەڕەی هیرۆ */
+        .hero-image-area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-main-img {
+            width: 320px;
+            height: 320px;
             border-radius: 50%;
             border: 4px double var(--gold);
-            box-shadow: 0 0 40px rgba(223, 183, 67, 0.2);
-            animation: float 4s ease-in-out infinite;
+            box-shadow: 0 0 50px rgba(223, 183, 67, 0.25);
             object-fit: cover;
+            animation: float 4s ease-in-out infinite;
         }
 
         @keyframes float {
@@ -337,7 +352,7 @@
             line-height: 1.6;
         }
 
-        /* 📜 لاپەڕەی کۆماندەکان بە کاتیگۆری */
+        /* 📜 لاپەڕەی کۆماندەکان بە کاتیگۆری و بارگاوی گەڕان */
         .inner-page {
             padding: 60px 8%;
             max-width: 1000px;
@@ -354,8 +369,47 @@
         .page-subtitle {
             text-align: center;
             color: var(--text-muted);
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             font-size: 16px;
+        }
+
+        /* دیزاینی سندوقی گەڕانی خێرا */
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .search-box-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .search-box-wrapper i {
+            position: absolute;
+            top: 50%;
+            right: 15px;
+            transform: translateY(-50%);
+            color: var(--gold);
+            font-size: 16px;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 14px 45px 14px 20px;
+            background: var(--panel-light);
+            border: 1px solid rgba(223, 183, 67, 0.1);
+            border-radius: 30px;
+            color: var(--text-main);
+            font-size: 15px;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .search-box:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 15px var(--gold-glow);
         }
 
         .category-tabs {
@@ -384,37 +438,43 @@
             box-shadow: 0 4px 12px var(--gold-glow);
         }
 
-        .cmd-row {
+        .cmd-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .cmd-box {
             background: var(--panel-bg);
-            padding: 20px;
+            padding: 15px;
             border-radius: 8px;
-            margin-bottom: 15px;
-            border-right: 4px solid var(--gold);
+            border: 1px solid rgba(223, 183, 67, 0.05);
+            border-top: 3px solid var(--gold);
             display: flex;
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
             transition: var(--transition);
-            position: relative;
         }
 
-        .cmd-row:hover {
+        .cmd-box:hover {
             background: var(--panel-light);
-            transform: translateX(-3px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transform: translateY(-2px);
+            border-color: var(--gold);
+            box-shadow: 0 5px 15px rgba(223, 183, 67, 0.1);
         }
 
-        .cmd-trigger {
+        .cmd-name {
             font-family: monospace;
             color: var(--gold);
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
         }
 
-        .cmd-text-desc {
+        .cmd-icon {
             color: var(--text-muted);
-            font-size: 15px;
-            text-align: left;
+            font-size: 14px;
         }
 
         /* نۆتیفیکەیشنی کۆپی کردن */
@@ -512,10 +572,8 @@
             nav button { margin: 0 10px; font-size: 14px; }
             .hero { flex-direction: column-reverse; text-align: center; padding: 40px 20px; }
             .hero-text h1 { font-size: 32px; }
-            .hero-img-area img { width: 250px; height: 250px; }
+            .hero-main-img { width: 240px; height: 240px; }
             .btn-wrapper { justify-content: center; }
-            .cmd-row { flex-direction: column; align-items: flex-start; gap: 10px; }
-            .cmd-text-desc { text-align: right; }
             .dev-section { flex-direction: column; text-align: center; }
         }
     </style>
@@ -538,7 +596,9 @@
 
     <header>
         <div class="logo-section">
-            <img src="https://raw.githubusercontent.com/muhamadmastafa90-rgb/Soundyenddnclj/main/file_00000000af071f4ad3ac7be80e6763c.png" alt="Orpheus Logo" class="logo-img">
+            <div class="logo-img-wrapper">
+                <img src="file_00000000af071f4ad3ac7be80e6763c.png" alt="Orpheus Logo">
+            </div>
             <span class="logo-title">ORPHEUS</span>
         </div>
         <nav>
@@ -558,8 +618,8 @@
                     <a href="https://discord.gg/Pn4uqzYAsD" target="_blank" class="btn btn-support"><i class="fas fa-headset"></i> Support Server</a>
                 </div>
             </div>
-            <div class="hero-img-area">
-                <img src="https://raw.githubusercontent.com/muhamadmastafa90-rgb/Soundyenddnclj/main/file_00000000af071f4ad3ac7be80e6763c.png" alt="Orpheus">
+            <div class="hero-image-area">
+                <img src="file_00000000af071f4ad3ac7be80e6763c.png" alt="Orpheus Hero Visual" class="hero-main-img">
             </div>
         </section>
 
@@ -591,11 +651,6 @@
                     <p id="f-music-d">لێدانی دەنگ و گۆرانی بە کوالیتی Ultra-HQ لە یوتیوب و سپۆتیفایەوە بەبێ هیچ پچڕان و کێشەیەک.</p>
                 </div>
                 <div class="feature-card">
-                    <i class="fas fa-gift"></i>
-                    <h3 id="f-give-t">دابەشکاری (Giveaway)</h3>
-                    <p id="f-give-d">درووستکردنی تیروپشک و دیاری بە شێوازێکی دادپەروەرانە و پڕۆفیشناڵ لە ناو سێرڤەرەکەتدا.</p>
-                </div>
-                <div class="feature-card">
                     <i class="fas fa-shield-alt"></i>
                     <h3 id="f-auto-t">پاراستنی خۆکار (AutoMod)</h3>
                     <p id="f-auto-d">بلۆککردنی لینک، ڕیکلام، و قسەی نەشیاو بە شێوازی زیرەک بۆ هێشتنەوەی ژینگەیەکی پاك.</p>
@@ -605,11 +660,6 @@
                     <h3 id="f-mod-t">بەڕێوەبردن (Moderation)</h3>
                     <p id="f-mod-d">کۆماندەکانی هۆشداریدان (Warn)، دەرکردن (Kick)، و باندکردن (Ban) بۆ ستافی سێرڤەرەکەت.</p>
                 </div>
-                <div class="feature-card">
-                    <i class="fas fa-calculator"></i>
-                    <h3 id="f-seller-t">ئامرازی فرۆشیاران (Sellers)</h3>
-                    <p id="f-seller-d">سیستەمێکی پێشکەوتوو بۆ حیسابکردنی باج (Tax Calculator) بە شێوازی خێرا بۆ کڕین و فرۆشتنی سەر هێڵ.</p>
-                </div>
             </div>
         </section>
     </div>
@@ -618,10 +668,17 @@
         <h2 class="page-title" id="cmd-page-title">لیستی کۆماندەکان</h2>
         <p class="page-subtitle" id="cmd-page-sub">بۆ بینی زیاتر کۆماندی +help بکە (کلیک لەسەر هەر کۆماندێک بکە بۆ کۆپی بوون)</p>
         
+        <div class="search-container">
+            <div class="search-box-wrapper">
+                <input type="text" id="cmdSearchInput" class="search-box" placeholder="بگەڕێ بۆ کۆماندێک..." oninput="filterBySearch()">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+
         <div class="category-tabs" id="cat-tabs-container">
             </div>
 
-        <div id="commands-list-container">
+        <div class="cmd-grid" id="commands-list-container">
             </div>
     </div>
 
@@ -671,6 +728,20 @@
         let currentLang = 'ku';
         let currentCategory = 'all';
 
+        const musicCmds = ["artistradio", "autoplay", "clearqueue", "forcefix", "forceskip", "forward", "grab", "history", "join", "leave", "leavecleanup", "loop", "lyrics", "mood", "move", "nowplaying", "pause", "play", "previous", "queue", "remove", "replay", "resume", "rewind", "search", "seek", "shuffle", "similar", "skip", "skipto", "sleep", "speed", "stop", "volume"];
+        const modCmds = ["ban", "hide", "hideall", "kick", "lock", "lockall", "mute", "nuke", "purge", "rename", "role", "role add", "role remove", "role all", "role bots", "role humans", "role create", "role delete", "role rename", "role colour", "role icon", "role temp", "role taskcancel", "role edit", "snipe", "unban", "unhide", "unhideall", "unlock", "unlockall", "unmute"];
+        const automodCmds = ["automod", "automod enable", "automod disable", "automod whitelist", "automod config", "automod punishment", "automod logging", "automod heat", "automod limits", "automod reset"];
+
+        function generateCmdList() {
+            let list = [];
+            musicCmds.forEach(c => list.push({ name: "+" + c, cat: "music" }));
+            modCmds.forEach(c => list.push({ name: "+" + c, cat: "mod" }));
+            automodCmds.forEach(c => list.push({ name: "+" + c, cat: "automod" }));
+            return list;
+        }
+
+        const listAllGenerated = generateCmdList();
+
         const translations = {
             ku: {
                 dir: "rtl",
@@ -680,32 +751,18 @@
                 uptimeLbl: "بۆت ئۆنلاینە", pingLbl: "خێرایی وەڵامدانەوە",
                 featTitle: "تایبەتمەندییەکانی بۆتەکە", featSub: "هەموو ئەو شتانەی بۆ سێرڤەرەکەت پێویستن لە یەک بۆتدا",
                 mTitle: "میوزیک (Music)", mDesc: "لێدانی دەنگ و گۆرانی بە کوالیتی Ultra-HQ لە یوتیوب و سپۆتیفایەوە بەبێ هیچ پچڕان و کێشەیەک.",
-                gTitle: "دابەشکاری (Giveaway)", gDesc: "درووستکردنی تیروپشک و دیاری بە شێوازێکی دادپەروەرانە و پڕۆفیشناڵ لە ناو سێرڤەرەکەتدا.",
                 aTitle: "پاراستنی خۆکار (AutoMod)", aDesc: "بلۆککردنی لینک، ڕیکلام، و قسەی نەشیاو بە شێوازی زیرەک بۆ هێشتنەوەی ژینگەیەکی پاك.",
                 modTitle: "بەڕێوەبردن (Moderation)", modDesc: "کۆماندەکانی هۆشداریدان (Warn)، دەرکردن (Kick)، و باندکردن (Ban) بۆ ستافی سێرڤەرەکەت.",
-                cTitle: "ئامرازی فرۆشیاران (Sellers)", cDesc: "سیستەمێکی پێشکەوتوو بۆ حیسابکردنی باج (Tax Calculator) بە شێوازی خێرا بۆ کڕین و فرۆشتنی سەر هێڵ.",
                 cmdTitle: "لیستی کۆماندەکان", cmdSub: "بۆ بینی زیاتر کۆماندی +help بکە (کلیک لەسەر هەر کۆماندێک بکە بۆ کۆپی بوون)",
+                searchPlace: "بگەڕێ بۆ کۆماندێک...",
                 docsTitle: "دۆکیومێنت و ڕێنماییەکان", docsSub: "چۆنیەتی ڕێکخستن و بەکارهێنانی بۆتی ئۆرفیۆس",
-                d1t: "وەسفی گشتی بۆتەکە", d1d: "بۆتی Orpheus سیستەمێکی پێشکەوتووی دیسکۆردە کە چەن خزمەتگوزاری جیاواز وەک لێدانی مۆسیقای بێخەوش، بەڕێوەبردنی خۆکاری چاتەکان، و بەهێزکردنی ئۆتۆمۆد پێشکەش بە خاوەن سێرڤەرەکان دەکات بۆ پاراستنی ژینگەی چات لە ڕیکلام و سپام.",
+                d1t: "وەسفی گشتی بۆتەکە", d1d: "بۆتی Orpheus سیستەمێکی پێشکەوتووی دیسکۆردە کە چەندین خزمەتگوزاری جیاواز وەک لێدانی مۆسیقای بێخەوش، بەڕێوەبردنی خۆکاری چاتەکان، و بەهێزکردنی ئۆتۆمۆد پێشکەش بە خاوەن سێرڤەرەکان دەکات بۆ پاراستنی ژینگەی چات لە ڕیکلام و سپام.",
                 d2t: "پریفێکس و دەستپێکردن", d2d: "پریفێکسی سەرەکی بۆتەکە بریتییە لە +. بۆ بینینی هەموو بەش و ڕێنماییە کورتەکان لە ناو خودی دیسکۆرددا، تەنها لە چاتەکەتدا بنوسە +help تا مێنیوی هاوکاریت بۆ بکرێتەوە.",
                 d3t: "چۆنیەتی ڕێکخستنی سەرەکی بۆ سێرڤەرەکەت",
                 d3d: "<ol><li>دلنیابەوە لەوەی ڕۆڵی بۆتەکە لە بەرزترین ئاستی سێرڤەرەکەتە تا بتوانێت سزاکان جێبەجێ بکات.</li><li>کۆماندی +help بەکاربێنە بۆ نیشاندانی کاتیگۆرییە پێشکەوتووەکان ڕاستەوخۆ لە ناو چاتی سێرڤەرەکەت.</li></ol>",
                 devT: "گەشەپێدەر و خاوەنی فەرمی", devD: "ئەم بۆتە و وێبسایتە بە شانازییەوە گەشەی پێدراوە لەلایەن گەشەپێدەر:",
                 toastText: "کۆپی کرا بۆ ناو کلیپبۆرد!",
-                cats: { all: "هەمووی", music: "میوزیک", mod: "بەڕێوەبردن", sellers: "فرۆشیاران", utility: "گشتی" },
-                cmds: [
-                    { name: "+play", desc: "لێدانی گۆرانی یان پلەیلیست بە بەرزترین کوالیتی.", cat: "music" },
-                    { name: "+skip", desc: "پەڕاندنی گۆرانی ئێستا و چوونە سەر گۆرانی داهاتوو.", cat: "music" },
-                    { name: "+stop", desc: "ڕاگرتنی مۆسیقاکە بە تەواوی و جێهێشتنی ڤۆیسەکە.", cat: "music" },
-                    { name: "+volume", desc: "بەرز و نزمکردنی دەنگی بۆتەکە لە چەناڵەکەدا.", cat: "music" },
-                    { name: "+ban", desc: "باندکردنی ئەندامێکی سەرپێچیکار لە سێرڤەر بە هەمیشەیی.", cat: "mod" },
-                    { name: "+kick", desc: "دەرکردنی ئەندام لە سێرڤەر بە خێرایی.", cat: "mod" },
-                    { name: "+mute", desc: "بێدەنگکردنی کاتیی ئەندام لە چاتەکاندا.", cat: "mod" },
-                    { name: "+clear", desc: "سڕینەوەی نامەکانی چات بە ژمارەی دیاریکراو.", cat: "mod" },
-                    { name: "+tax", desc: "حیسابکردنی باجی فەرمی پرۆبۆت بە خێرایی بۆ مامەڵەکان.", cat: "sellers" },
-                    { name: "+help", desc: "بینینی مێنیوی هاوکاری داینامیکی بۆتەکە لە دیسکۆرد.", cat: "utility" },
-                    { name: "+ping", desc: "پشکنینی خێرایی وەڵامدانەوەی بۆتەکە.", cat: "utility" }
-                ]
+                cats: { all: "هەمووی", music: "میوزیک", mod: "بەڕێوەبردن", automod: "ئۆتۆمۆد" }
             },
             en: {
                 dir: "ltr",
@@ -715,11 +772,10 @@
                 uptimeLbl: "Bot Status", pingLbl: "Response Time",
                 featTitle: "Bot Features", featSub: "Everything your server needs packed into one powerful bot",
                 mTitle: "Music", mDesc: "Play Ultra-HQ tracks from YouTube and Spotify without any lag or interruption.",
-                gTitle: "Giveaway", gDesc: "Create and manage fair, professional giveaways easily within your channels.",
                 aTitle: "AutoMod", aDesc: "Block links, invites, spam, and bad words instantly using smart detection.",
                 modTitle: "Moderation", modDesc: "Advanced moderation tools like Warn, Kick, and Ban to assist your staff.",
-                cTitle: "Sellers Tool", cDesc: "An advanced system to execute fast ProBot tax calculations for online sales and trades.",
                 cmdTitle: "Commands List", cmdSub: "For more commands, type +help (Click any command to copy it)",
+                searchPlace: "Search for a command...",
                 docsTitle: "Documentation & Guides", docsSub: "How to setup and use Orpheus bot",
                 d1t: "General Bot Description", d1d: "Orpheus Bot is an advanced Discord system offering robust services like seamless music execution, automated chat moderation, and enhanced auto-mod filters to secure your server ecosystem from unwanted spam and ads.",
                 d2t: "Prefix & Getting Started", d2d: "The default bot prefix is +. To view the complete dynamic command tree and interactive helper module inside Discord, simply type +help in any text channel.",
@@ -727,20 +783,7 @@
                 d3d: "<ol><li>Ensure the bot's highest role is positioned above general members to execute moderation filters.</li><li>Use the +help prompt to call the interactive embedded selection interface directly inside your guild text rooms.</li></ol>",
                 devT: "Official Developer & Owner", devD: "This bot and web dashboard ecosystem is proudly conceptualized and developed by:",
                 toastText: "Copied to clipboard!",
-                cats: { all: "All", music: "Music", mod: "Moderation", sellers: "Sellers", utility: "Utility" },
-                cmds: [
-                    { name: "+play", desc: "Plays a song or playlist with ultra-high quality audio.", cat: "music" },
-                    { name: "+skip", desc: "Skips the current song playing in the voice channel.", cat: "music" },
-                    { name: "+stop", desc: "Stops the music entirely and clears the active track queue.", cat: "music" },
-                    { name: "+volume", desc: "Adjusts the audio volume levels within the active voice session.", cat: "music" },
-                    { name: "+ban", desc: "Bans a disruptive user from the guild permanently.", cat: "mod" },
-                    { name: "+kick", desc: "Kicks the specified user out of the server immediately.", cat: "mod" },
-                    { name: "+mute", desc: "Mutes a user temporarily from talking in all channels.", cat: "mod" },
-                    { name: "+clear", desc: "Purges a specified amount of historical messages from the channel.", cat: "mod" },
-                    { name: "+tax", desc: "Calculates precise ProBot transaction fees instantly.", cat: "sellers" },
-                    { name: "+help", desc: "Invokes the dynamic help helper directory inside Discord.", cat: "utility" },
-                    { name: "+ping", desc: "Checks the real-time operational response latency of the cluster.", cat: "utility" }
-                ]
+                cats: { all: "All", music: "Music", mod: "Moderation", automod: "AutoMod" }
             },
             ar: {
                 dir: "rtl",
@@ -750,11 +793,10 @@
                 uptimeLbl: "حالة البوت", pingLbl: "سرعة الاستجابة",
                 featTitle: "ميزات البوت الجبارة", featSub: "كل ما يحتاجه سيرفرك متوفر في بوت واحد فقط",
                 mTitle: "الموسيقى (Music)", mDesc: "تشغيل الأغاني بأعلى دقة ممكنة من يوتيوب وسبوتيفاي دون أي تقطيع.",
-                gTitle: "التوزيع والهدايا (Giveaway)", gDesc: "إنشاء سحوبات عادلة واحترافية على الجوائز داخل خادمك بكل سهولة.",
                 aTitle: "الحماية التلقائية (AutoMod)", aDesc: "حظر الروابط، الإعلانات، والكلمات النابية بشكل ذكي للحفاظ على أمان سيرفرك.",
                 modTitle: "الإشراف والرقابة (Moderation)", modDesc: "أوامر التحذير (Warn)، الطرد (Kick)، والحظر (Ban) لمساعدة طاقم الإدارة.",
-                cTitle: "أداة البائعين (Sellers)", cDesc: "نظام متطور لحساب ضرائب بروبوت بشكل فوري للمبيعات والمعاملات عبر الإنترنت.",
                 cmdTitle: "قائمة الأوامر", cmdSub: "لرؤية المزيد من الأوامر، اكتب الأمر +help (اضغط على الأمر لنسخه)",
+                searchPlace: "ابحث عن أمر معين...",
                 docsTitle: "الوثائق والتعليمات", docsSub: "كيفية إعداد واستخدام بوت أورفيوس بالتفصيل",
                 d1t: "الوصف العام للبوت", d1d: "بوت Orpheus هو نظام ديسكورد متطور يقدم خدمات متعددة مثل تشغيل الموسيقى النقية، الإشراف التلقائي على الدردشات، وتعزيز نظام الأوتومود لحماية خادمك من الإعلانات المزعجة والسبام.",
                 d2t: "البادئة وبدء الاستخدام", d2d: "البادئة الافتراضية للبوت هي +. لعرض جميع الأقسام والتعليمات المباشرة داخل الديسكورد، ما عليك سوى كتابة +help في الدردشة لفتح قائمة المساعدة.",
@@ -762,20 +804,7 @@
                 d3d: "<ol><li>تأكد من وضع رتبة البوت في أعلى قائمة الرتب بالخادم لضمان تنفيذ العقوبات دون قيود.</li><li>استخدم الأمر +help لإظهار الفئات التفاعلية المتقدمة مباشرة داخل غرف الدردشة الخاصة بك.</li></ol>",
                 devT: "المطور والمالك الرسمي", devD: "تم تطوير هذا البوت ولوحة التحكم بالكامل بكل فخر بواسطة المطور المعتمد:",
                 toastText: "تم النسخ إلى الحافظة!",
-                cats: { all: "الكل", music: "الموسيقى", mod: "الإشراف", sellers: "البائعين", utility: "عام" },
-                cmds: [
-                    { name: "+play", desc: "لتشغيل الأغاني أو قوائم التشغيل بأعلى جودة صوتية.", cat: "music" },
-                    { name: "+skip", desc: "لتخطي الأغنية الحالية والانتقال للأغنية التالية.", cat: "music" },
-                    { name: "+stop", desc: "إيقاف الموسيقى تماماً ومغادرة الروم الصوتي.", cat: "music" },
-                    { name: "+volume", desc: "تعديل مستوى الصوت للبوت داخل الروم الصوتي الحالي.", cat: "music" },
-                    { name: "+ban", desc: "لحظر العضو المخالف من السيرفر بشكل نهائي.", cat: "mod" },
-                    { name: "+kick", desc: "لطرد العضو المحدد من السيرفر فوراً.", cat: "mod" },
-                    { name: "+mute", desc: "كتم صوت العضو مؤقتاً في جميع القنوات النصية.", cat: "mod" },
-                    { name: "+clear", desc: "لتنظيف ومسح عدد معين من الرسائل من شاشة الدردشة.", cat: "mod" },
-                    { name: "+tax", desc: "لحساب ضريبة بروبوت بدقة وبشكل فوري.", cat: "sellers" },
-                    { name: "+help", desc: "لعرض دليل المساعدة التفاعلي الخاص بالبوت داخل ديسكورد.", cat: "utility" },
-                    { name: "+ping", desc: "لفحص سرعة استجابة البوت وزمن الاتصال الحالي.", cat: "utility" }
-                ]
+                cats: { all: "الكل", music: "الموسيقى", mod: "الإشراف", automod: "أوتومود" }
             }
         };
 
@@ -800,17 +829,15 @@
             
             document.getElementById('f-music-t').innerText = data.mTitle;
             document.getElementById('f-music-d').innerText = data.mDesc;
-            document.getElementById('f-give-t').innerText = data.gTitle;
-            document.getElementById('f-give-d').innerText = data.gDesc;
             document.getElementById('f-auto-t').innerText = data.aTitle;
             document.getElementById('f-auto-d').innerText = data.aDesc;
             document.getElementById('f-mod-t').innerText = data.modTitle;
             document.getElementById('f-mod-d').innerText = data.modDesc;
-            document.getElementById('f-seller-t').innerText = data.cTitle;
-            document.getElementById('f-seller-d').innerText = data.cDesc;
 
             document.getElementById('cmd-page-title').innerText = data.cmdTitle;
             document.getElementById('cmd-page-sub').innerText = data.cmdSub;
+            document.getElementById('cmdSearchInput').setAttribute('placeholder', data.searchPlace);
+            
             document.getElementById('docs-page-title').innerText = data.docsTitle;
             document.getElementById('docs-page-sub').innerText = data.docsSub;
 
@@ -824,7 +851,6 @@
             document.getElementById('dev-lbl-title').innerText = data.devT;
             document.getElementById('dev-lbl-desc').innerText = data.devD;
 
-            // ڕێکردنی کاتیگۆرییەکان
             renderCategories();
             renderCommands();
 
@@ -845,6 +871,7 @@
                 btn.innerText = cats[key];
                 btn.onclick = () => {
                     currentCategory = key;
+                    document.getElementById('cmdSearchInput').value = ''; // گەڕانەکە پاک بکەوە کاتێک کاتیگۆری دەگۆڕێت
                     renderCategories();
                     renderCommands();
                 };
@@ -852,20 +879,28 @@
             });
         }
 
-        function renderCommands() {
+        function renderCommands(filterKeyword = '') {
             const container = document.getElementById('commands-list-container');
             container.innerHTML = '';
-            const allCmds = translations[currentLang].cmds;
 
-            const filtered = currentCategory === 'all' ? allCmds : allCmds.filter(c => c.cat === currentCategory);
+            let filtered = currentCategory === 'all' ? listAllGenerated : listAllGenerated.filter(c => c.cat === currentCategory);
+
+            if(filterKeyword.trim() !== '') {
+                filtered = filtered.filter(c => c.name.toLowerCase().includes(filterKeyword.toLowerCase()));
+            }
 
             filtered.forEach(c => {
-                const row = document.createElement('div');
-                row.className = 'cmd-row';
-                row.onclick = () => copyToClipboard(c.name);
-                row.innerHTML = `<span class="cmd-trigger">${c.name}</span><span class="cmd-text-desc">${c.desc}</span>`;
-                container.appendChild(row);
+                const box = document.createElement('div');
+                box.className = 'cmd-box';
+                box.onclick = () => copyToClipboard(c.name);
+                box.innerHTML = `<span class="cmd-name">${c.name}</span><span class="cmd-icon"><i class="far fa-copy"></i></span>`;
+                container.appendChild(box);
             });
+        }
+
+        function filterBySearch() {
+            const keyword = document.getElementById('cmdSearchInput').value;
+            renderCommands(keyword);
         }
 
         function copyToClipboard(text) {
