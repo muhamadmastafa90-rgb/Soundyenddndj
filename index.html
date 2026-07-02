@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ku" dir="rtl" id="html-tag" class="dark-theme">
+<html lang="en" class="dark-theme">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,60 +40,6 @@
             color: var(--text-main);
             overflow-x: hidden;
             transition: background-color 0.4s, color 0.4s;
-        }
-
-        /* 🌐 Language Modal */
-        .lang-modal {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(10, 10, 12, 0.95);
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(20px);
-            transition: opacity 0.4s ease;
-        }
-
-        .lang-box {
-            background: #141419;
-            border: 1px solid var(--panel-border);
-            padding: 40px;
-            border-radius: 24px;
-            text-align: center;
-            max-width: 450px;
-            width: 90%;
-        }
-
-        .lang-box h2 {
-            font-size: 24px;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        .lang-options {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 25px;
-        }
-
-        .lang-btn {
-            padding: 14px;
-            border: 1px solid var(--panel-border);
-            background: rgba(255,255,255,0.02);
-            color: var(--text-main);
-            border-radius: 12px;
-            cursor: pointer;
-            font-size: 15px;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        .lang-btn:hover {
-            background: var(--text-main);
-            color: var(--bg-main);
-            transform: translateY(-2px);
         }
 
         /* Modern Floating Navbar */
@@ -200,7 +146,7 @@
         }
         .invite-nav-btn:hover { opacity: 0.9; transform: translateY(-1px); }
 
-        /* Next-Gen Hero Section */
+        /* Hero Section */
         .hero-section {
             max-width: 1200px;
             margin: 60px auto 0 auto;
@@ -212,7 +158,7 @@
             background: var(--accent-glow);
         }
 
-        .hero-info { text-align: right; }
+        .hero-info { text-align: left; }
 
         .server-tag {
             display: inline-flex;
@@ -298,8 +244,34 @@
             border-radius: 24px;
             overflow: hidden;
             border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
         }
         .bento-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Audio Wave Animation Overlay */
+        .wave-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 3px;
+            height: 25px;
+            margin-top: 15px;
+        }
+        .wave-bar {
+            width: 3px;
+            background: var(--text-main);
+            border-radius: 3px;
+            animation: bounceWave 1s ease-in-out infinite alternate;
+        }
+        .wave-bar:nth-child(2) { animation-delay: 0.2s; }
+        .wave-bar:nth-child(3) { animation-delay: 0.4s; }
+        .wave-bar:nth-child(4) { animation-delay: 0.1s; }
+        .wave-bar:nth-child(5) { animation-delay: 0.3s; }
+
+        @keyframes bounceWave {
+            0% { height: 4px; }
+            100% { height: 22px; }
+        }
 
         .badge-status {
             position: absolute;
@@ -383,6 +355,44 @@
             line-height: 1.5;
         }
 
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 4%;
+        }
+        .stat-box {
+            background: rgba(255,255,255,0.01);
+            border: 1px solid var(--panel-border);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+        }
+        .stat-box h2 { font-size: 32px; font-weight: 800; letter-spacing: -1px; margin-bottom: 5px; }
+        .stat-box p { color: var(--text-muted); font-size: 14px; }
+
+        /* Testimonials / Reviews */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 4%;
+        }
+        .review-card {
+            background: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            border-radius: 20px;
+            padding: 25px;
+        }
+        .review-user { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+        .review-user i { font-size: 20px; color: var(--text-muted); }
+        .review-card p { color: var(--text-muted); font-size: 14px; line-height: 1.5; }
+
         /* Commands System Minimalist UI */
         .search-area { max-width: 600px; margin: 30px auto; position: relative; }
         .search-input {
@@ -413,7 +423,7 @@
 
         .cmd-inspector {
             background: var(--panel-bg); border: 1px solid var(--panel-border);
-            padding: 25px; border-radius: 18px; margin-top: 20px; display: none; text-align: right;
+            padding: 25px; border-radius: 18px; margin-top: 20px; display: none; text-align: left;
         }
         .inspector-active { display: block; animation: fadeIn 0.3s ease; }
 
@@ -425,7 +435,7 @@
         }
         .faq-item:hover { border-color: var(--panel-hover-border); }
         .faq-trigger {
-            padding: 18px 22px; width: 100%; text-align: right; background: transparent;
+            padding: 18px 22px; width: 100%; text-align: left; background: transparent;
             border: none; color: var(--text-main); font-size: 15px; font-weight: 600;
             cursor: pointer; display: flex; justify-content: space-between; align-items: center;
         }
@@ -440,6 +450,23 @@
         .dev-card:hover { border-color: var(--panel-hover-border); transform: translateY(-2px); }
         .dev-avatar { width: 70px; height: 70px; border-radius: 50%; margin: 0 auto 15px auto; overflow: hidden; background: rgba(255,255,255,0.05); }
         .dev-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Footer Links Framework */
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr repeat(2, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 60px auto 0 auto;
+            padding: 40px 4% 20px 4%;
+            border-top: 1px solid var(--panel-border);
+            text-align: left;
+        }
+        .footer-col h4 { font-size: 15px; font-weight: 600; margin-bottom: 15px; color: var(--text-main); }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a { color: var(--text-muted); text-decoration: none; font-size: 14px; transition: var(--transition); }
+        .footer-col ul li a:hover { color: var(--text-main); }
 
         /* Toast Component */
         .toast-notify {
@@ -456,30 +483,18 @@
             .hero-section { grid-template-columns: 1fr; text-align: center; padding-top: 30px; }
             .hero-info { text-align: center; display: flex; flex-direction: column; align-items: center; }
             .hero-info h1 { font-size: 40px; }
-            .bento-grid { grid-template-columns: 1fr; }
+            .bento-grid, .stats-grid, .reviews-grid, .footer-grid { grid-template-columns: 1fr; text-align: center; }
             .dev-grid { grid-template-columns: 1fr; }
-            .faq-trigger { text-align: right; }
         }
     </style>
 </head>
 <body>
 
-    <div class="lang-modal" id="langModal">
-        <div class="lang-box">
-            <h2>Select Language</h2>
-            <p style="color: var(--text-muted); font-size: 14px;">زمان و ڕووکاری وێبسایتەکە هەڵبژێرە:</p>
-            <div class="lang-options">
-                <button class="lang-btn" onclick="setLanguage('ku')">کوردی (Kurdish)</button>
-                <button class="lang-btn" onclick="setLanguage('en')">English</button>
-                <button class="lang-btn" onclick="setLanguage('ar')">العربية (Arabic)</button>
-            </div>
-        </div>
-    </div>
-
+    <!-- Floating Navbar -->
     <header>
         <div class="logo-container">
             <div class="logo-wrapper">
-                <img src="File_000000000af071f4ad3ac7be80e6763c.png" alt="Orpheus Core">
+                <img src="logo.png" alt="Orpheus Core">
             </div>
             <span class="logo-text">Orpheus</span>
         </div>
@@ -494,14 +509,15 @@
         </div>
     </header>
 
+    <!-- Main Section -->
     <div id="tab-home" class="tab-content active-content">
         <section class="hero-section">
             <div class="hero-info">
                 <div class="server-tag">
-                    <i class="fas fa-sparkles"></i> <span id="live-lbl">Now powering 120K+ servers</span>
+                    <i class="fas fa-sparkles"></i> <span>Now powering 120K+ servers</span>
                 </div>
-                <h1 id="h-title">Meet Orpheus<br><span>The next-generation Discord bot</span></h1>
-                <p id="h-desc">Orpheus is an all-in-one Discord bot crafted for modern communities. Moderation, music, fun, utilities — beautifully designed and lightning fast.</p>
+                <h1>Meet Orpheus<br><span>The next-generation bot</span></h1>
+                <p>Orpheus is an all-in-one Discord bot crafted for modern communities. Moderation, music, fun, utilities — beautifully designed and lightning fast.</p>
                 <div class="action-btns">
                     <a href="https://discord.com/oauth2/authorize?client_id=1150754451938869371&permissions=8&integration_type=0&scope=bot" target="_blank" class="global-btn btn-primary">Invite Bot</a>
                     <a href="https://discord.gg/Pn4uqzYAsD" target="_blank" class="global-btn btn-secondary">Support Server</a>
@@ -511,39 +527,86 @@
                 <div class="bento-showcase">
                     <div class="badge-status">Latency 42ms</div>
                     <div class="bento-avatar">
-                        <img src="File_000000000af071f4ad3ac7be80e6763c.png" alt="Orpheus Visual Core">
+                        <img src="logo.png" alt="Orpheus Visual Core">
                     </div>
-                    <div style="margin-top: 20px; font-weight: 600; font-size: 15px; letter-spacing: -0.3px;">Commands 240+</div>
+                    <div class="wave-container">
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                    </div>
+                    <div style="margin-top: 10px; font-weight: 600; font-size: 15px; letter-spacing: -0.3px;">Commands 240+</div>
                 </div>
             </div>
         </section>
 
+        <!-- Stats Section -->
+        <section class="stats-grid">
+            <div class="stat-box">
+                <h2>120K+</h2>
+                <p>Active Servers</p>
+            </div>
+            <div class="stat-box">
+                <h2>4M+</h2>
+                <p>Global Users</p>
+            </div>
+            <div class="stat-box">
+                <h2>99.99%</h2>
+                <p>Uptime Client</p>
+            </div>
+        </section>
+
+        <!-- Bento Grid Features -->
         <section class="premium-section">
-            <div class="section-label" id="p-lbl">Features</div>
-            <div class="section-title" id="p-title">Everything your server needs</div>
+            <div class="section-label">Features</div>
+            <div class="section-title">Everything your server needs</div>
             <div class="bento-grid">
                 <div class="bento-card">
                     <i class="fas fa-shield-halved"></i>
-                    <h3 id="p-f1-t">Advanced Moderation</h3>
-                    <p id="p-f1-d">AI-powered auto-mod, raid protection, and granular permission controls keep your server safe 24/7.</p>
+                    <h3>Advanced Moderation</h3>
+                    <p>AI-powered auto-mod, raid protection, and granular permission controls keep your server safe 24/7.</p>
                 </div>
                 <div class="bento-card">
                     <i class="fas fa-music"></i>
-                    <h3 id="p-f2-t">High-Fidelity Music</h3>
-                    <p id="p-f2-d">Crystal clear lossless audio streaming from Spotify, YouTube, SoundCloud and Apple Music with advanced filters.</p>
+                    <h3>High-Fidelity Music</h3>
+                    <p>Crystal clear lossless audio streaming from Spotify, YouTube, SoundCloud and Apple Music with advanced filters.</p>
                 </div>
                 <div class="bento-card">
                     <i class="fas fa-bolt"></i>
-                    <h3 id="p-f3-t">Lightning Fast Uptime</h3>
-                    <p id="p-f3-d">Engineered with low-latency infrastructure ensuring a flawless 99.99% uptime status throughout the year.</p>
+                    <h3>Lightning Fast Uptime</h3>
+                    <p>Engineered with low-latency infrastructure ensuring a flawless 99.99% uptime status throughout the year.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section class="premium-section">
+            <div class="section-label">Reviews</div>
+            <div class="section-title">What owners say</div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-user">
+                        <i class="fas fa-circle-user"></i>
+                        <strong>Aween</strong>
+                    </div>
+                    <p>"The cleanest music bot I've ever experienced on Discord. The uptime is insane and audio clarity is top notch!"</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-user">
+                        <i class="fas fa-circle-user"></i>
+                        <strong>Saman</strong>
+                    </div>
+                    <p>"AutoMod works flawlessly. It completely secured my gaming server from spam raids in less than a second."</p>
                 </div>
             </div>
         </section>
     </div>
 
+    <!-- Commands Directory Tab -->
     <div id="tab-commands" class="tab-content" style="padding: 40px 6%; max-width: 1200px; margin: 0 auto; display: none;">
         <div class="section-label">Registry</div>
-        <div class="section-title" id="c-title">Carefully crafted modules</div>
+        <div class="section-title">Carefully crafted modules</div>
 
         <div class="search-area">
             <input type="text" id="globalSearch" class="search-input" placeholder="Query registry..." oninput="filterSystem()">
@@ -555,24 +618,25 @@
 
         <div class="cmd-inspector" id="inspector">
             <h3 style="margin-bottom:10px; font-size: 20px;" id="inspect-name">+play</h3>
-            <p style="color:var(--text-muted); font-size:13px; margin-bottom:4px;" id="inspect-desc-lbl">Description:</p>
+            <p style="color:var(--text-muted); font-size:13px; margin-bottom:4px;">Description:</p>
             <p style="color:var(--text-main); margin-bottom:15px; font-size: 15px;" id="inspect-desc"></p>
-            <p style="color:var(--text-muted); font-size:13px; margin-bottom:4px;" id="inspect-usage-lbl">Syntax Framework:</p>
+            <p style="color:var(--text-muted); font-size:13px; margin-bottom:4px;">Syntax Framework:</p>
             <code style="background:rgba(255,255,255,0.03); padding:10px 14px; border-radius:10px; display:inline-block; font-size: 13px; border:1px solid var(--panel-border);" id="inspect-code"></code>
         </div>
     </div>
 
+    <!-- About Tab -->
     <div id="tab-docs" class="tab-content" style="padding: 40px 6%; max-width: 800px; margin: 0 auto; display: none;">
         <div class="section-label">Architecture</div>
-        <div class="section-title" id="d-title">Behind the project</div>
+        <div class="section-title">Behind the project</div>
 
-        <div style="background: var(--panel-bg); padding: 30px; border-radius: 20px; border: 1px solid var(--panel-border); margin-bottom: 40px; text-align: right;">
-            <h3 style="font-size: 18px; margin-bottom: 10px;" id="d-h1">پریفێکسی فەرمی</h3>
-            <p style="color: var(--text-muted); line-height: 1.6; font-size: 15px;" id="d-p1">پریفێکسی سەرەکی بۆتەکە بریتییە لە (+). تۆ دەتوانیت بە نووسینی <code>+help</code> ڕێک مێنووی سەرەکی لە ناو سێرڤەرەکەتدا کۆنتڕۆڵ بکەیت.</p>
+        <div style="background: var(--panel-bg); padding: 30px; border-radius: 20px; border: 1px solid var(--panel-border); margin-bottom: 40px; text-align: left;">
+            <h3 style="font-size: 18px; margin-bottom: 10px;">Official Prefix</h3>
+            <p style="color: var(--text-muted); line-height: 1.6; font-size: 15px;">The primary command trigger protocol is (+). You can control the system interface inside your server structure by typing <code>+help</code>.</p>
         </div>
 
         <div class="faq-section">
-            <h2 style="text-align:center; margin-bottom:25px; font-size:22px; font-weight:700;" id="faq-main-t">Questions Answered</h2>
+            <h2 style="text-align:center; margin-bottom:25px; font-size:22px; font-weight:700;">Questions Answered</h2>
             <div class="faq-item">
                 <button class="faq-trigger" onclick="toggleFaq(this)">How do I invite Orpheus? <i class="fas fa-chevron-down" style="font-size: 12px;"></i></button>
                 <div class="faq-content"><p style="padding-bottom:18px;">Simply click the "Invite Bot" button at the top header, select your target Discord community, and authorize the core interaction permissions.</p></div>
@@ -586,26 +650,44 @@
         <div class="section-label" style="margin-top: 50px;">Team</div>
         <div class="dev-grid">
             <div class="dev-card" onclick="copyDevID('1147899646602121216')">
-                <div class="dev-avatar"><img src="File_000000000af071f4ad3ac7be80e6763c.png"></div>
-                <h4 style="font-size: 16px; font-weight: 600;">Orpheus 1</h4>
+                <div class="dev-avatar"><img src="logo.png"></div>
+                <h4 style="font-size: 16px; font-weight: 600;">Orpheus Architect</h4>
                 <p style="color: var(--text-muted); font-size: 13px; margin-top: 4px;">Founder & Lead Developer</p>
             </div>
             <div class="dev-card" style="cursor: default;">
                 <div class="dev-avatar" style="display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.03);"><i class="fas fa-bezier-curve" style="font-size:20px; color:var(--text-muted);"></i></div>
-                <h4 style="font-size: 16px; font-weight: 600;">Orpheus 2</h4>
-                <p style="color: var(--text-muted); font-size: 13px; margin-top: 4px;">Product Designer</p>
+                <h4 style="font-size: 16px; font-weight: 600;">Solar Orbit Team</h4>
+                <p style="color: var(--text-muted); font-size: 13px; margin-top: 4px;">Product Quality Assurance</p>
             </div>
         </div>
     </div>
 
-    <div class="toast-notify" id="globalToast">Copied!</div>
+    <div class="toast-notify" id="globalToast">Copied to clipboard! 🚀</div>
 
-    <footer style="text-align: center; padding: 40px; border-top: 1px solid var(--panel-border); margin-top: 80px; color: var(--text-muted); font-size: 13px;">
-        <p>© 2026 Orpheus. All rights reserved. • v3.2.0 - 99.99% uptime</p>
+    <!-- Footer Links -->
+    <footer class="footer-grid">
+        <div class="footer-col">
+            <h4 style="letter-spacing: -0.5px; font-size: 17px; margin-bottom: 8px;">Orpheus</h4>
+            <p style="color: var(--text-muted); font-size: 13px; line-height: 1.5;">Next-generation structural utility for automated server setups and multimedia audio rendering protocols.</p>
+            <p style="color: var(--text-muted); font-size: 12px; margin-top: 15px;">© 2026 Orpheus. All rights reserved.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Links</h4>
+            <ul>
+                <li><a href="https://discord.com/oauth2/authorize?client_id=1150754451938869371&permissions=8&integration_type=0&scope=bot" target="_blank">Invite Client</a></li>
+                <li><a href="https://discord.gg/Pn4uqzYAsD" target="_blank">Support Network</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Legal</h4>
+            <ul>
+                <li><a href="#" onclick="alert('Terms under structure protocol.')">Terms of Service</a></li>
+                <li><a href="#" onclick="alert('Privacy verified by framework infrastructure.')">Privacy Policy</a></li>
+            </ul>
+        </div>
     </footer>
 
     <script>
-        let selectedLang = 'ku';
         let activeCat = 'all';
 
         const rawMusic = ["artistradio", "autoplay", "clearqueue", "forcefix", "forceskip", "forward", "grab", "history", "join", "leave", "leavecleanup", "loop", "lyrics", "mood", "move", "nowplaying", "pause", "play", "previous", "queue", "remove", "replay", "resume", "rewind", "search", "seek", "shuffle", "similar", "skip", "skipto", "sleep", "speed", "stop", "volume"];
@@ -614,101 +696,18 @@
 
         function buildDatabase() {
             let db = [];
-            rawMusic.forEach(c => db.push({ name: "+" + c, cat: "music", descKu: "کۆنتڕۆڵ و لێدانی میوزیک بە کوالیتی Ultra-HQ لەگەڵ فلتەرە دەنگییەکان.", descEn: "High-fidelity multimedia audio stream core controller with custom DSP filters.", usage: `+${c}` }));
-            rawMod.forEach(c => db.push({ name: "+" + c, cat: "mod", descKu: "بەڕێوەبردن، دەرکردن، باندکردن و جێبەجێکردنی سزاکانی ستاف لە سێرڤەردا.", descEn: "Server administration tools, kick, ban, and staff enforcement parameters.", usage: `+${c}` }));
-            rawAuto.forEach(c => db.push({ name: "+" + c, cat: "automod", descKu: "ڕێکخستنی فلتەری دژە سپام، پاراستنی سێرڤەر و بلۆککردنی بەستەرە دەرەکییەکان.", descEn: "Automated real-time spam protection, server defense and link filtering architecture.", usage: `+${c}` }));
+            rawMusic.forEach(c => db.push({ name: "+" + c, cat: "music", desc: "High-fidelity multimedia audio stream core controller with custom DSP filters.", usage: `+${c}` }));
+            rawMod.forEach(c => db.push({ name: "+" + c, cat: "mod", desc: "Server administration tools, kick, ban, and staff enforcement parameters.", usage: `+${c}` }));
+            rawAuto.forEach(c => db.push({ name: "+" + c, cat: "automod", desc: "Automated real-time spam protection, server defense and link filtering architecture.", usage: `+${c}` }));
             return db;
         }
 
         const coreDatabase = buildDatabase();
 
-        const langPack = {
-            ku: {
-                dir: "rtl", align: "right", home: "سەرەکی", cmds: "کۆماندەکان", docs: "دەربارە",
-                title: "بەرەو نەوەی نوێی<br><span>بۆتەکانی دیسکۆرد</span>",
-                desc: "ئۆرفیۆس بۆتێکی گشتگیر و پێشکەوتووە بۆ مۆدێرەیشن، مۆسیقای کوالیتی بەرز، کات بەسەربردن و پاراستنی تەواوەتی سێرڤەرەکەت بە شێوازێکی بێخەوش.",
-                live: "لە ئێستادا لەسەر +120K سێرڤەر چالاكە",
-                pLbl: "تایبەتمەندییەکان", pTitle: "هەموو ئەو شتانەی سێرڤەرەکەت پێویستیەتی",
-                pf1t: "ئۆتۆمۆد و ئیدارەدان", pf1d: "سیستەمی هۆشمەندی دژە ڕاید، باند، کیک، و کۆنتڕۆڵی ستاف لە بەرزترین ئاستدا.",
-                pf2t: "مۆسیقای کوالیتی بەرز", pf2d: "لێدانی بێ پچڕانی مۆسیقا لە سپۆتیفای، یوتیوب و ساوند کڵاود بە فلتەری پێشکەوتوو.",
-                pf3t: "خێرا و هەمیشە ئۆنلاین", pf3d: "بنیاتنراوە لەسەر سێرڤەری کەمترین لۆد بۆ زامنکردنی کارکردنی 99.99% بە درێژایی ساڵ.",
-                cTitle: "مۆدیولە ڕێکخراوەکان",
-                searchP: "بگەڕێ لە ناو کۆماندەکان...",
-                toast: "کۆپی کرا! 🚀", lblDesc: "وەسف:", lblUse: "بەکارهێنان:",
-                cats: { all: "هەمووی", music: "میوزیک", mod: "ئیدارە", automod: "ئۆتۆمۆد" }
-            },
-            en: {
-                dir: "ltr", align: "left", home: "Home", cmds: "Commands", docs: "About",
-                title: "Meet Orpheus<br><span>The next-generation bot</span>",
-                desc: "Orpheus is an all-in-one Discord bot crafted for modern communities. Moderation, music, fun, utilities — beautifully designed and lightning fast.",
-                live: "Now powering 120K+ servers",
-                pLbl: "Features", pTitle: "Everything your server needs",
-                pf1t: "Advanced Moderation", pf1d: "AI-powered auto-mod, raid protection, and granular permission controls keep your server safe 24/7.",
-                pf2t: "High-Fidelity Music", pf2d: "Crystal clear lossless audio streaming from Spotify, YouTube, SoundCloud and Apple Music.",
-                pf3t: "Lightning Fast Uptime", pf3d: "Engineered with low-latency infrastructure ensuring a flawless 99.99% uptime status.",
-                cTitle: "Carefully crafted modules",
-                searchP: "Query registry...",
-                toast: "Copied to clipboard! 🚀", lblDesc: "Description:", lblUse: "Syntax Framework:",
-                cats: { all: "Full Catalog", music: "Audio Core", mod: "Enforcement", automod: "Security" }
-            },
-            ar: {
-                dir: "rtl", align: "right", home: "الرئيسية", cmds: "الأوامر", docs: "حول",
-                title: "إليك Orpheus<br><span>الجيل القادم من البوتات</span>",
-                desc: "بوت متكامل مصمم خصيصاً للمجتمعات الحديثة. حماية، موسيقى، ألعاب، وأدوات — بتصميم مذهل وسرعة فائقة.",
-                live: "يعمل الآن في أكثر من 120 ألف خادم",
-                pLbl: "المميزات", pTitle: "كل ما يحتاجه خادمك متكامل",
-                pf1t: "إشراف وحماية متقدمة", pf1d: "نظام حماية تلقائي ذكي ضد الـ Raid والـ Spam لإبقاء خادمك آمناً على مدار الساعة.",
-                pf2t: "موسيقى عالية الدقة", pf2d: "بث صوتي نقي وبدون انقطاع من Spotify و YouTube مع فلاتر صوتية متقدمة.",
-                pf3t: "سرعة استجابة فائقة", pf3d: "بنية تحتية متطورة تضمن لك وقت تشغيل مستمر بنسبة 99.99٪ طوال العام.",
-                cTitle: "أنظمة برمجية متكاملة",
-                searchP: "ابحث عن الأوامر...",
-                toast: "تم النسخ بنجاح! 🚀", lblDesc: "الوصف:", lblUse: "طريقة الاستخدام:",
-                cats: { all: "الكل", music: "الصوتيات", mod: "الإشراف", automod: "الحماية" }
-            }
-        };
-
-        function setLanguage(lang) {
-            selectedLang = lang;
-            const pack = langPack[lang];
-            const html = document.getElementById('html-tag');
-            html.setAttribute('dir', pack.dir);
-            html.setAttribute('lang', lang);
-
-            document.querySelector('.hero-info').style.textAlign = pack.align;
-            document.querySelector('.hero-info').style.alignItems = pack.align === 'center' || window.innerWidth <= 968 ? 'center' : (pack.align === 'right' ? 'flex-start' : 'flex-end');
-
-            document.getElementById('nav-home').innerText = pack.home;
-            document.getElementById('nav-commands').innerText = pack.cmds;
-            document.getElementById('nav-docs').innerText = pack.docs;
-
-            document.getElementById('h-title').innerHTML = pack.title;
-            document.getElementById('h-desc').innerText = pack.desc;
-            document.getElementById('live-lbl').innerText = pack.live;
-            
-            document.getElementById('p-lbl').innerText = pack.pLbl;
-            document.getElementById('p-title').innerText = pack.pTitle;
-            document.getElementById('p-f1-t').innerText = pack.pf1t;
-            document.getElementById('p-f1-d').innerText = pack.pf1d;
-            document.getElementById('p-f2-t').innerText = pack.pf2t;
-            document.getElementById('p-f2-d').innerText = pack.pf2d;
-            document.getElementById('p-f3-t').innerText = pack.pf3t;
-            document.getElementById('p-f3-d').innerText = pack.pf3d;
-
-            document.getElementById('c-title').innerText = pack.cTitle;
-            document.getElementById('globalSearch').setAttribute('placeholder', pack.searchP);
-
-            document.getElementById('inspect-desc-lbl').innerText = pack.lblDesc;
-            document.getElementById('inspect-usage-lbl').innerText = pack.lblUse;
-
-            renderCategories();
-            renderCommands();
-
-            document.getElementById('langModal').style.opacity = 0;
-            setTimeout(() => document.getElementById('langModal').style.display = 'none', 400);
-        }
+        const catsData = { all: "Full Catalog", music: "Audio Core", mod: "Enforcement", automod: "Security" };
 
         function toggleTheme() {
-            const html = document.getElementById('html-tag');
+            const html = document.documentElement;
             const icon = document.querySelector('.theme-toggle i');
             if(html.classList.contains('dark-theme')) {
                 html.classList.remove('dark-theme');
@@ -724,11 +723,10 @@
         function renderCategories() {
             const area = document.getElementById('cat-area');
             area.innerHTML = '';
-            const cats = langPack[selectedLang].cats;
-            Object.keys(cats).forEach(k => {
+            Object.keys(catsData).forEach(k => {
                 const btn = document.createElement('button');
                 btn.className = `cat-btn ${activeCat === k ? 'active-cat' : ''}`;
-                btn.innerText = cats[k];
+                btn.innerText = catsData[k];
                 btn.onclick = () => {
                     activeCat = k;
                     renderCategories();
@@ -768,11 +766,11 @@
             inspector.classList.add('inspector-active');
 
             document.getElementById('inspect-name').innerText = cmd.name;
-            document.getElementById('inspect-desc').innerText = selectedLang === 'ku' ? cmd.descKu : cmd.descEn;
+            document.getElementById('inspect-desc').innerText = cmd.desc;
             document.getElementById('inspect-code').innerText = cmd.usage;
 
             navigator.clipboard.writeText(cmd.name).then(() => {
-                showToast(langPack[selectedLang].toast);
+                showToast("Copied to clipboard! 🚀");
             });
         }
 
@@ -790,7 +788,7 @@
 
         function copyDevID(id) {
             navigator.clipboard.writeText(id).then(() => {
-                showToast(selectedLang === 'ku' ? "کۆپی کرا! 🛡️" : "Copied Framework ID!");
+                showToast("Copied Framework ID!");
             });
         }
 
@@ -811,6 +809,12 @@
             
             document.getElementById('nav-' + t).classList.add('active-tab');
         }
+
+        // Initialize directly in English
+        window.onload = function() {
+            renderCategories();
+            renderCommands();
+        };
     </script>
 </body>
 </html>
